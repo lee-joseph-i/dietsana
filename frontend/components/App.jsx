@@ -1,7 +1,6 @@
 import React from 'react';
 import GreetingContainer from './greeting/greeting_container';
 import Landing from './landing';
-import React from 'react';
 import { Provider } from 'react-redux';
 import {
   Route,
