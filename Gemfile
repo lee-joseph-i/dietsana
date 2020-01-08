@@ -43,7 +43,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'annotate'
   gem 'bcrypt'
-  gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 end
 
 group :development do
