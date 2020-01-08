@@ -1,45 +1,23 @@
 import React from 'react';
 import GreetingContainer from './greeting/greeting_container';
 import Landing from './landing';
+import React from 'react';
+import { Provider } from 'react-redux';
+import {
+  Route,
+  Redirect,
+  Switch,
+  Link,
+  HashRouter
+} from 'react-router-dom';
 
-// const App = () => (
-//   <div>
-//     <header>
-//       <h1>Dietsana, yum!</h1>
-//       <GreetingContainer />
-//     </header>
-//   </div>
-// );
 
-// export default App;
-
-////////////////////////////////////////
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      landing: true
-    };
-  };
-
-  // need to create logic to
-  // this.setState({ landing: false }) 
-  // if user signs up or logs in
-
-  render() {
-    if (!!this.state.landing) {
-      return (
-        <div>
-          <Landing />
-          <GreetingContainer />
-        </div>
-      )
-    } else {
-      return (
-        <GreetingContainer />
-      )
-    }
-  }
-}
+const App = () => (
+  <div>
+    <header>
+      <Route exact path="/" component={GreetingContainer} />
+    </header>
+  </div>
+);
 
 export default App;
