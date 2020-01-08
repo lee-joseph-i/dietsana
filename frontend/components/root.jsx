@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import App from './App';
-import Landing from './Landing';
+import landing from './Landing';
 
 const Root = ({ store }) => (
   <Provider store={store}>
