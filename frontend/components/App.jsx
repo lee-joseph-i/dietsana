@@ -1,6 +1,4 @@
 import React from 'react';
-import GreetingContainer from './greeting/greeting_container';
-import Landing from './landing';
 import { Provider } from 'react-redux';
 import {
   Route,
@@ -9,12 +7,16 @@ import {
   Link,
   HashRouter
 } from 'react-router-dom';
+import Landing from './landing/landing';
+import Main from './main/main_container';
 
 
 const App = () => (
   <div>
     <header>
-      <Route exact path="/" component={GreetingContainer} />
+      <Route exact path="/" component={Landing} />
+      <Route path="/app/" component={Main} /> 
+      {/* Main is where the actual app will go. */}
     </header>
   </div>
 );
