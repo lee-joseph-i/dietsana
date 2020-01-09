@@ -16,36 +16,120 @@
 
  
 html, body, div {
-   padding: 0;
-   margin: 0;
-   font-family: 'Montserrat', sans-serif;
- }
-
-.header {
-  position: fixed; /* or absolute? */
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+  padding: 0;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+  
+ul, li {
+  list-style: none;
 }
 
-.header h1{
-  font-size: 40px;
+.landing_body {
+  min-height: 1000px;
 }
-.header p{
+
+/* for the landing page items */
+section ul li:nth-child(even){
+  background-color: rgb(226, 226, 226);
+}
+
+.landing_body p {
   color: rgba(15, 15, 15, 0.596);
   font-size: 16px;
 }
 
-button {
+.landing_body div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.intro_highlights {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.welcome_intro h1{
+  font-size: 40px;
+}
+
+
+.signup{
   font-size: 16px;
   font-weight: bolder;
-  height: 50px;
-  line-height: 50px;
-  padding: 0 20px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0px 15px;
   background-color: #796eff;
   border-radius: 4px;
   border: none;
   color: #fff;
   cursor: pointer;
+}
+
+.login{
+  font-size: 14px;
+  /* height: 50px; */
+  line-height: 50px;
+  padding: 5px 20px;
+  border-radius: 4px;
+  border: none;
+  color: #796eff;
+  cursor: pointer;
+  border: solid 1px #796eff;
+  text-decoration: none;
+}
+
+.login:hover{
+  background-color: #4f46ac;
+  color: white;
+  transition: background-color .2s,color .2s ease-in-out;
+  transition-property: background-color, color;
+  transition-duration: 0.2s, 0.2s;
+  transition-timing-function: ease, ease-in-out;
+  transition-delay: 0s, 0s;
+}
+
+.signup:hover{
+  background-color: #4f46ac;
+  transition: background-color .2s,color .2s ease-in-out;
+  transition-property: background-color, color;
+  transition-duration: 0.2s, 0.2s;
+  transition-timing-function: ease, ease-in-out;
+  transition-delay: 0s, 0s;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  align-items: center;
+  height: 50px;
+  top: 0px;
+  border-bottom: 2px rgb(211, 211, 211) solid;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 15px 0px 15px;
+  margin-bottom: 0px;
+  align-items: center;
+  /* height: 10px; */
+  background-color: #151b26;
+  color: white;
+
+}
+
+.calling_card {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  padding: 0px 10px 0px 10px;
 }
