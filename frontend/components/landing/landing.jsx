@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Landing = () => (
   <div>
@@ -8,7 +9,7 @@ const Landing = () => (
           <div className="welcome_intro">
             <h1>Make more time for the work that matters most</h1>
             <p>Dietsana is the work management platform teams use to stay focused on the goals, projects, and daily tasks that grow business.</p>
-            <button className="signup">Try for free</button>
+            <Link className="signup" to="/signup">Try for free</Link>
           </div>
         </li>
 

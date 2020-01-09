@@ -71,6 +71,7 @@ section ul li:nth-child(even){
   border: none;
   color: #fff;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .login{

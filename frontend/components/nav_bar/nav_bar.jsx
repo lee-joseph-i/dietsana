@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default ({ currentUser, logout }) => {
+export default ({ currentUser }) => {
   const display = !!currentUser ? (
     <div>
       <Link className="login" to="/app">Go to my Dietsana</Link>
