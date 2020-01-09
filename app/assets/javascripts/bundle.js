@@ -90,23 +90,25 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, receiveCurrentUser, logoutCurrentUser, signup, login, logout */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, receiveCurrentUser, logoutCurrentUser, receiveErrors, signup, login, logout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_USER", function() { return RECEIVE_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CURRENT_USER", function() { return LOGOUT_CURRENT_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SESSION_ERRORS", function() { return RECEIVE_SESSION_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCurrentUser", function() { return receiveCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutCurrentUser", function() { return logoutCurrentUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveErrors", function() { return receiveErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
 /* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_api_util */ "./frontend/util/session_api_util.js");
 
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
-var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER'; // export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
-
+var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
+var RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 var receiveCurrentUser = function receiveCurrentUser(currentUser) {
   return {
     type: RECEIVE_CURRENT_USER,
@@ -117,11 +119,13 @@ var logoutCurrentUser = function logoutCurrentUser() {
   return {
     type: LOGOUT_CURRENT_USER
   };
-}; // export const receiveErrors = errors => ({
-//   type: RECEIVE_SESSION_ERRORS,
-//   errors
-// });
-
+};
+var receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_SESSION_ERRORS,
+    errors: errors
+  };
+};
 var signup = function signup(formUser) {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["signup"](formUser).then(function (user) {
@@ -157,16 +161,14 @@ var logout = function logout() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var _landing_landing_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./landing/landing_container */ "./frontend/components/landing/landing_container.js");
-/* harmony import */ var _main_main_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./main/main_container */ "./frontend/components/main/main_container.js");
-/* harmony import */ var _nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nav_bar/nav_bar_container */ "./frontend/components/nav_bar/nav_bar_container.jsx");
-/* harmony import */ var _nav_bar_footer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./nav_bar/footer */ "./frontend/components/nav_bar/footer.jsx");
-/* harmony import */ var _session_signup_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./session/signup_container */ "./frontend/components/session/signup_container.jsx");
-/* harmony import */ var _session_login_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./session/login_container */ "./frontend/components/session/login_container.jsx");
-
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+/* harmony import */ var _landing_landing_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./landing/landing_container */ "./frontend/components/landing/landing_container.js");
+/* harmony import */ var _main_main_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./main/main_container */ "./frontend/components/main/main_container.js");
+/* harmony import */ var _nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./nav_bar/nav_bar_container */ "./frontend/components/nav_bar/nav_bar_container.jsx");
+/* harmony import */ var _nav_bar_footer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nav_bar/footer */ "./frontend/components/nav_bar/footer.jsx");
+/* harmony import */ var _session_signup_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./session/signup_container */ "./frontend/components/session/signup_container.jsx");
+/* harmony import */ var _session_login_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./session/login_container */ "./frontend/components/session/login_container.jsx");
 
 
 
@@ -178,27 +180,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["AuthRoute"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
     path: "/login",
-    component: _session_login_container__WEBPACK_IMPORTED_MODULE_9__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["AuthRoute"], {
+    component: _session_login_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
     path: "/signup",
-    component: _session_signup_container__WEBPACK_IMPORTED_MODULE_8__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    component: _session_signup_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/",
-    component: _nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_6__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    component: _nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/",
-    component: _landing_landing_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    component: _landing_landing_container__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/",
-    component: _nav_bar_footer__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
+    component: _nav_bar_footer__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/app",
-    component: _main_main_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _main_main_container__WEBPACK_IMPORTED_MODULE_4__["default"]
   }));
 };
 
@@ -504,8 +506,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app */ "./frontend/components/app.jsx");
-/* harmony import */ var _landing_landing__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./landing/landing */ "./frontend/components/landing/landing.jsx");
-
 
 
 
