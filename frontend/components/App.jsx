@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import LandingContainer from './landing/landing_container';
 import Main from './main/main_container';
