@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { render } from 'react-dom';
 
 const Greeting = ({ currentUser, logout }) => {
+  debugger
   const welcomeMessage = () => (
     <div>
       <h2>Welcome, {currentUser.username}!</h2>
@@ -10,15 +11,17 @@ const Greeting = ({ currentUser, logout }) => {
     </div>
   );
 
-  const loginPage = () => (
-    <div>
-      <Link to='/signup'>Sign Up!</Link>
-      <br />
-      <Link to='/login'>Log In!</Link>
-    </div>
-  );
+  return welcomeMessage();
 
-  return currentUser ? welcomeMessage() : loginPage();
+  // const loginPage = () => (
+  //   <div>
+  //     <Link to='/signup'>Sign Up!</Link>
+  //     <br />
+  //     <Link to='/login'>Log In!</Link>
+  //   </div>
+  // );
+
+  // return currentUser ? welcomeMessage() : loginPage();
 
 }
 
