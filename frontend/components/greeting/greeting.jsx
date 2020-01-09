@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { render } from 'react-dom';
 
 const Greeting = ({ currentUser, logout }) => {
-  debugger
   const welcomeMessage = () => (
     <div>
       <h2>Welcome, {currentUser.username}!</h2>
