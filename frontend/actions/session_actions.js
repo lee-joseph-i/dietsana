@@ -23,14 +23,16 @@ export const receiveErrors = errors => ({
 export const signup = formUser => dispatch => (
   APIUtil.signup(formUser)
     .then(
-      user => dispatch(receiveCurrentUser(user))
+      user => dispatch(receiveCurrentUser(user)),
+      errors => dispatch(receiveErrors(errors.responseJSON))
     )
 );
 
 export const login = formUser => dispatch => (
   APIUtil.login(formUser)
     .then(
-      user => dispatch(receiveCurrentUser(user))
+      user => dispatch(receiveCurrentUser(user)),
+      errors => dispatch(receiveErrors(errors.responseJSON))
     )
 );
 

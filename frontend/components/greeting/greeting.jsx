@@ -1,27 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { render } from 'react-dom';
+// import React from 'react';
 
-const Greeting = ({ currentUser, logout }) => {
-  const welcomeMessage = () => (
-    <div>
-      <h2>Welcome, {currentUser.username}!</h2>
-      <button onClick={logout}>Log Out</button>
-    </div>
-  );
+// const Greeting = ({ currentUser, openModal }) => {
 
-  return welcomeMessage();
+//   const sessionLinks = () => (
+//     <nav className="login-signup">
+//       <button onClick={() => openModal('login')}>Login</button>
+//       &nbsp;or&nbsp;
+//       <button onClick={() => openModal('signup')}>Signup</button>
+//     </nav>
+//   );
+  
+//   const personalGreeting = () => (
+//     <hgroup className="header-group">
+//       <h2 className="header-name">Hi, {currentUser.username}!</h2>
+//       <button className="header-button" onClick={logout}>Log Out</button>
+//     </hgroup>
+//   );
 
-  // const loginPage = () => (
-  //   <div>
-  //     <Link to='/signup'>Sign Up!</Link>
-  //     <br />
-  //     <Link to='/login'>Log In!</Link>
-  //   </div>
-  // );
+//   return (
+//     currentUser ?
+//       personalGreeting(currentUser, logout) :
+//       sessionLinks()
+//   );
+// };
 
-  // return currentUser ? welcomeMessage() : loginPage();
-
-}
-
-export default Greeting;
+// export default Greeting;

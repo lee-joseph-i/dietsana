@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 class Landing extends React.Component{
   constructor(props) {
     super(props)
   }
 
   render(){
-    const { currentUser } = this.props;
+    const { currentUser, openModal } = this.props;
     return(
       <div>
         <section className="landing_body">
@@ -17,7 +18,10 @@ class Landing extends React.Component{
                 <h1>Make more time for the work that matters most</h1>
                 <p>Dietsana is the work management platform teams use to stay focused on the goals, projects, and daily tasks that grow business.</p>
                 {
-                  currentUser ? <Link className="signup" to="/app">Return to my Dietsana</Link> : <Link className="signup" to="/signup">Try for free</Link>
+                  currentUser ? 
+                  <Link className="signup" to="/app">Return to my Dietsana</Link> 
+                  : 
+                  <button className="signup" onClick={() => openModal('signup')}>Try for free</button>
                 }
               </div>
             </li>

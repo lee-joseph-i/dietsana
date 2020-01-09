@@ -3,16 +3,18 @@ import {
   RECEIVE_CURRENT_USER,
 } from '../actions/session_actions';
 
-const sessionErrorsReducer = (state = {}, action) => {
+import { CLOSE_MODAL } from '../actions/modal_actions';
+
+export default (state = [], action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_SESSION_ERRORS:
-      return Object.assign({}, { [action.errors]: action.errors })
+      return action.errors;
     case RECEIVE_CURRENT_USER:
-      return Object.assign({}, { [action.errors]: [] })
+      return [];
+    case CLOSE_MODAL:
+      return [];
     default:
       return state;
   }
-}
-
-export default sessionErrorsReducer;
+};
