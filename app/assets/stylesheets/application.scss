@@ -10,11 +10,11 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+@import "reset.scss";
+@import "modal.scss";
 
- 
 html, body, div {
   padding: 0;
   margin: 0;
@@ -59,8 +59,8 @@ section ul li:nth-child(even){
 }
 
 .welcome_intro h1{
-  font-size: 40px;
-  width: 600px;
+  font-size: 46px;
+  width: 780px;
 }
 
 

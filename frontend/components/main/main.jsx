@@ -12,7 +12,7 @@ class Main extends React.Component{
 
     return(
       <div>
-        <h2>Welcome, {currentUser.username}!</h2>
+        <h2>Welcome, {currentUser.first_name}!</h2>
         <button onClick={logout}>Log Out</button>
       </div>
     )

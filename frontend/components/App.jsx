@@ -8,13 +8,10 @@ import Footer from './nav_bar/footer';
 import SignupContainer from './session/signup_container';
 import LoginContainer from './session/login_container';
 import Modal from './modal/modal';
-import GreetingContainer from './greeting/greeting_container';
 
 const App = () => (
   <div>
       <Modal />
-      <AuthRoute path="/login" component={LoginContainer} />
-      <AuthRoute path="/signup" component={SignupContainer} />
       <Route exact path="/" component={NavBarContainer} />
       <Route exact path="/" component={LandingContainer} />
       <Route exact path="/" component={Footer} />

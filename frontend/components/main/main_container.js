@@ -3,6 +3,7 @@ import { logout } from '../../actions/session_actions';
 import Main from './main';
 
 const mapStateToProps = ({ session, entities: { users } }) => {
+  debugger;
   return {
     currentUser: users[session.id]
   };

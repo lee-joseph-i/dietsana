@@ -2,8 +2,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { signup } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
-
-import SessionForm from './session_form';
+import SignupForm from './signup_form';
 
 const mapStateToProps = ({ errors }) => {
   return {
@@ -16,12 +15,12 @@ const mapDispatchToProps = dispatch => {
   return {
     processForm: (user) => dispatch(signup(user)),
     otherForm: (
-      <button onClick={() => dispatch(openModal('login'))}>
-        Login
-      </button>
+      <p className="linkify" onClick={() => dispatch(openModal('login'))}>
+        Already have an account? Log In!
+      </p>
     ),
     closeModal: () => dispatch(closeModal())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);
