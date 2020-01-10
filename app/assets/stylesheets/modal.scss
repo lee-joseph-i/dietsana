@@ -1,7 +1,7 @@
 .modal-background {
-  position: fixed;
+  position: absolute;
   top: 0;
-  bottom: 0;
+  bottom: -308px;
   right: 0;
   left: 0;
   background-color: rgba(21,27,38,.85);
@@ -18,8 +18,9 @@
   margin-top: 80px;
   padding: 32px;
   position: relative;
-  width: 90%;
+  width: 60%;
   max-width: 900px;
+  min-height: 600px;
 }
 
 .modal-child label {
@@ -30,6 +31,7 @@
 .modal-child h3{
   color: #151B26;
   font-size: calc(33.75px + 11.25 * ((100vw - 480px) / 800));
+  margin-top: 8px;
   margin-bottom: 40px;
 }
 
@@ -39,7 +41,7 @@
   cursor: pointer;
   font-size: 36px;
   font-weight: bold;
-  margin: 0;
+  margin: 0 5px;
   opacity: .6;
   position: absolute;
   right: 32px;
@@ -57,6 +59,7 @@
 }
 
 .linkify {
+  font-weight: 900;
   cursor: pointer;
   color: #796EFF;
 }
@@ -86,6 +89,15 @@ input[type=submit]{
   box-sizing: border-box;
 }
 
+input[type=submit]:hover{
+  background-color: #4f46ac;
+  transition: background-color .2s ease-in-out;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+
 .login-form-container{
   display: flex;
   justify-content: center;
@@ -99,9 +111,10 @@ input[type=submit]{
 }
 
 .login-form section{
-  margin: 32px 0px;
+  margin: 50px 0px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .login-form section p{
@@ -117,7 +130,7 @@ input[type=submit]{
   font-size: inherit;
   height: 50px;
   line-height: normal;
-  margin: 8px 0px 0px 0px;
+  margin: 10px 0px 8px 0px;
   width: 500px;
   border: 2px solid #e0e6e8;
   border-top-color: rgb(224, 230, 232);
@@ -136,10 +149,16 @@ input[type=submit]{
 }
 
 .errorlist{
-  position: absolute;
-  text-align: center;
+  // position: absolute;
+  // text-align: center;
+  margin-top: 5px;
+  font-size: 14px;
+  color: red;
 }
-.errorlist li{
-  margin-bottom: 5px;
-  text-align: center;
+
+::placeholder {
+  opacity: 0.4;
 }
+
+
+// stuff for signup modal

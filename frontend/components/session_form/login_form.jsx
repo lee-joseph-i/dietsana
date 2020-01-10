@@ -67,7 +67,7 @@ class LoginForm extends React.Component {
             <br />
             <br />
             <label className="formbox">Email Address <br />
-              <input type="text"
+              <input placeholder="name@company.com" onfocus="this.placeholder = ''" type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
                 className="login-input"
@@ -75,7 +75,7 @@ class LoginForm extends React.Component {
             </label>
             <br />
             <label className="formbox">Password <br />
-              <input className="formbox" type="password"
+              <input placeholder="Password" onfocus="this.placeholder = ''" className="formbox" type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 className="login-input"

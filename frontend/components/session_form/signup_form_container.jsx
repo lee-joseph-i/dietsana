@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => {
     processForm: (user) => dispatch(signup(user)),
     otherForm: (
       <p className="linkify" onClick={() => dispatch(openModal('login'))}>
-        Already have an account? Log In!
+        Log In!
       </p>
     ),
     closeModal: () => dispatch(closeModal()),

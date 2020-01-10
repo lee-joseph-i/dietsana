@@ -49,13 +49,14 @@ section ul li:nth-child(even){
   color: #fff;
   cursor: pointer;
   text-decoration: none;
+  transition: background-color .15s,color .15s ease-in-out;
 }
 
 .signup:hover{
   background-color: #4f46ac;
-  transition: background-color .2s,color .2s ease-in-out;
-  transition-property: background-color, color;
-  transition-duration: 0.2s, 0.2s;
-  transition-timing-function: ease, ease-in-out;
-  transition-delay: 0s, 0s;
+  transition: background-color .2s ease-in-out;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
 }

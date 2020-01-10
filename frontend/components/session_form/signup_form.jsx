@@ -31,16 +31,39 @@ class SignupForm extends React.Component {
       .then(() => this.props.history.push('/app'));
   }
 
-  renderErrors() {
-    return (
+  renderErrors(field) {
+    // console.log(this.props.errors);
+    // this.props.errors.map((error) => {
+    //   if(error.includes(field)){
+    //     return(
+    //       <li>{error}</li>
+    //     )
+    //   }
+    // });
+    // return(
+    //   <ul>
+    //     {this.props.errors.map((error, i) => (
+    //       <li key={`error-${i}`}>
+    //         {error}
+    //       </li>
+    //     ))}
+    //   </ul>
+    // )
+    return(
       <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
+        {
+
+          this.props.errors.map((error) => {
+            if (error.includes(field)) {
+              return (
+                <p className="errorlist">{error}</p>
+              )
+            }})
+
+        }
+        
       </ul>
-    );
+    )
   }
 
   render() {
@@ -52,34 +75,37 @@ class SignupForm extends React.Component {
           <h3>Sign Up</h3>
           <br />
           <div className="login-form">
-          <p className="errorlist">{this.renderErrors()}</p>
             <br />
-            <label>First Name <br/>
-              <input type="text"
+            <label className="formbox">First Name <br/>
+              {this.renderErrors('first')}
+              <input placeholder="John" type="text"
                 value={this.state.first_name}
                 onChange={this.update('first_name')}
                 className="login-input"
               />
             </label>
             <br />
-            <label>Last Name <br/>
-              <input type="text"
+            <label className="formbox">Last Name <br/>
+              <p className="errorlist">{this.renderErrors('last')}</p>
+              <input placeholder="Smith" type="text"
                 value={this.state.last_name}
                 onChange={this.update('last_name')}
                 className="login-input"
               />
             </label>
             <br />
-            <label>Email Address <br/>
-              <input type="text"
+            <label className="formbox">Email Address <br/>
+              <p className="errorlist">{this.renderErrors('email')}</p>
+              <input placeholder="name@company.com" type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
                 className="login-input"
               />
             </label>
             <br />
-            <label>Password <br/>
-              <input type="password"
+            <label className="formbox">Password <br/>
+              <p className="errorlist">{this.renderErrors('password')}</p>
+              <input placeholder="Password" type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 className="login-input"
@@ -88,7 +114,10 @@ class SignupForm extends React.Component {
             <br />
             <input className="session-submit" type="submit" value="Sign Up" />
             <br />
-            {this.props.otherForm}
+            <section>
+              <p>Already have an account?</p>
+              {this.props.otherForm}
+            </section>
           </div>
         </form>
       </div>

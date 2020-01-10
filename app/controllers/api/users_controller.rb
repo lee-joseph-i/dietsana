@@ -6,7 +6,18 @@ class Api::UsersController < ApplicationController
       login(@user)
       render "api/users/show"
     else
-      render json: @user.errors.full_messages, status: 422
+      personalizedErrors = @user.errors.full_messages.map do |error|
+        if error.include?("First name")
+          "Please enter your first name."
+        elsif error.include?("Last name")
+          "Please enter your last name."
+        elsif error.include?("Email")
+          "Please enter a valid email address."
+        elsif error.include?("Password")
+          "Please enter a password with 8 or more characters."
+        end
+      end
+      render json: personalizedErrors, status: 422
     end
   end
 

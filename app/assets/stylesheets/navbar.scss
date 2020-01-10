@@ -24,6 +24,8 @@
   text-decoration: none;
   margin-left: 10px;
   margin-right: 50px;
+  transition: background-color .15s,color .15s ease-in-out;
+
 }
 
 .signup-navbar:hover{
@@ -46,6 +48,7 @@
   cursor: pointer;
   text-decoration: none;
   margin-right: 5px;
+  transition: color .15s,color .15s ease-in-out;
 }
 
 .return{
@@ -75,8 +78,8 @@
 
 .login:hover{
   color: #796eff;
-  transition: background-color .2s,color .2s ease-in-out;
-  transition-property: background-color, color;
+  transition: color .2s,color .2s ease-in-out;
+  transition-property: color;
   transition-duration: 0.2s, 0.2s;
   transition-timing-function: ease, ease-in-out;
   transition-delay: 0s, 0s;
