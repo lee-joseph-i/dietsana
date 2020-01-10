@@ -1,0 +1,61 @@
+.landing_body {
+  min-height: 1000px;
+  color: #222b37;
+}
+
+/* for the landing page items */
+section ul li:nth-child(even){
+  background-color: rgb(226, 226, 226);
+}
+
+.landing_body p {
+  color: rgba(15, 15, 15, 0.596);
+  font-size: 16px;
+}
+
+.landing_body div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.intro_highlights {
+  display: flex;
+  flex-direction: row;
+}
+
+.intro_highlights p {
+  width: 200px;
+}
+
+.welcome_intro h1{
+  font-size: 46px;
+  width: 780px;
+}
+
+
+.signup{
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0px 15px;
+  background-color: #796eff;
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.signup:hover{
+  background-color: #4f46ac;
+  transition: background-color .2s,color .2s ease-in-out;
+  transition-property: background-color, color;
+  transition-duration: 0.2s, 0.2s;
+  transition-timing-function: ease, ease-in-out;
+  transition-delay: 0s, 0s;
+}

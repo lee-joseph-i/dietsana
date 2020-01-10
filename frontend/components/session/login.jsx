@@ -1,50 +1,50 @@
-import React from 'react';
+// import React from 'react';
 
-class Login extends React.Component{
-  constructor(props){
-    super(props)
-    this.state = {
-      email: "",
-      password: ""
-    }
-    this.handleSubmit = this.handleSubmit.bind(this);
-  };
+// class Login extends React.Component{
+//   constructor(props){
+//     super(props)
+//     this.state = {
+//       email: "",
+//       password: ""
+//     }
+//     this.handleSubmit = this.handleSubmit.bind(this);
+//   };
 
-  handleInput(type) {
-    return (e) => {
-      this.setState({ [type]: e.target.value });
-    }
-  }
+//   handleInput(type) {
+//     return (e) => {
+//       this.setState({ [type]: e.target.value });
+//     }
+//   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.login(this.state)
-      .then(() => this.props.history.push('/app'));
-  }
+//   handleSubmit(e) {
+//     e.preventDefault();
+//     this.props.login(this.state)
+//       .then(() => this.props.history.push('/app'));
+//   }
 
-  render(){
-    return (
+//   render(){
+//     return (
 
-      // session form css is not setup yet
-      <div className="session-form">
-        <h2>Log in!</h2>
+//       // session form css is not setup yet
+//       <div className="session-form">
+//         <h2>Log in!</h2>
 
-        <form>
-          <label>Email Address
-          <input
-              type="text"
-              value={this.state.email}
-              onChange={this.handleInput('email')} /></label>
-          <label>Password
-          <input
-              type="password"
-              value={this.state.password}
-              onChange={this.handleInput('password')} />
-            <button onClick={this.handleSubmit}>Log in</button></label>
-        </form>
-      </div>
-    )
-  }
-}
+//         <form>
+//           <label>Email Address
+//           <input
+//               type="text"
+//               value={this.state.email}
+//               onChange={this.handleInput('email')} /></label>
+//           <label>Password
+//           <input
+//               type="password"
+//               value={this.state.password}
+//               onChange={this.handleInput('password')} />
+//             <button onClick={this.handleSubmit}>Log in</button></label>
+//         </form>
+//       </div>
+//     )
+//   }
+// }
 
-export default Login;
+// export default Login;

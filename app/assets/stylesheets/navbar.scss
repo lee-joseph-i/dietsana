@@ -1,0 +1,84 @@
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  align-items: center;
+  height: 26px;
+  top: 0px;
+}
+
+.signup-navbar{
+  font-size: 16px;
+  height: 35px;
+  line-height: 35px;
+  padding: 0px 15px;
+  background-color: #796eff;
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 50px;
+}
+
+.signup-navbar:hover{
+  background-color: #4f46ac;
+  transition: background-color .2s ease-in-out;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+
+.login{
+  font-size: 16px;
+  height: 44px;
+  line-height: 24px;
+  padding: 5px 20px;
+  border-radius: 4px;
+  border: none;
+  color: #222b37;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.return{
+  font-size: 16px;
+  height: 35px;
+  line-height: 35px;
+  padding: 8px 18px;
+  background-color: #796eff;
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 50px;
+  
+}
+
+.return:hover{
+  background-color: #4f46ac;
+  transition: background-color .2s ease-in-out;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+
+.login:hover{
+  color: #796eff;
+  transition: background-color .2s,color .2s ease-in-out;
+  transition-property: background-color, color;
+  transition-duration: 0.2s, 0.2s;
+  transition-timing-function: ease, ease-in-out;
+  transition-delay: 0s, 0s;
+}
+
+.asana-logo{
+  padding-left: 46px;
+  width: 118px;
+  cursor: pointer;
+}
