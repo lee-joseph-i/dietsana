@@ -3,6 +3,7 @@ import React from 'react';
 import { login } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import LoginForm from './login_form';
+import {clearErrors} from '../../actions/session_actions';
 
 const mapStateToProps = ({ errors }) => {
   return {
@@ -15,11 +16,10 @@ const mapDispatchToProps = dispatch => {
   return {
     processForm: (user) => dispatch(login(user)),
     otherForm: (
-      <p className="linkify" onClick={() => dispatch(openModal('signup'))}>
-        Don't have an account, yet? Sign Up for free!
-      </p>
+      <p className="linkify" onClick={() => dispatch(openModal('signup'))}>Sign Up</p>
     ),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    clearErrors: () => dispatch(clearErrors()),
   };
 };
 

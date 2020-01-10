@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+
+
+FIX CENTERING ON VALIDATION ERROR
+FINISH SIGNUP STYLING
+FINISH DEMO LOGIN

@@ -11,6 +11,10 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount(){
+    this.props.clearErrors();
+  }
+
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -24,6 +28,19 @@ class LoginForm extends React.Component {
       .then(this.props.closeModal)
       .then(() => this.props.history.push('/app'));
   }
+
+  // demo login function
+
+  // demo(e){
+  //   e.preventDefault();
+  //   this.setState({email: 'josephlee@dietsana.com', password: ''});
+  //   return setTimeout( () => {
+  //     this.props.processForm(this.state);
+  //     this.props.closeModal();
+  //     this.props.history.push('/app');
+  //   }, 240);
+  // }
+
 
   renderErrors() {
     return (
@@ -45,10 +62,11 @@ class LoginForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="login-form-box">
           <h3>Log in</h3>
           <br />
-          {this.renderErrors()}
           <div className="login-form">
+            <p className="errorlist">{this.renderErrors()}</p>
             <br />
-            <label>Email Address <br />
+            <br />
+            <label className="formbox">Email Address <br />
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
@@ -56,17 +74,20 @@ class LoginForm extends React.Component {
               />
             </label>
             <br />
-            <label>Password <br />
-              <input type="password"
+            <label className="formbox">Password <br />
+              <input className="formbox" type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 className="login-input"
               />
             </label>
             <br />
-            <input className="session-submit" type="submit" value={this.props.formType} />
+              <input className="session-submit" type="submit" value="Log In" />
             <br />
-            {this.props.otherForm}
+            <section>
+              <p>Don't have an account?</p>
+              {this.props.otherForm}
+            </section>
           </div>
         </form>
       </div>

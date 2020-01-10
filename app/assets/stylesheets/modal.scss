@@ -9,6 +9,7 @@
 }
 
 .modal-child {
+  color: #646F79;
   background-color: #f6f8f9;
   border-radius: 3px;
   box-shadow: 0 20px 30px 0 rgba(36,50,66,.14);
@@ -21,8 +22,15 @@
   max-width: 900px;
 }
 
+.modal-child label {
+  display: block;
+  margin: 0px 0px 8px;
+}
+
 .modal-child h3{
+  color: #151B26;
   font-size: calc(33.75px + 11.25 * ((100vw - 480px) / 800));
+  margin-bottom: 40px;
 }
 
 .close-x {
@@ -50,4 +58,88 @@
 
 .linkify {
   cursor: pointer;
+  color: #796EFF;
+}
+
+.linkify:hover{
+  text-decoration: underline;
+}
+
+input[type=submit]{
+  background-color: #796eff;
+  border-radius: 3px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 100%;
+  font-weight: 500;
+  height: 50px;
+  letter-spacing: .5px;
+  line-height: 36px;
+  padding: 0 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .15s,color .15s ease-in-out;
+  white-space: nowrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.login-form-container{
+  display: flex;
+  justify-content: center;
+}
+
+.login-form-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.login-form section{
+  margin: 32px 0px;
+  display: flex;
+  flex-direction: row;
+}
+
+.login-form section p{
+  margin: 0px 3px;
+}
+
+.formbox{
+  margin: 0px 0px 24px;
+}
+
+.formbox > input{
+  padding: 0px 0px 0px 16px;
+  font-size: inherit;
+  height: 50px;
+  line-height: normal;
+  margin: 8px 0px 0px 0px;
+  width: 500px;
+  border: 2px solid #e0e6e8;
+  border-top-color: rgb(224, 230, 232);
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-right-color: rgb(224, 230, 232);
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-bottom-color: rgb(224, 230, 232);
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-left-color: rgb(224, 230, 232);
+  border-left-style: solid;
+  border-left-width: 2px;
+  box-sizing: border-box;
+}
+
+.errorlist{
+  position: absolute;
+  text-align: center;
+}
+.errorlist li{
+  margin-bottom: 5px;
+  text-align: center;
 }
