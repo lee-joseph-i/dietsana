@@ -43,8 +43,7 @@ class Landing extends React.Component{
               </div>
               </div>
             </li>
-            <li>
-              <div className="intro_highlights">
+            <li className="intro_highlights">
                 <section>
                   <p>Hit deadlines</p>
                   <p>Create visual project plans to see how every step maps out over time. Pinpoint risks. Eliminate roadblocks. Even when plans change.</p>
@@ -54,23 +53,17 @@ class Landing extends React.Component{
                   <p>Plan and structure work in a way that’s best for you. Set priorities and deadlines. Share details and assign tasks. All in one place.</p>
                 </section>
                 <section>
-                  <p>Stay on Track</p>
+                  <p>Stay on track</p>
                   <p>Follow projects and tasks through every stage. You know where work stands and can keep everyone aligned on goals.</p>
                 </section>
-              </div>
             </li>
 
             <li>
-              <div className="intro_deadlines_desc">
-                <p>Under Construction</p>
+              <div className="construction">
+                <p>(Under Construction, more to come!)</p>
               </div>
             </li>
 
-            <li>
-              <div className="intro_deadlines_desc">
-                <p>Under Construction</p>
-              </div>
-            </li>
           </ul>
         </section>
       </div>

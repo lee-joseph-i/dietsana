@@ -6,7 +6,7 @@
 
 /* for the landing page items */
 section ul li:nth-child(even){
-  background-color: rgb(226, 226, 226);
+  background-color: #edf1f2;
 }
 
 .landing_body p {
@@ -27,10 +27,37 @@ section ul li:nth-child(even){
 .intro_highlights {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  padding-top: 164px;
+  padding-bottom: 160px;
+}
+
+.intro_highlights section{
+  width: 200px;
+  margin: 0px 18px 0px 18px;
+}
+
+.intro_highlights section{
+  opacity: .5;
+  transition: opacity .2s ease-in-out;
+}
+
+.intro_highlights section:hover {
+  opacity: 1;
+}
+
+.intro_highlights section p:first-of-type{
+  font-size: 24px;
+  color: black;
+}
+
+.intro_highlights section p:last-of-type{
+  width: 210px;
 }
 
 .intro_highlights p {
-  width: 200px;
+  margin-bottom: 22px;
+  line-height: 25px;
 }
 
 .welcome_intro{
@@ -99,7 +126,7 @@ section ul li:nth-child(even){
 }
 .img-mosaic2 img{
   position: absolute;
-  width: 15%;
+  width: 16%;
   z-index: 3;
   top: 416px;
   left: 75px;
@@ -107,6 +134,10 @@ section ul li:nth-child(even){
 .img-mosaic3 img{
   position: absolute;
   width: 92%;
-  top: 158px;
-  left: 60px;
+  top: 155px;
+  left: 58px;
+}
+
+.construction{
+  margin: 150px;
 }

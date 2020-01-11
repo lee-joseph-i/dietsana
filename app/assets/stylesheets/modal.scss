@@ -1,11 +1,12 @@
 .modal-background {
   position: absolute;
   top: 0;
-  bottom: -308px;
+  bottom: -200px;
   right: 0;
   left: 0;
   background-color: rgba(21,27,38,.85);
   z-index: 10;
+  overflow-y: auto;
 }
 
 .modal-child {
