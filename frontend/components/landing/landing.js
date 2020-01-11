@@ -19,7 +19,7 @@ class Landing extends React.Component{
                 <p>Dietsana is the work management platform teams use to stay focused on the goals, projects, and daily tasks that grow business.</p>
                 {
                   currentUser ? 
-                  <Link className="signup" to="/app">Return to my Dietsana</Link> 
+                  <Link className="return" to="/app">Return to my Dietsana</Link> 
                   : 
                   <button className="signup" onClick={() => openModal('signup')}>Try for free</button>
                 }

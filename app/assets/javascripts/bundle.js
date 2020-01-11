@@ -296,7 +296,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "welcome_intro"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Make more time for the work that matters most"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Dietsana is the work management platform teams use to stay focused on the goals, projects, and daily tasks that grow business."), currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "signup",
+        className: "return",
         to: "/app"
       }, "Return to my Dietsana") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "signup",
