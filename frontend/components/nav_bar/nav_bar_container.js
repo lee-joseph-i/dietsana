@@ -8,7 +8,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  openModal: modal => dispatch(openModal(modal))
+  openModal: modal => {
+    dispatch(openModal(modal));
+    window.scrollTo(0, 0)
+  }
 });
 
 

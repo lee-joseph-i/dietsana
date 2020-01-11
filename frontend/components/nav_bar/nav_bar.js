@@ -42,3 +42,6 @@ export default ({ currentUser, openModal }) => {
     </header>
   )
 }
+
+//openModal('signup')
+//window.scrollTo(0, 0)

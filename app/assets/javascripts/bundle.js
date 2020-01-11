@@ -640,7 +640,8 @@ __webpack_require__.r(__webpack_exports__);
     src: window.logo,
     className: "asana-logo"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, display));
-});
+}); //openModal('signup')
+//window.scrollTo(0, 0)
 
 /***/ }),
 
@@ -672,7 +673,8 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     openModal: function openModal(modal) {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal));
+      dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal));
+      window.scrollTo(0, 0);
     }
   };
 };
