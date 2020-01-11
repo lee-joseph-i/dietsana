@@ -130,7 +130,7 @@ input[type=submit]:hover{
   font-size: inherit;
   height: 50px;
   line-height: normal;
-  margin: 10px 0px 8px 0px;
+  margin: 26px 0px 8px 0px;
   width: 500px;
   border: 2px solid #e0e6e8;
   border-top-color: rgb(224, 230, 232);
@@ -149,15 +149,34 @@ input[type=submit]:hover{
 }
 
 .errorlist{
-  // position: absolute;
+  position: absolute;
   // text-align: center;
   margin-top: 5px;
   font-size: 14px;
   color: red;
 }
 
+.login-error{
+  position: relative;
+  text-align: center;
+  font-size: 14px;
+  color: red;
+}
+
 ::placeholder {
   opacity: 0.4;
+}
+
+.form-names{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.form-names input{
+  box-sizing: border-box;
+  width: 240px;
 }
 
 

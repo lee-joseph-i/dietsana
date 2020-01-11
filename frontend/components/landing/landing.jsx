@@ -24,8 +24,15 @@ class Landing extends React.Component{
                   <button className="signup" onClick={() => openModal('signup')}>Try for free</button>
                 }
               </div>
-            </li>
+              <div>
 
+                <video autoPlay playsInline loop muted className="background-vid" poster="video broke">
+                  <source src="https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/timeline/home-timeline-EN.mp4" type="video/mp4"/>
+                </video>
+
+
+              </div>
+            </li>
             <li>
               <div className="intro_highlights">
                 <section>

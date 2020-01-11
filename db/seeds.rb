@@ -8,5 +8,5 @@
 
 ApplicationRecord.transaction do 
   User.destroy_all
-  User.create(first_name: 'Mike', last_name: 'Walker', email: 'Lina@helen.ronil', password: "sorryeveryoneelse")
+  User.create(first_name: 'Joseph', last_name: 'Lee', email: 'JosephLee@dietsana.com', password: "password123")
 end

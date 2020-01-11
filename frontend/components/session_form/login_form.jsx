@@ -9,6 +9,7 @@ class LoginForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demo = this.demo.bind(this);
   }
 
   componentDidMount(){
@@ -31,26 +32,18 @@ class LoginForm extends React.Component {
 
   // demo login function
 
-  // demo(e){
-  //   e.preventDefault();
-  //   this.setState({email: 'josephlee@dietsana.com', password: ''});
-  //   return setTimeout( () => {
-  //     this.props.processForm(this.state);
-  //     this.props.closeModal();
-  //     this.props.history.push('/app');
-  //   }, 240);
-  // }
-
+  demo(e){
+    this.setState({email: 'josephlee@dietsana.com', password: 'password123'});
+    return setTimeout( () => {
+      this.props.processForm(this.state)
+        .then(this.props.closeModal)
+        .then(() => this.props.history.push('/app'));
+    }, 1200);
+  }
 
   renderErrors() {
     return (
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
+      <p className="login-error">{this.props.errors[0]}</p>
     );
   }
 
@@ -63,11 +56,11 @@ class LoginForm extends React.Component {
           <h3>Log in</h3>
           <br />
           <div className="login-form">
-            <p className="errorlist">{this.renderErrors()}</p>
+            {this.renderErrors()}
             <br />
             <br />
             <label className="formbox">Email Address <br />
-              <input placeholder="name@company.com" onfocus="this.placeholder = ''" type="text"
+              <input id="demo" placeholder="name@company.com" type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
                 className="login-input"
@@ -75,7 +68,7 @@ class LoginForm extends React.Component {
             </label>
             <br />
             <label className="formbox">Password <br />
-              <input placeholder="Password" onfocus="this.placeholder = ''" className="formbox" type="password"
+              <input id="pw" placeholder="Password" className="formbox" type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 className="login-input"
@@ -87,6 +80,10 @@ class LoginForm extends React.Component {
             <section>
               <p>Don't have an account?</p>
               {this.props.otherForm}
+            </section>
+            <section>
+              <p>Want to try a demo?</p>
+              <p className="linkify" onClick={this.demo}>Click here</p>
             </section>
           </div>
         </form>

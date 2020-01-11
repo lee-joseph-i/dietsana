@@ -76,26 +76,27 @@ class SignupForm extends React.Component {
           <br />
           <div className="login-form">
             <br />
-            <label className="formbox">First Name <br/>
-              {this.renderErrors('first')}
-              <input placeholder="John" type="text"
-                value={this.state.first_name}
-                onChange={this.update('first_name')}
-                className="login-input"
-              />
-            </label>
-            <br />
-            <label className="formbox">Last Name <br/>
-              <p className="errorlist">{this.renderErrors('last')}</p>
-              <input placeholder="Smith" type="text"
-                value={this.state.last_name}
-                onChange={this.update('last_name')}
-                className="login-input"
-              />
-            </label>
+            <div className="form-names">
+              <label className="formbox">First Name <br/>
+                {this.renderErrors('first')}
+                <input placeholder="John" type="text"
+                  value={this.state.first_name}
+                  onChange={this.update('first_name')}
+                  className="login-input"
+                />
+              </label>
+              <label className="formbox">Last Name <br/>
+                {this.renderErrors('last')}
+                <input placeholder="Smith" type="text"
+                  value={this.state.last_name}
+                  onChange={this.update('last_name')}
+                  className="login-input"
+                />
+              </label>
+            </div>
             <br />
             <label className="formbox">Email Address <br/>
-              <p className="errorlist">{this.renderErrors('email')}</p>
+              {this.renderErrors('email')}
               <input placeholder="name@company.com" type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
@@ -104,7 +105,7 @@ class SignupForm extends React.Component {
             </label>
             <br />
             <label className="formbox">Password <br/>
-              <p className="errorlist">{this.renderErrors('password')}</p>
+              {this.renderErrors('password')}
               <input placeholder="Password" type="password"
                 value={this.state.password}
                 onChange={this.update('password')}

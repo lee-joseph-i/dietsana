@@ -309,7 +309,17 @@ function (_React$Component) {
         onClick: function onClick() {
           return openModal('signup');
         }
-      }, "Try for free"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Try for free")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
+        autoPlay: true,
+        playsInline: true,
+        loop: true,
+        muted: true,
+        className: "background-vid",
+        poster: "video broke"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("source", {
+        src: "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/timeline/home-timeline-EN.mp4",
+        type: "video/mp4"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "intro_highlights"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hit deadlines"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Create visual project plans to see how every step maps out over time. Pinpoint risks. Eliminate roadblocks. Even when plans change.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Get organized"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Plan and structure work in a way that\u2019s best for you. Set priorities and deadlines. Share details and assign tasks. All in one place.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Stay on Track"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Follow projects and tasks through every stage. You know where work stands and can keep everyone aligned on goals.")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "intro_deadlines_desc"
@@ -574,6 +584,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var currentUser = _ref.currentUser,
       openModal = _ref.openModal;
+
+  //allows for css scroll effect
+  var debounce = function debounce(fn) {
+    var frame;
+    return function () {
+      for (var _len = arguments.length, params = new Array(_len), _key = 0; _key < _len; _key++) {
+        params[_key] = arguments[_key];
+      }
+
+      if (frame) {
+        cancelAnimationFrame(frame);
+      }
+
+      frame = requestAnimationFrame(function () {
+        fn.apply(void 0, params);
+      });
+    };
+  };
+
+  var storeScroll = function storeScroll() {
+    document.documentElement.dataset.scroll = window.scrollY;
+  };
+
+  document.addEventListener('scroll', debounce(storeScroll), {
+    passive: true
+  });
+  storeScroll(); //end scroll effect code//
+
   var display = !!currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "return",
     to: "/app"
@@ -753,6 +791,7 @@ function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.demo = _this.demo.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -781,24 +820,28 @@ function (_React$Component) {
         return _this3.props.history.push('/app');
       });
     } // demo login function
-    // demo(e){
-    //   e.preventDefault();
-    //   this.setState({email: 'josephlee@dietsana.com', password: ''});
-    //   return setTimeout( () => {
-    //     this.props.processForm(this.state);
-    //     this.props.closeModal();
-    //     this.props.history.push('/app');
-    //   }, 240);
-    // }
 
+  }, {
+    key: "demo",
+    value: function demo(e) {
+      var _this4 = this;
+
+      this.setState({
+        email: 'josephlee@dietsana.com',
+        password: 'password123'
+      });
+      return setTimeout(function () {
+        _this4.props.processForm(_this4.state).then(_this4.props.closeModal).then(function () {
+          return _this4.props.history.push('/app');
+        });
+      }, 1200);
+    }
   }, {
     key: "renderErrors",
     value: function renderErrors() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: "error-".concat(i)
-        }, error);
-      }));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "login-error"
+      }, this.props.errors[0]);
     }
   }, {
     key: "render",
@@ -813,13 +856,11 @@ function (_React$Component) {
         className: "login-form-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Log in"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "errorlist"
-      }, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      }, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "formbox"
       }, "Email Address ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "demo",
         placeholder: "name@company.com",
-        onfocus: "this.placeholder = ''",
         type: "text",
         value: this.state.email,
         onChange: this.update('email'),
@@ -827,8 +868,8 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "formbox"
       }, "Password ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
+        id: "pw",
         placeholder: "Password",
-        onfocus: "this.placeholder = ''",
         className: "formbox",
         type: "password",
         value: this.state.password,
@@ -837,7 +878,10 @@ function (_React$Component) {
         className: "session-submit",
         type: "submit",
         value: "Log In"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Don't have an account?"), this.props.otherForm))));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Don't have an account?"), this.props.otherForm), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Want to try a demo?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "linkify",
+        onClick: this.demo
+      }, "Click here")))));
     }
   }]);
 
@@ -1024,7 +1068,9 @@ function (_React$Component) {
         className: "login-form-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-names"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "formbox"
       }, "First Name ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.renderErrors('first'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         placeholder: "John",
@@ -1032,21 +1078,17 @@ function (_React$Component) {
         value: this.state.first_name,
         onChange: this.update('first_name'),
         className: "login-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "formbox"
-      }, "Last Name ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "errorlist"
-      }, this.renderErrors('last')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Last Name ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.renderErrors('last'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         placeholder: "Smith",
         type: "text",
         value: this.state.last_name,
         onChange: this.update('last_name'),
         className: "login-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "formbox"
-      }, "Email Address ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "errorlist"
-      }, this.renderErrors('email')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Email Address ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.renderErrors('email'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         placeholder: "name@company.com",
         type: "text",
         value: this.state.email,
@@ -1054,9 +1096,7 @@ function (_React$Component) {
         className: "login-input"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "formbox"
-      }, "Password ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "errorlist"
-      }, this.renderErrors('password')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Password ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.renderErrors('password'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         placeholder: "Password",
         type: "password",
         value: this.state.password,

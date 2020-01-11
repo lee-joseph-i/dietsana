@@ -11,8 +11,10 @@ class Api::UsersController < ApplicationController
           "Please enter your first name."
         elsif error.include?("Last name")
           "Please enter your last name."
-        elsif error.include?("Email")
-          "Please enter a valid email address."
+        elsif error.include?("Email has already been")
+          "That email has already been taken."
+        elsif error.include?("Email can't be blank")
+          "Please enter your email."
         elsif error.include?("Password")
           "Please enter a password with 8 or more characters."
         end

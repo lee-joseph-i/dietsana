@@ -7,12 +7,22 @@
   top: 0px;
   position: sticky;
   background-color: white;
-  box-shadow: 0 0px 30px 0 rgba(36,50,66,.14);
+  transition: box-shadow .40s ease-in-out;
+
+  // box-shadow: 0 0px 30px 0 rgba(36,50,66,.14);
+}
+
+html:not([data-scroll='0']) {
+
+    .nav-bar {
+        box-shadow: 0 0px 14px 0 rgba(59, 83, 109, 0.14);
+    }
+    
 }
 
 
 .signup-navbar{
-  font-size: 16px;
+  font-size: 15px;
   height: 35px;
   line-height: 35px;
   padding: 0px 15px;
@@ -24,7 +34,7 @@
   text-decoration: none;
   margin-left: 10px;
   margin-right: 50px;
-  transition: background-color .15s,color .15s ease-in-out;
+  transition: background-color .15s ease-in-out;
 
 }
 
@@ -38,7 +48,7 @@
 }
 
 .login{
-  font-size: 16px;
+  font-size: 15px;
   height: 35px;
   line-height: 35px;
   padding: 0px 10px;
@@ -55,16 +65,15 @@
   font-size: 16px;
   height: 35px;
   line-height: 35px;
-  padding: 0px 10px;
+  padding: 10px 10px;
   background-color: #796eff;
   border-radius: 4px;
   border: none;
   color: #fff;
   cursor: pointer;
   text-decoration: none;
-  margin-left: 10px;
   margin-right: 50px;
-  
+  transition: background-color .15s,color .15s ease-in-out;
 }
 
 .return:hover{
