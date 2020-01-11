@@ -25,12 +25,22 @@ class Landing extends React.Component{
                 }
               </div>
               <div>
-
+              <div className="img-container">
                 <video autoPlay playsInline loop muted className="background-vid" poster="video broke">
                   <source src="https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/timeline/home-timeline-EN.mp4" type="video/mp4"/>
                 </video>
-
-
+                <div className="mosaic">
+                  <div className="img-mosaic1">
+                    <img src={window.landing1} />
+                  </div>
+                  <div className="img-mosaic2">
+                    <img src={window.landing2} />
+                  </div>
+                  <div className="img-mosaic3">
+                    <img src={window.landing3} />
+                  </div>
+                </div>
+              </div>
               </div>
             </li>
             <li>

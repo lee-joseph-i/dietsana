@@ -303,7 +303,9 @@ function (_React$Component) {
         onClick: function onClick() {
           return openModal('signup');
         }
-      }, "Try for free")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
+      }, "Try for free")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "img-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
         autoPlay: true,
         playsInline: true,
         loop: true,
@@ -313,7 +315,21 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("source", {
         src: "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/timeline/home-timeline-EN.mp4",
         type: "video/mp4"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mosaic"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "img-mosaic1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.landing1
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "img-mosaic2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.landing2
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "img-mosaic3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.landing3
+      })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "intro_highlights"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hit deadlines"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Create visual project plans to see how every step maps out over time. Pinpoint risks. Eliminate roadblocks. Even when plans change.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Get organized"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Plan and structure work in a way that\u2019s best for you. Set priorities and deadlines. Share details and assign tasks. All in one place.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Stay on Track"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Follow projects and tasks through every stage. You know where work stands and can keep everyone aligned on goals.")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "intro_deadlines_desc"
