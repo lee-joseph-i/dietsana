@@ -10,17 +10,17 @@ class Landing extends React.Component{
   render(){
     const { currentUser, openModal } = this.props;
 
-    const vid1 = "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/list-grid/home-list-EN.mp4";
-    const vid2 = "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/boards/home-boards-EN.mp4";
-    const vid3 = "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/timeline/home-timeline-EN.mp4";
-
     $(document).ready(function () {
       $('#msg-1').click(function () {
         $('#msg-1').addClass('intro_highlights_selected');
         $('#msg-2').removeClass('intro_highlights_selected');
         $('#msg-3').removeClass('intro_highlights_selected');
-        $('.img-container video source').attr('src', vid1);
-        $(".img-container video")[0].load();
+        $('#vid-1').addClass('background-vid');
+        $('#vid-1').removeClass('hidden');
+        $('#vid-2').addClass('hidden');
+        $('#vid-2').removeClass('background-vid');
+        $('#vid-3').addClass('hidden');
+        $('#vid-3').removeClass('background-vid');
       });
     });
 
@@ -29,8 +29,12 @@ class Landing extends React.Component{
         $('#msg-1').removeClass('intro_highlights_selected');
         $('#msg-2').addClass('intro_highlights_selected');
         $('#msg-3').removeClass('intro_highlights_selected');
-        $('.img-container video source').attr('src', vid2);
-        $(".img-container video")[0].load();
+        $('#vid-1').addClass('hidden');
+        $('#vid-1').removeClass('background-vid');
+        $('#vid-2').removeClass('hidden');
+        $('#vid-2').addClass('background-vid');
+        $('#vid-3').addClass('hidden');
+        $('#vid-3').removeClass('background-vid');
       });
     });
 
@@ -39,8 +43,12 @@ class Landing extends React.Component{
         $('#msg-1').removeClass('intro_highlights_selected');
         $('#msg-2').removeClass('intro_highlights_selected');
         $('#msg-3').addClass('intro_highlights_selected');
-        $('.img-container video source').attr('src', vid3);
-        $(".img-container video")[0].load();
+        $('#vid-1').addClass('hidden');
+        $('#vid-1').removeClass('background-vid');
+        $('#vid-2').addClass('hidden');
+        $('#vid-2').removeClass('background-vid');
+        $('#vid-3').removeClass('hidden');
+        $('#vid-3').addClass('background-vid');
       });
     });
 
@@ -61,8 +69,14 @@ class Landing extends React.Component{
               </div>
               <div>
               <div className="img-container">
-                <video autoPlay playsInline loop muted className="background-vid" poster="video broke">
-                  <source src={vid1} type="video/mp4"/>
+                <video autoPlay playsInline loop muted id="vid-1" className="background-vid" poster="video broke">
+                    <source src="https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/list-grid/home-list-EN.mp4" type="video/mp4"/>
+                </video>
+                <video autoPlay playsInline loop muted id="vid-2" className="hidden" poster="video broke">
+                    <source src="https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/boards/home-boards-EN.mp4" type="video/mp4"/>
+                </video>
+                <video autoPlay playsInline loop muted id="vid-3" className="hidden" poster="video broke">
+                    <source src="https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/timeline/home-timeline-EN.mp4" type="video/mp4"/>
                 </video>
                 <div className="mosaic">
                   <div className="img-mosaic1">

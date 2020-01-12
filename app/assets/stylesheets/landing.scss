@@ -122,11 +122,19 @@ section ul li:nth-child(even){
 }
 
 .background-vid{
+    margin-top: -70px;
     width: 67%;
     object-fit: cover;
     box-shadow: 0 30px 40px rgba(59, 83, 109, 0.14);
     // position: absolute;
-    z-index: 2;}
+    z-index: 2;
+}
+
+.hidden{
+  position: absolute;
+  top: -10000px;
+  left: -10000px;
+}
 
 .img-container{
   width: 100%;

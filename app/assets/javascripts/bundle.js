@@ -291,16 +291,17 @@ function (_React$Component) {
       var _this$props = this.props,
           currentUser = _this$props.currentUser,
           openModal = _this$props.openModal;
-      var vid1 = "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/list-grid/home-list-EN.mp4";
-      var vid2 = "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/boards/home-boards-EN.mp4";
-      var vid3 = "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/timeline/home-timeline-EN.mp4";
       $(document).ready(function () {
         $('#msg-1').click(function () {
           $('#msg-1').addClass('intro_highlights_selected');
           $('#msg-2').removeClass('intro_highlights_selected');
           $('#msg-3').removeClass('intro_highlights_selected');
-          $('.img-container video source').attr('src', vid1);
-          $(".img-container video")[0].load();
+          $('#vid-1').addClass('background-vid');
+          $('#vid-1').removeClass('hidden');
+          $('#vid-2').addClass('hidden');
+          $('#vid-2').removeClass('background-vid');
+          $('#vid-3').addClass('hidden');
+          $('#vid-3').removeClass('background-vid');
         });
       });
       $(document).ready(function () {
@@ -308,8 +309,12 @@ function (_React$Component) {
           $('#msg-1').removeClass('intro_highlights_selected');
           $('#msg-2').addClass('intro_highlights_selected');
           $('#msg-3').removeClass('intro_highlights_selected');
-          $('.img-container video source').attr('src', vid2);
-          $(".img-container video")[0].load();
+          $('#vid-1').addClass('hidden');
+          $('#vid-1').removeClass('background-vid');
+          $('#vid-2').removeClass('hidden');
+          $('#vid-2').addClass('background-vid');
+          $('#vid-3').addClass('hidden');
+          $('#vid-3').removeClass('background-vid');
         });
       });
       $(document).ready(function () {
@@ -317,8 +322,12 @@ function (_React$Component) {
           $('#msg-1').removeClass('intro_highlights_selected');
           $('#msg-2').removeClass('intro_highlights_selected');
           $('#msg-3').addClass('intro_highlights_selected');
-          $('.img-container video source').attr('src', vid3);
-          $(".img-container video")[0].load();
+          $('#vid-1').addClass('hidden');
+          $('#vid-1').removeClass('background-vid');
+          $('#vid-2').addClass('hidden');
+          $('#vid-2').removeClass('background-vid');
+          $('#vid-3').removeClass('hidden');
+          $('#vid-3').addClass('background-vid');
         });
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -340,10 +349,33 @@ function (_React$Component) {
         playsInline: true,
         loop: true,
         muted: true,
+        id: "vid-1",
         className: "background-vid",
         poster: "video broke"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("source", {
-        src: vid1,
+        src: "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/list-grid/home-list-EN.mp4",
+        type: "video/mp4"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
+        autoPlay: true,
+        playsInline: true,
+        loop: true,
+        muted: true,
+        id: "vid-2",
+        className: "hidden",
+        poster: "video broke"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("source", {
+        src: "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/boards/home-boards-EN.mp4",
+        type: "video/mp4"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
+        autoPlay: true,
+        playsInline: true,
+        loop: true,
+        muted: true,
+        id: "vid-3",
+        className: "hidden",
+        poster: "video broke"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("source", {
+        src: "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/timeline/home-timeline-EN.mp4",
         type: "video/mp4"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mosaic"
