@@ -9,6 +9,41 @@ class Landing extends React.Component{
 
   render(){
     const { currentUser, openModal } = this.props;
+
+    const vid1 = "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/list-grid/home-list-EN.mp4";
+    const vid2 = "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/boards/home-boards-EN.mp4";
+    const vid3 = "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/timeline/home-timeline-EN.mp4";
+
+    $(document).ready(function () {
+      $('#msg-1').click(function () {
+        $('#msg-1').addClass('intro_highlights_selected');
+        $('#msg-2').removeClass('intro_highlights_selected');
+        $('#msg-3').removeClass('intro_highlights_selected');
+        $('.img-container video source').attr('src', vid1);
+        $(".img-container video")[0].load();
+      });
+    });
+
+    $(document).ready(function () {
+      $('#msg-2').click(function () {
+        $('#msg-1').removeClass('intro_highlights_selected');
+        $('#msg-2').addClass('intro_highlights_selected');
+        $('#msg-3').removeClass('intro_highlights_selected');
+        $('.img-container video source').attr('src', vid2);
+        $(".img-container video")[0].load();
+      });
+    });
+
+    $(document).ready(function () {
+      $('#msg-3').click(function () {
+        $('#msg-1').removeClass('intro_highlights_selected');
+        $('#msg-2').removeClass('intro_highlights_selected');
+        $('#msg-3').addClass('intro_highlights_selected');
+        $('.img-container video source').attr('src', vid3);
+        $(".img-container video")[0].load();
+      });
+    });
+
     return(
       <div>
         <section className="landing_body">
@@ -27,7 +62,7 @@ class Landing extends React.Component{
               <div>
               <div className="img-container">
                 <video autoPlay playsInline loop muted className="background-vid" poster="video broke">
-                  <source src="https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/timeline/home-timeline-EN.mp4" type="video/mp4"/>
+                  <source src={vid1} type="video/mp4"/>
                 </video>
                 <div className="mosaic">
                   <div className="img-mosaic1">
@@ -44,17 +79,20 @@ class Landing extends React.Component{
               </div>
             </li>
             <li className="intro_highlights">
-                <section>
-                  <p>Hit deadlines</p>
-                  <p>Create visual project plans to see how every step maps out over time. Pinpoint risks. Eliminate roadblocks. Even when plans change.</p>
-                </section>
-                <section>
+                <section id="msg-1" className="intro_highlights_selected">
+                  <span id="pos-1"></span>
                   <p>Get organized</p>
                   <p>Plan and structure work in a way that’s best for you. Set priorities and deadlines. Share details and assign tasks. All in one place.</p>
                 </section>
-                <section>
+                <section id="msg-2">
+                  <span id="pos-2"></span>
                   <p>Stay on track</p>
                   <p>Follow projects and tasks through every stage. You know where work stands and can keep everyone aligned on goals.</p>
+                </section>
+                <section id="msg-3">
+                  <span id="pos-3"></span>
+                  <p>Hit deadlines</p>
+                  <p>Create visual project plans to see how every step maps out over time. Pinpoint risks. Eliminate roadblocks. Even when plans change.</p>
                 </section>
             </li>
 

@@ -291,6 +291,36 @@ function (_React$Component) {
       var _this$props = this.props,
           currentUser = _this$props.currentUser,
           openModal = _this$props.openModal;
+      var vid1 = "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/list-grid/home-list-EN.mp4";
+      var vid2 = "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/boards/home-boards-EN.mp4";
+      var vid3 = "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/timeline/home-timeline-EN.mp4";
+      $(document).ready(function () {
+        $('#msg-1').click(function () {
+          $('#msg-1').addClass('intro_highlights_selected');
+          $('#msg-2').removeClass('intro_highlights_selected');
+          $('#msg-3').removeClass('intro_highlights_selected');
+          $('.img-container video source').attr('src', vid1);
+          $(".img-container video")[0].load();
+        });
+      });
+      $(document).ready(function () {
+        $('#msg-2').click(function () {
+          $('#msg-1').removeClass('intro_highlights_selected');
+          $('#msg-2').addClass('intro_highlights_selected');
+          $('#msg-3').removeClass('intro_highlights_selected');
+          $('.img-container video source').attr('src', vid2);
+          $(".img-container video")[0].load();
+        });
+      });
+      $(document).ready(function () {
+        $('#msg-3').click(function () {
+          $('#msg-1').removeClass('intro_highlights_selected');
+          $('#msg-2').removeClass('intro_highlights_selected');
+          $('#msg-3').addClass('intro_highlights_selected');
+          $('.img-container video source').attr('src', vid3);
+          $(".img-container video")[0].load();
+        });
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "landing_body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -313,7 +343,7 @@ function (_React$Component) {
         className: "background-vid",
         poster: "video broke"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("source", {
-        src: "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/timeline/home-timeline-EN.mp4",
+        src: vid1,
         type: "video/mp4"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mosaic"
@@ -331,7 +361,20 @@ function (_React$Component) {
         src: window.landing3
       })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "intro_highlights"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hit deadlines"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Create visual project plans to see how every step maps out over time. Pinpoint risks. Eliminate roadblocks. Even when plans change.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Get organized"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Plan and structure work in a way that\u2019s best for you. Set priorities and deadlines. Share details and assign tasks. All in one place.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Stay on track"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Follow projects and tasks through every stage. You know where work stands and can keep everyone aligned on goals."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        id: "msg-1",
+        className: "intro_highlights_selected"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "pos-1"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Get organized"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Plan and structure work in a way that\u2019s best for you. Set priorities and deadlines. Share details and assign tasks. All in one place.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        id: "msg-2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "pos-2"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Stay on track"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Follow projects and tasks through every stage. You know where work stands and can keep everyone aligned on goals.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        id: "msg-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "pos-3"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hit deadlines"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Create visual project plans to see how every step maps out over time. Pinpoint risks. Eliminate roadblocks. Even when plans change."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "construction"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "(Under Construction, more to come!)"))))));
     }
