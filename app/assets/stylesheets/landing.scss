@@ -122,11 +122,11 @@ section ul li:nth-child(even){
 }
 
 .background-vid{
-    margin-top: -70px;
+    top: 60px;
     width: 67%;
     object-fit: cover;
     box-shadow: 0 30px 40px rgba(59, 83, 109, 0.14);
-    // position: absolute;
+    position: absolute;
     z-index: 2;
 }
 
