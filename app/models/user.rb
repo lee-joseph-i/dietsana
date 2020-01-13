@@ -13,9 +13,11 @@ class User < ApplicationRecord
   has_many :assigned_projects,
     foreign_key: :assignee_id
 
-  # has_many :?,
-  #   through: :?,
-  #   source: :?
+  has_many :created_tasks,
+    foreign_key: :creator_id
+
+  has_many :assigned_tasks,
+    foreign_key: :assignee_id
 
   attr_reader :password
   after_initialize :ensure_session_token
