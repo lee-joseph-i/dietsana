@@ -11,6 +11,7 @@ class SignupForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   componentDidMount(){
@@ -35,10 +36,10 @@ class SignupForm extends React.Component {
     return(
       <ul>
         {
-          this.props.errors.map((error) => {
+          this.props.errors.map((error, idx) => {
             if (error.includes(field)) {
               return (
-                <p className="errorlist">{error}</p>
+                <p key={idx} className="errorlist">{error}</p>
               )
             }})
         }
