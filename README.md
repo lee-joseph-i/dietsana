@@ -30,3 +30,5 @@ Set config.assets.compile from false to true in production.rb.
 This was a solution that fixed some of my image assets from loading on heroku app,
 admittingly I do not understand this solution.
 
+Backlog: Currently, user login and signup are NOT case insensitive! therefore, you must be 
+case-sensitive when attempting to sign in. 
