@@ -34,3 +34,8 @@ html, body, div {
 ul, li {
   list-style: none;
 }
+
+input:focus {
+  border: 2px solid #a59dff;
+  border-radius: 3px;
+}

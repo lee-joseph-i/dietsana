@@ -164,6 +164,11 @@ input[type=submit]:hover{
   border-left-style: solid;
   border-left-width: 2px;
   box-sizing: border-box;
+  transition: border .15s ease-in-out;
+}
+
+.formbox > input:not([type=password]){
+  color: #646F79;
 }
 
 .errorlist{

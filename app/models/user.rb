@@ -7,8 +7,8 @@ class User < ApplicationRecord
   # has_many :assignedTasks, 
   #   foreign_key: :assignee_id
 
-  # has_many :createdTasks, 
-  #   foreign_key: :creator_id
+  has_many :projects, 
+    foreign_key: :creator_id
 
   # has_many :?
 
