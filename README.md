@@ -24,6 +24,9 @@ Things you may want to cover:
 * ...
 
 
-SOMETHING IS WRONG WITH JQUERY. I NEED TO REMOVE THE JQUERY LIB SCRIPT ON APPLICATIONHTMLERB BUT THAT BREAKS THE LANDING PAGE STUFF. 
-NOTE: I NPM INSTALLED JQUERY AS AN ATTEMPT TO FIX THE PROBLEM DID HELP.
-I LEFT IT THE SCRIPT ON. 
+DEV NOTES:
+
+Set config.assets.compile from false to true in production.rb. 
+This was a solution that fixed some of my image assets from loading on heroku app,
+admittingly I do not understand this solution.
+

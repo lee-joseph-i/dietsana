@@ -71,13 +71,13 @@ class Landing extends React.Component{
               </div>
               <div>
               <div className="img-container">
-                <video autoPlay playsInline loop muted id="vid-1" className="background-vid" poster="vid1-unavailable!">
+                <video autoPlay playsInline loop muted id="vid-1" className="background-vid">
                     <source src="https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/list-grid/home-list-EN.mp4" type="video/mp4"/>
                 </video>
-                <video autoPlay playsInline loop muted id="vid-2" className="hidden" poster="vid2-unavailable!">
+                <video autoPlay playsInline loop muted id="vid-2" className="hidden">
                     <source src="https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/boards/home-boards-EN.mp4" type="video/mp4"/>
                 </video>
-                <video autoPlay playsInline loop muted id="vid-3" className="hidden" poster="vid3-unavailable!">
+                <video autoPlay playsInline loop muted id="vid-3" className="hidden">
                     <source src="https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/timeline/home-timeline-EN.mp4" type="video/mp4"/>
                 </video>
                 <div className="mosaic">
