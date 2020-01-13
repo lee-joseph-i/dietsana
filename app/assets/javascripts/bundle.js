@@ -355,7 +355,7 @@ function (_React$Component) {
         muted: true,
         id: "vid-1",
         className: "background-vid",
-        poster: "video broke"
+        poster: "vid1-unavailable!"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("source", {
         src: "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/list-grid/home-list-EN.mp4",
         type: "video/mp4"
@@ -366,7 +366,7 @@ function (_React$Component) {
         muted: true,
         id: "vid-2",
         className: "hidden",
-        poster: "video broke"
+        poster: "vid2-unavailable!"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("source", {
         src: "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/boards/home-boards-EN.mp4",
         type: "video/mp4"
@@ -377,7 +377,7 @@ function (_React$Component) {
         muted: true,
         id: "vid-3",
         className: "hidden",
-        poster: "video broke"
+        poster: "vid3-unavailable!"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("source", {
         src: "https://d1gwm4cf8hecp4.cloudfront.net/videos/homepage/timeline/home-timeline-EN.mp4",
         type: "video/mp4"
