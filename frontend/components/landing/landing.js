@@ -7,9 +7,7 @@ class Landing extends React.Component{
     super(props)
   }
 
-  render(){
-    const { currentUser, openModal } = this.props;
-
+  componentDidMount(){
     $(document).ready(function () {
       $('#msg-1').click(function () {
         $('#msg-1').addClass('intro_highlights_selected');
@@ -51,6 +49,10 @@ class Landing extends React.Component{
         $('#vid-3').addClass('background-vid');
       });
     });
+  }
+
+  render(){
+    const { currentUser, openModal } = this.props;
 
     return(
       <div>

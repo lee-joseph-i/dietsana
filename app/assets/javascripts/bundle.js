@@ -286,11 +286,8 @@ function (_React$Component) {
   }
 
   _createClass(Landing, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          currentUser = _this$props.currentUser,
-          openModal = _this$props.openModal;
+    key: "componentDidMount",
+    value: function componentDidMount() {
       $(document).ready(function () {
         $('#msg-1').click(function () {
           $('#msg-1').addClass('intro_highlights_selected');
@@ -330,6 +327,13 @@ function (_React$Component) {
           $('#vid-3').addClass('background-vid');
         });
       });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          currentUser = _this$props.currentUser,
+          openModal = _this$props.openModal;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "landing_body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1078,23 +1082,6 @@ function (_React$Component) {
   }, {
     key: "renderErrors",
     value: function renderErrors(field) {
-      // console.log(this.props.errors);
-      // this.props.errors.map((error) => {
-      //   if(error.includes(field)){
-      //     return(
-      //       <li>{error}</li>
-      //     )
-      //   }
-      // });
-      // return(
-      //   <ul>
-      //     {this.props.errors.map((error, i) => (
-      //       <li key={`error-${i}`}>
-      //         {error}
-      //       </li>
-      //     ))}
-      //   </ul>
-      // )
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error) {
         if (error.includes(field)) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {

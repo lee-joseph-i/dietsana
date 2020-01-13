@@ -32,36 +32,16 @@ class SignupForm extends React.Component {
   }
 
   renderErrors(field) {
-    // console.log(this.props.errors);
-    // this.props.errors.map((error) => {
-    //   if(error.includes(field)){
-    //     return(
-    //       <li>{error}</li>
-    //     )
-    //   }
-    // });
-    // return(
-    //   <ul>
-    //     {this.props.errors.map((error, i) => (
-    //       <li key={`error-${i}`}>
-    //         {error}
-    //       </li>
-    //     ))}
-    //   </ul>
-    // )
     return(
       <ul>
         {
-
           this.props.errors.map((error) => {
             if (error.includes(field)) {
               return (
                 <p className="errorlist">{error}</p>
               )
             }})
-
         }
-        
       </ul>
     )
   }
