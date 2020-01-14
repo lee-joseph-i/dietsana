@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-ActiveRecord::Base.connection.execute("TRUNCATE TABLE users, scapes RESTART IDENTITY")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE users, projects RESTART IDENTITY")
 
 ApplicationRecord.transaction do 
   User.destroy_all
