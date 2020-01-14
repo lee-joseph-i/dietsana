@@ -6,7 +6,6 @@ import Main from './main/main_container';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import Footer from './nav_bar/footer';
 import Modal from './modal/modal';
-import ProjectHomeContainer from './projects/project_home_container';
 
 const App = () => (
   <div>
