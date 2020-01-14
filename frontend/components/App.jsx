@@ -14,11 +14,7 @@ const App = () => (
       <Route exact path="/" component={NavBarContainer} />
       <Route exact path="/" component={LandingContainer} />
       <Route exact path="/" component={Footer} />
-      <div className="homepage">
-        <ProtectedRoute path="/app" component={Main} />
-        <ProtectedRoute path="/app" component={ProjectHomeContainer} />
-      </div>
-
+      <ProtectedRoute path="/app" component={Main} />
   </div>
 );
 

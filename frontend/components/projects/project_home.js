@@ -1,10 +1,16 @@
 import React from 'react';
 
 class ProjectHome extends React.Component{
+  constructor(props){
+    super(props)
+    // this.state = {
+
+    // }
+  }
   render(){
     return(
       <div>
-        Hello World! My Recent Projects will go here, slowly but surely :) 
+        Ima body section bruv 
       </div>
     )
   }

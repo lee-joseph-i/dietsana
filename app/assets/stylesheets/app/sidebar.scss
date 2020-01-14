@@ -1,0 +1,19 @@
+.app{
+  .sidebar{
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-transition: margin-left 250ms ease-out,-webkit-transform 250ms ease-out;
+    transition: margin-left 250ms ease-out,-webkit-transform 250ms ease-out;
+    transition: margin-left 250ms ease-out,transform 250ms ease-out;
+    transition: margin-left 250ms ease-out,transform 250ms ease-out,-webkit-transform 250ms ease-out;
+    width: 244px;
+
+    background-color: #151b26;
+    color: white;
+  }
+}
