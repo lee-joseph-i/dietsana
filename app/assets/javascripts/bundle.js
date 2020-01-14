@@ -119,14 +119,14 @@ var closeModal = function closeModal() {
 /*!*********************************************!*\
   !*** ./frontend/actions/project_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_PROJECTS, RECEIVE_PROJECT, RECEIVE_PROJECT_ERROR, CLEAR_ERRORS, REMOVE_PROJECT, receiveProjects, requestProjects, requestProject, createProject, updateProject, deleteProject */
+/*! exports provided: RECEIVE_PROJECTS, RECEIVE_PROJECT, RECEIVE_PROJECT_ERRORS, CLEAR_ERRORS, REMOVE_PROJECT, receiveProjects, requestProjects, requestProject, createProject, updateProject, deleteProject */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PROJECTS", function() { return RECEIVE_PROJECTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PROJECT", function() { return RECEIVE_PROJECT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PROJECT_ERROR", function() { return RECEIVE_PROJECT_ERROR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PROJECT_ERRORS", function() { return RECEIVE_PROJECT_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ERRORS", function() { return CLEAR_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_PROJECT", function() { return REMOVE_PROJECT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveProjects", function() { return receiveProjects; });
@@ -139,7 +139,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var RECEIVE_PROJECTS = 'RECEIVE_PROJECTS';
 var RECEIVE_PROJECT = 'RECEIVE_PROJECT';
-var RECEIVE_PROJECT_ERROR = 'RECEIVE_PROJECT_ERROR';
+var RECEIVE_PROJECT_ERRORS = 'RECEIVE_PROJECT_ERRORS';
 var CLEAR_ERRORS = 'CLEAR_ERRORS';
 var REMOVE_PROJECT = 'REMOVE_PROJECT';
 var receiveProjects = function receiveProjects(projects) {
@@ -158,7 +158,7 @@ var receiveProject = function receiveProject(project) {
 
 var receiveErrors = function receiveErrors(errors) {
   return {
-    type: RECEIVE_PROJECT_ERROR,
+    type: RECEIVE_PROJECT_ERRORS,
     errors: errors
   };
 };
@@ -883,26 +883,78 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
+ // change to Class
+// under ComponentDidMount, call fetchProjects (create in container first)
+// 
 
-function ProjectIndex(_ref) {
-  var projects = _ref.projects,
-      updateProject = _ref.updateProject,
-      deleteProject = _ref.deleteProject;
+var ProjectIndex =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ProjectIndex, _React$Component);
 
-  if (projects.length === 0) {
-    return "There are no projects";
+  function ProjectIndex(props) {
+    _classCallCheck(this, ProjectIndex);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ProjectIndex).call(this, props)); // this.state = this.props.requestProjects()
   }
 
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, projects.map(function (project) {
-    return (// <ProjectItemIndex key={project.id} project={project} deleteProject={deleteProject} updateProject={updateProject}/>
-      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, project.name)
-    );
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/app/projects/new"
-  }, "Create New Project"));
-}
+  _createClass(ProjectIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.requestProjects();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          projects = _this$props.projects,
+          updateProject = _this$props.updateProject,
+          deleteProject = _this$props.deleteProject;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-list"
+      }, projects.map(function (project) {
+        return (// <ProjectItemIndex key={project.id} project={project} deleteProject={deleteProject} updateProject={updateProject}/>
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "project-tile"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "tile-card"
+          }, "add image here"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "tile-name"
+          }, project.name))
+        );
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "project-tile"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tile-card-new"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M 26 14 h -8 V 6 c 0 -1.1 -0.9 -2 -2 -2 l 0 0 c -1.1 0 -2 0.9 -2 2 v 8 H 6 c -1.1 0 -2 0.9 -2 2 l 0 0 c 0 1.1 0.9 2 2 2 h 8 v 8 c 0 1.1 0.9 2 2 2 l 0 0 c 1.1 0 2 -0.9 2 -2 v -8 h 8 c 1.1 0 2 -0.9 2 -2 l 0 0 C 28 14.9 27.1 14 26 14 Z"
+      }), "Sorry, your browser does not support inline SVG.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tile-name"
+      }, "New Project"))));
+    }
+  }]);
+
+  return ProjectIndex;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (ProjectIndex);
 
@@ -932,6 +984,9 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    requestProjects: function requestProjects() {
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_2__["requestProjects"])());
+    },
     updateProject: function updateProject(project) {
       return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_2__["updateProject"])(project));
     },
@@ -1634,7 +1689,7 @@ __webpack_require__.r(__webpack_exports__);
   Object.freeze(state);
 
   switch (action.type) {
-    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROJECT_ERROR"]:
+    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROJECT_ERRORS"]:
       return action.errors;
 
     case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ERRORS"]:
@@ -1673,12 +1728,6 @@ var projectsReducer = function projectsReducer() {
     case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROJECT"]:
       newState[action.project.id] = action.project;
       return newState;
-
-    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROJECT_ERROR"]:
-      return action.errors;
-
-    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ERRORS"]:
-      return [];
 
     case _actions_project_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_PROJECT"]:
       delete newState[action.projectId];
@@ -1811,10 +1860,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modal_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal_reducer */ "./frontend/reducers/modal_reducer.js");
 
 
-var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
-});
-/* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
+}));
 
 /***/ }),
 
