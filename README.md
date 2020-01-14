@@ -35,6 +35,4 @@ case-sensitive when attempting to sign in.
 
 
 CURRENT PATH:
-controllers
-views/jsonbuilder
-project api util
+project components (homepage to start)
