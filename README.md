@@ -32,3 +32,9 @@ admittingly I do not understand this solution.
 
 Backlog: Currently, user login and signup are NOT case insensitive! therefore, you must be 
 case-sensitive when attempting to sign in. 
+
+
+CURRENT PATH:
+controllers
+views/jsonbuilder
+project api util

@@ -3,18 +3,17 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password, length: { minimum: 8 }, allow_nil: true
 
-  # ASSOCIATIONS
-  # has_many :assignedTasks, 
-  #   foreign_key: :assignee_id
+  has_many :created_projects, 
+    foreign_key: :creator_id
 
-  # has_many :createdTasks, 
-  #   foreign_key: :creator_id
+  has_many :assigned_projects,
+    foreign_key: :assignee_id
 
-  # has_many :?
+  has_many :created_tasks,
+    foreign_key: :creator_id
 
-  # has_many :?,
-  #   through: :?,
-  #   source: :?
+  has_many :assigned_tasks,
+    foreign_key: :assignee_id
 
   attr_reader :password
   after_initialize :ensure_session_token
