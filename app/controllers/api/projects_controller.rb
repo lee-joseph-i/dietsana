@@ -25,7 +25,7 @@ class Api::ProjectsController < ApplicationController
     if @project.update(project_params)
       render :show
     else
-      render json: ['Please name your project.'], status: :422
+      render json: ['Please name your project.'], status: 422
     end
   end
 
