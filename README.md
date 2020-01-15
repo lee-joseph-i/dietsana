@@ -35,4 +35,4 @@ case-sensitive when attempting to sign in.
 
 
 CURRENT PATH:
-project components (homepage to start)
+...

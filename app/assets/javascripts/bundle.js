@@ -1212,9 +1212,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
- // change to Class
-// under ComponentDidMount, call fetchProjects (create in container first)
-// 
+
 
 var ProjectIndex =
 /*#__PURE__*/
@@ -1224,7 +1222,7 @@ function (_React$Component) {
   function ProjectIndex(props) {
     _classCallCheck(this, ProjectIndex);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ProjectIndex).call(this, props)); // this.state = this.props.requestProjects()
+    return _possibleConstructorReturn(this, _getPrototypeOf(ProjectIndex).call(this, props)); // this.revealDropdown = this.revealDropdown.bind(this);
   }
 
   _createClass(ProjectIndex, [{
@@ -1236,8 +1234,18 @@ function (_React$Component) {
         $('#new-project').click(function () {
           that.props.openModal('createProject');
         });
-      });
-    }
+      }); // $(document).ready(function () {
+      //   $(`ellipsis-${project.id}`).click(function () {
+      //     alert("test");
+      //     $(`.project-dropdown-${project.id}`).addClass('reveal-dropdown');
+      //   });
+      // });
+    } // revealDropdown(project){
+    //   // const { project } = this.props;
+    //   // e.stopPropagation();
+    //   document.getElementById(`project-dropdown-${project.id}`).classList.toggle('reveal-dropdown');
+    // }
+
   }, {
     key: "render",
     value: function render() {
@@ -1252,9 +1260,37 @@ function (_React$Component) {
           react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: i,
             className: "project-tile"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+            id: "ellipsis-".concat(project.id),
+            className: "ellipsis",
+            viewBox: "0 0 32 32",
+            tabIndex: "0",
+            focusable: "false"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+            d: "M16,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S14.3,13,16,13z M3,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S1.3,13,3,13z M29,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S27.3,13,29,13z"
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            id: "project-dropdown-".concat(project.id),
+            className: "project-dropdown"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "dropdown-item",
+            onClick: function onClick() {
+              return updateProject(project.id);
+            }
+          }, "Edit Project"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "dropdown-item",
+            onClick: function onClick() {
+              return deleteProject(project.id);
+            }
+          }, "Delete Project")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "tile-card"
-          }, "add image here"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+            className: "project-icon",
+            viewBox: "0 0 32 32",
+            tabIndex: "0",
+            focusable: "false"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+            d: "M 26 2 H 6 C 2.7 2 0 4.7 0 8 v 14 c 0 3.3 2.7 6 6 6 h 20 c 3.3 0 6 -2.7 6 -6 V 8 C 32 4.7 29.3 2 26 2 Z M 30 22 c 0 2.2 -1.8 4 -4 4 H 6 c -2.2 0 -4 -1.8 -4 -4 V 8 c 0 -2.2 1.8 -4 4 -4 h 20 c 2.2 0 4 1.8 4 4 V 22 Z M 26 9 c 0 0.6 -0.4 1 -1 1 H 13 c -0.6 0 -1 -0.4 -1 -1 s 0.4 -1 1 -1 h 12 C 25.6 8 26 8.4 26 9 Z M 12 15 c 0 -0.6 0.4 -1 1 -1 h 6 c 0.6 0 1 0.4 1 1 s -0.4 1 -1 1 h -6 C 12.4 16 12 15.6 12 15 Z M 24 21 c 0 0.6 -0.4 1 -1 1 H 13 c -0.6 0 -1 -0.4 -1 -1 s 0.4 -1 1 -1 h 10 C 23.6 20 24 20.4 24 21 Z M 9.2 9 c 0 0.7 -0.5 1.2 -1.2 1.2 S 6.8 9.7 6.8 9 S 7.3 7.8 8 7.8 S 9.2 8.3 9.2 9 Z M 9.2 15 c 0 0.7 -0.5 1.2 -1.2 1.2 S 6.8 15.7 6.8 15 s 0.5 -1.2 1.2 -1.2 S 9.2 14.3 9.2 15 Z M 9.2 21 c 0 0.7 -0.5 1.2 -1.2 1.2 S 6.8 21.7 6.8 21 s 0.5 -1.2 1.2 -1.2 S 9.2 20.3 9.2 21 Z"
+          }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "tile-name"
           }, project.name))
         );
@@ -1794,6 +1830,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1814,6 +1851,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Sidebar =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1830,10 +1868,19 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sidebar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.logo,
-        className: "asana-logo"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "I'm a sidebar!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "I'm a sidebar!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "I'm a sidebar!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "I'm a sidebar!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "I'm a sidebar!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "I'm a sidebar!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "I'm a sidebar!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "I'm a sidebar!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "I'm a sidebar!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "I'm a sidebar!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "I'm a sidebar!"));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sidebar-logo"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sidebar-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        className: "type-icon home-icon",
+        viewBox: "0 0 40 40"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M37.9,15L22.2,3.8c-1.3-1-3.1-1-4.4-0.1L2.2,14.4c-0.7,0.5-0.9,1.4-0.4,2.1c0.5,0.7,1.4,0.9,2.1,0.4L6,15.4v12.3c0,4.6,3.7,8.3,8.3,8.3h11.4c4.6,0,8.3-3.7,8.3-8.3V15.9l2.1,1.5c0.3,0.2,0.6,0.3,0.9,0.3c0.5,0,0.9-0.2,1.2-0.6C38.7,16.4,38.5,15.5,37.9,15z M31,27.7c0,2.9-2.4,5.3-5.3,5.3H14.3C11.4,33,9,30.6,9,27.7V13.3l10.6-7.2c0.2-0.2,0.5-0.2,0.8,0L31,13.7V27.7z"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "link",
+        to: "/app"
+      }, "Home")));
     }
   }]);
 

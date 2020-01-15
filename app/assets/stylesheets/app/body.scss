@@ -42,17 +42,34 @@
       -webkit-box-direction: normal;
       flex-flow: column;
       position: relative;
-      // -webkit-transition-duration: .4s;
-      // transition-duration: .4s;
+      -webkit-transition-duration: .4s;
+      transition-duration: .4s;
       bottom: 0px;
       transition: bottom .2s ease-in-out;
-
       margin: 0px 10px;
       cursor: pointer;
     }
 
     .project-tile:hover{
       bottom: 15px;
+      .project-dropdown{
+        opacity: .2;
+      }
+    }
+    
+    .project-icon{
+      position: absolute;
+      top: 55px;
+      -webkit-transition: all .8s ease;
+      -moz-transition: all .8s ease;
+      -ms-transition: all .8s ease;
+      -o-transition: all .8s ease;
+      transition: all .8s ease;
+    }
+
+    .project-tile:hover .project-icon{
+      position: absolute;
+      top: 40px; 
     }
 
     .tile-card-new{
@@ -112,7 +129,53 @@
       width: 100%;
     }
     
+    .project-dropdown{
+      opacity: 0;
+      display: none;
+      position: absolute;
+      z-index: 2;
+      background: white;
+      font-size: 12px;
+      width: 110px;
+      color: black;
+      border-radius: 5px;
+      padding: 5px 0px;
+      z-index: 3;
+      margin-top: 5px;
+      line-height: 20px;
+      box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .project-icon{
+      height: 32px;
+      -webkit-transition-duration: .4s;
+      transition-duration: .4s;
+      width: 32px;
+    }
+    
+    .ellipsis{
+      fill: rgba(255,255,255,.5);
+      outline: none;
+      padding: 5px;
+      height: 16px;
+      width: 16px;
+      fill: black;
+      z-index: 3;
+    }
+    
+    .ellipsis:hover{
+      .project-dropdown{
+        opacity: 1;
+      }
+    }
+
+    .dropdown-item{
+      z-index: 4;
+      position: absolute;
+    }
+
+    .reveal-dropdown{
+      display: block;
+    }
   }
-
-
 }
