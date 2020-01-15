@@ -29,7 +29,7 @@
       border-radius: 30px;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-      height: 221px;
+      height: 205px;
       min-width: 150px;
       padding: 15px 0;
       width: 150px;
@@ -42,40 +42,42 @@
       -webkit-box-direction: normal;
       flex-flow: column;
       position: relative;
-      -webkit-transition-duration: .4s;
-      transition-duration: .4s;
+      -webkit-transition-duration: .35s;
+      transition-duration: .35s;
       bottom: 0px;
-      transition: bottom .2s ease-in-out;
+      transition: bottom .35s ease-in-out, background-color .4s ease-in-out;
       margin: 0px 10px;
       cursor: pointer;
     }
 
     .project-tile:hover{
-      bottom: 15px;
-      .project-dropdown{
-        opacity: .2;
+      bottom: 12px;
+      background-color: rgb(235, 234, 248);
+      .tile-card-new{
+        fill: #5a6268;
+        border: 2px dashed #5a6268;
       }
     }
     
     .project-icon{
       position: absolute;
-      top: 55px;
-      -webkit-transition: all .8s ease;
-      -moz-transition: all .8s ease;
-      -ms-transition: all .8s ease;
-      -o-transition: all .8s ease;
-      transition: all .8s ease;
+      top: 49px;
+      -webkit-transition: all .35s ease;
+      -moz-transition: all .35s ease;
+      -ms-transition: all .35s ease;
+      -o-transition: all .35s ease;
+      transition: all .35s ease;
     }
 
     .project-tile:hover .project-icon{
       position: absolute;
-      top: 40px; 
+      top: 44px;
     }
 
     .tile-card-new{
       border-radius: 20px;
-      height: 100%;
-      width: 100%;
+      height: 70%;
+      width: 80%;
       -webkit-box-align: center;
       align-items: center;
       background: #fff;
@@ -93,12 +95,12 @@
 
     .tile-card{
       border-radius: 20px;
-      height: 100%;
-      width: 100%;
+      height: 70%;
+      width: 80%;
       box-shadow: inset 0 -2px rgba(0,0,0,.05);
       -webkit-box-align: center;
       align-items: center;
-      background-color: #a4cf30;
+      background-color: #e8384f;
       display: -webkit-box;
       display: flex;
       fill: #fff;
@@ -154,19 +156,29 @@
     }
     
     .ellipsis{
+      opacity: 0;
       fill: rgba(255,255,255,.5);
       outline: none;
       padding: 5px;
-      height: 16px;
-      width: 16px;
-      fill: black;
+      height: 20px;
+      width: 20px;
       z-index: 3;
+      position: absolute;
+      right: 26px;
+      top: 22px;
+      -webkit-transition: opacity .35s ease;
+      -moz-transition: opacity .35s ease;
+      -ms-transition: opacity .35s ease;
+      -o-transition: opacity .35s ease;
+      transition: opacity .35s ease;
     }
-    
+
+    .project-tile:hover .ellipsis{
+      opacity: 1;
+    }
+
     .ellipsis:hover{
-      .project-dropdown{
-        opacity: 1;
-      }
+      fill: white;
     }
 
     .dropdown-item{
