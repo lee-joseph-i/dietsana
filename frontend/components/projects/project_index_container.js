@@ -1,17 +1,29 @@
 import { connect } from 'react-redux';
 import ProjectIndex from './project_index';
-import { requestProjects, updateProject, deleteProject } from '../../actions/project_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
+import { 
+  clearErrors,
+  createProject, 
+  requestProjects, 
+  updateProject, 
+  deleteProject 
+} from '../../actions/project_actions';
 
 const mapStateToProps = state => {
   return {
-    projects: Object.values(state.entities.projects)
+    projects: Object.values(state.entities.projects),
+    errors: state.errors.projects
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   requestProjects: () => dispatch(requestProjects()),
+  createProject: project => dispatch(createProject(project)),
   updateProject: project => dispatch(updateProject(project)),
-  deleteProject: projectId => dispatch(deleteProject(projectId))
+  deleteProject: projectId => dispatch(deleteProject(projectId)),
+  openModal: () => dispatch(openModal('createProject')),
+  closeModal: () => dispatch(closeModal()),
+  clearErrors: () => dispatch(clearErrors())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectIndex);

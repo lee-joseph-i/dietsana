@@ -7,7 +7,8 @@ class Project < ApplicationRecord
 
   belongs_to :owner,
       foreign_key: :owner_id,
-      class_name: :User
+      class_name: :User,
+      optional: true
 
   has_many :sections,
       foreign_key: :project_id,

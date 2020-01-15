@@ -11,6 +11,10 @@
     min-width: 920px;
     position: relative;
     min-width: 920px;
+    align-items: center;
+    min-height: 1px;
+    overflow-y: auto;
+    // justify-content: center;
 
     .project-list{
       display: -webkit-box;
@@ -38,9 +42,17 @@
       -webkit-box-direction: normal;
       flex-flow: column;
       position: relative;
-      -webkit-transition-duration: .4s;
-      transition-duration: .4s;
+      // -webkit-transition-duration: .4s;
+      // transition-duration: .4s;
+      bottom: 0px;
+      transition: bottom .2s ease-in-out;
+
       margin: 0px 10px;
+      cursor: pointer;
+    }
+
+    .project-tile:hover{
+      bottom: 15px;
     }
 
     .tile-card-new{
@@ -61,7 +73,6 @@
       justify-content: center;
       position: relative;
     }
-    
 
     .tile-card{
       border-radius: 20px;

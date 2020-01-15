@@ -4,10 +4,11 @@ class Api::ProjectsController < ApplicationController
     @project.creator_id = current_user.id
     # permit owner_id but leave it blank
     # same with description
+    # debugger
     if @project.save
-      render "api/projects/show"
+      render 'api/projects/show'
     else
-      render json: ['Please name  your project.'], status: 422
+      render json: ['Please name your project.'], status: 422
     end
   end
 
@@ -38,7 +39,7 @@ class Api::ProjectsController < ApplicationController
     # if @project
     #   @project.destroy
     #   render :show
-    # else
+      # else
     #   render ['Could not find project']
     # end
   end
@@ -47,6 +48,7 @@ class Api::ProjectsController < ApplicationController
   private
 
   def project_params
+    # debugger
     params.require(:project).permit(:name, :owner_id, :description)
   end
 end
