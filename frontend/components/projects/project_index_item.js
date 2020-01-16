@@ -49,8 +49,11 @@ class ProjectIndexItem extends React.Component {
 
   }
 
-  componentDidUpdate(){
-    this.eventListeners();
+  componentDidUpdate(prevProps){
+    if(prevProps.project.id !== this.props.project.id){
+      debugger;
+      this.eventListeners();
+    }
   }
 
 

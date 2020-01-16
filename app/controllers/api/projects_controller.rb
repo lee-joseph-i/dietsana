@@ -4,7 +4,6 @@ class Api::ProjectsController < ApplicationController
     @project.creator_id = current_user.id
     # permit owner_id but leave it blank
     # same with description
-    # debugger
     if @project.save
       render 'api/projects/show'
     else
