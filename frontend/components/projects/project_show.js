@@ -11,16 +11,8 @@ class ProjectShow extends React.Component {
     const { project } = this.props;
 
     return (
-      <div>
-        <div>sad show page is sad</div>
-        {/* {project.id}
-        {project.name}
-        {project.description}
-        {project.owner_id}
-        {project.creator_id} */}
-        <div>
-         <Link to='/app'>Back to Home</Link>
-        </div>
+      <div className="construction">
+        <div>Under Construction</div>
       </div>
     )
   }

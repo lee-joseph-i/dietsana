@@ -8,7 +8,7 @@ import ProjectEditFormContainer from '../projects/project_edit_form_container';
 
 const Body = () => (
   <div className="body">
-    <Route exact path="/app" component={HeaderContainer} />
+    <Route path="/app" component={HeaderContainer} />
     <Route exact path="/app" component={ProjectIndexContainer} />
     <Route path="/app/projects/new" component={ProjectCreateFormContainer} />
     <Route exact path="/app/projects/:projectId" component={ProjectShowContainer} />

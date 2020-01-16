@@ -9,7 +9,9 @@ export default ({ currentUser, openModal }) => {
       <div className="home">
         Home
       </div>
-      <ProfileContainer />
+      <div>
+        <ProfileContainer />
+      </div>
     </div>
   )
 }

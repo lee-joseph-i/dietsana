@@ -13,7 +13,15 @@
     min-width: 920px;
     align-items: center;
     min-height: 1px;
+    width: 100%;
     // justify-content: center;
+
+    .construction{
+      position: absolute;
+      top: 300px;
+      font-size: 80px;
+      color: rgb(209, 209, 209)
+    }
 
     .home-body{
       width: 100%;

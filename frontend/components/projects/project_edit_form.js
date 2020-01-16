@@ -22,7 +22,7 @@ class ProjectEditForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const project = Object.assign({}, this.state);
-    this.props.createProject(project)
+    this.props.updateProject(project)
       .then(this.props.closeModal)
   }
 
@@ -33,7 +33,6 @@ class ProjectEditForm extends React.Component {
   }
 
   render() {
-    debugger;
     return (
       <div className="login-form-container">
         <div onClick={this.props.closeModal} className="close-x">X</div>

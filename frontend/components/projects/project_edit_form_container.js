@@ -5,11 +5,10 @@ import { closeModal } from '../../actions/modal_actions';
 import ProjectEditForm from './project_edit_form';
 import { clearErrors } from '../../actions/session_actions';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     errors: state.errors.projects,
-    project: state.entities.projects[ownProps.match.params.projectId]
-    //might be project.id
+    project: state.entities.projects[state.ui.projectId]
   };
 };
 

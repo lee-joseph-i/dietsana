@@ -102,9 +102,11 @@ __webpack_require__.r(__webpack_exports__);
 var OPEN_MODAL = 'OPEN_MODAL';
 var CLOSE_MODAL = 'CLOSE_MODAL';
 var openModal = function openModal(modal) {
+  var projectId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   return {
     type: OPEN_MODAL,
-    modal: modal
+    modal: modal,
+    projectId: projectId
   };
 };
 var closeModal = function closeModal() {
@@ -378,7 +380,6 @@ var Body = function Body() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "body"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    exact: true,
     path: "/app",
     component: _header_header_container__WEBPACK_IMPORTED_MODULE_3__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
@@ -463,7 +464,7 @@ __webpack_require__.r(__webpack_exports__);
     className: "header"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home"
-  }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_profile_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_profile_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
 });
 
 /***/ }),
@@ -833,7 +834,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function Modal(_ref) {
   var modal = _ref.modal,
-      closeModal = _ref.closeModal;
+      closeModal = _ref.closeModal,
+      currentProject = _ref.currentProject;
 
   if (!modal) {
     return null;
@@ -855,7 +857,9 @@ function Modal(_ref) {
       break;
 
     case 'editProject':
-      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_project_edit_form_container__WEBPACK_IMPORTED_MODULE_6__["default"], null);
+      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_project_edit_form_container__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        currentProject: currentProject
+      });
       break;
 
     default:
@@ -875,7 +879,8 @@ function Modal(_ref) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    modal: state.ui.modal
+    modal: state.ui.modal,
+    currentProject: state.entities.projects[state.ui.projectId]
   };
 };
 
@@ -1254,7 +1259,7 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var project = Object.assign({}, this.state);
-      this.props.createProject(project).then(this.props.closeModal);
+      this.props.updateProject(project).then(this.props.closeModal);
     }
   }, {
     key: "renderErrors",
@@ -1266,7 +1271,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1327,11 +1331,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state, ownProps) {
+var mapStateToProps = function mapStateToProps(state) {
   return {
     errors: state.errors.projects,
-    project: state.entities.projects[ownProps.match.params.projectId] //might be project.id
-
+    project: state.entities.projects[state.ui.projectId]
   };
 };
 
@@ -1493,8 +1496,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     deleteProject: function deleteProject(projectId) {
       return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_4__["deleteProject"])(projectId));
     },
-    openModal: function openModal(form) {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["openModal"])(form));
+    openModal: function openModal(form, projectId) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["openModal"])(form, projectId));
     },
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["closeModal"])());
@@ -1555,13 +1558,13 @@ function (_React$Component) {
   }
 
   _createClass(ProjectIndexItem, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "eventListeners",
+    value: function eventListeners() {
       var that = this; //open edit modal
 
       $("#project-edit-".concat(that.props.project.id)).click(function (event) {
         event.stopPropagation();
-        that.props.openModal('editProject');
+        that.props.openModal('editProject', that.props.project.id);
       }); //link to show page
 
       $("#project-tile-".concat(that.props.project.id)).click(function () {
@@ -1587,6 +1590,16 @@ function (_React$Component) {
         e.stopPropagation();
         that.props.deleteProject(that.props.project.id);
       });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.eventListeners();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.eventListeners();
     }
   }, {
     key: "render",
@@ -1686,9 +1699,9 @@ function (_React$Component) {
     // }
     value: function render() {
       var project = this.props.project;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "sad show page is sad"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/app"
-      }, "Back to Home")));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "construction"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Under Construction"));
     }
   }]);
 
@@ -2470,6 +2483,38 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./frontend/reducers/project_id_reducer.js":
+/*!*************************************************!*\
+  !*** ./frontend/reducers/project_id_reducer.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
+
+var projectIdReducer = function projectIdReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_MODAL"]:
+      return action.projectId;
+
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["CLOSE_MODAL"]:
+      return null;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (projectIdReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/projects_reducer.js":
 /*!***********************************************!*\
   !*** ./frontend/reducers/projects_reducer.js ***!
@@ -2626,10 +2671,13 @@ var sessionReducer = function sessionReducer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _modal_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal_reducer */ "./frontend/reducers/modal_reducer.js");
+/* harmony import */ var _project_id_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project_id_reducer */ "./frontend/reducers/project_id_reducer.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  projectId: _project_id_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 }));
 
 /***/ }),

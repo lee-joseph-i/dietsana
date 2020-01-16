@@ -22,7 +22,7 @@ const mapDispatchToProps = dispatch => ({
   createProject: project => dispatch(createProject(project)),
   updateProject: project => dispatch(updateProject(project)),
   deleteProject: projectId => dispatch(deleteProject(projectId)),
-  openModal: form => dispatch(openModal(form)),
+  openModal: (form, projectId) => dispatch(openModal(form, projectId)),
   closeModal: () => dispatch(closeModal()),
   clearErrors: () => dispatch(clearErrors())
 });

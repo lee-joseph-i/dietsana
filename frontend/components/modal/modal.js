@@ -6,7 +6,7 @@ import SignupFormContainer from '../session_form/signup_form_container';
 import ProjectCreateFormContainer from '../projects/project_create_form_container';
 import ProjectEditFormContainer from '../projects/project_edit_form_container';
 
-function Modal({ modal, closeModal }) {
+function Modal({ modal, closeModal, currentProject }) {
   if (!modal) {
     return null;
   }
@@ -22,7 +22,7 @@ function Modal({ modal, closeModal }) {
       component = <ProjectCreateFormContainer />;
       break;
     case 'editProject':
-      component = <ProjectEditFormContainer />;
+      component = <ProjectEditFormContainer currentProject={currentProject} />;
       break;
     default:
       return null;
@@ -38,13 +38,14 @@ function Modal({ modal, closeModal }) {
 
 const mapStateToProps = state => {
   return {
-    modal: state.ui.modal
+    modal: state.ui.modal,
+    currentProject: state.entities.projects[state.ui.projectId]
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
   };
 };
 

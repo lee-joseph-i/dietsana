@@ -5,25 +5,26 @@ import { Route, withRouter } from 'react-router-dom';
 class ProjectIndexItem extends React.Component {
   constructor(props) {
     super(props);
+    
   };
 
-  componentDidMount() {
+  eventListeners(){
     let that = this;
 
     //open edit modal
-    $(`#project-edit-${that.props.project.id}`).click(function(event) {
+    $(`#project-edit-${that.props.project.id}`).click(function (event) {
       event.stopPropagation();
-      that.props.openModal('editProject');
+      that.props.openModal('editProject', that.props.project.id);
     });
 
     //link to show page
-    $(`#project-tile-${that.props.project.id}`).click(function() {
+    $(`#project-tile-${that.props.project.id}`).click(function () {
       that.props.history.push(`/app/projects/${that.props.project.id}`);
       <Link to={`/app/projects/${that.props.project.id}`} />
     });
 
     //open dropdown
-    $(`#ellipsis-${that.props.project.id}`).click(function(e) {
+    $(`#ellipsis-${that.props.project.id}`).click(function (e) {
       e.stopPropagation();
       $(`.project-dropdown`).removeClass('reveal-dropdown')
       $(`#project-dropdown-${that.props.project.id}`).addClass('reveal-dropdown')
@@ -37,11 +38,21 @@ class ProjectIndexItem extends React.Component {
     });
 
     //delete project
-    $(`#project-delete-${that.props.project.id}`).click(function(e) {
+    $(`#project-delete-${that.props.project.id}`).click(function (e) {
       e.stopPropagation();
       that.props.deleteProject(that.props.project.id);
     })
   }
+
+  componentDidMount() {
+    this.eventListeners();
+
+  }
+
+  componentDidUpdate(){
+    this.eventListeners();
+  }
+
 
   render() {
     const { project } = this.props;
@@ -53,7 +64,7 @@ class ProjectIndexItem extends React.Component {
         <div id={`project-dropdown-${project.id}`} className={`project-dropdown`}>
           {/* <div id={`project-delete-${project.id}`} className="dropdown-item" onClick={this.editProject}>Edit Project</div> */}
           <div id={`project-edit-${project.id}`} className="dropdown-item">Edit Project</div>
-          <div id={`project-delete-${project.id}`}className="dropdown-item">Delete Project</div>
+          <div id={`project-delete-${project.id}`} className="dropdown-item">Delete Project</div>
         </div>
         <div className="tile-card">
           <svg className="project-icon" viewBox="0 0 32 32" tabIndex="0" focusable="false">
