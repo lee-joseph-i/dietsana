@@ -147,7 +147,6 @@
     .project-dropdown{
       display: none;
       position: absolute;
-      z-index: 2;
       background: white;
       font-size: 12px;
       width: 110px;
@@ -162,12 +161,8 @@
       max-width: 500px;
       min-width: 185px;
       padding: 5px 0;
-
-    //       background: #fff;
-    // border-radius: 4px;
-    // box-shadow: 0 0 0 1px rgba(111,119,130,.15), 0 5px 20px 0 rgba(21,27,38,.08);
-    // -moz-box-sizing: border-box;
-    // box-sizing: border-box;
+      top: 45px;
+      left: 95px;
     }
 
     .project-icon{
@@ -175,7 +170,11 @@
       -webkit-transition-duration: .4s;
       transition-duration: .4s;
       width: 32px;
+      &:focus{
+        outline: none;
+      }
     }
+    
     
     .ellipsis{
       opacity: 0;
@@ -211,6 +210,10 @@
       &:hover{
         background-color: #e8ecee;
       }
+      align-items: center;
+      padding: 0 10px;
+      display: flex;
+      //display flex for future implementation of color, which is two elements rowed.
     }
 
     .reveal-dropdown{

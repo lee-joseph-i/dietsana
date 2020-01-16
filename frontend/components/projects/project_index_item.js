@@ -7,6 +7,7 @@ class ProjectIndexItem extends React.Component {
 
     this.revealDropdown = this.revealDropdown.bind(this);
     this.removeProject = this.removeProject.bind(this);
+    this.editProject = this.editProject.bind(this);
   };
 
   removeProject(e){
@@ -14,20 +15,31 @@ class ProjectIndexItem extends React.Component {
     this.props.deleteProject(this.props.project.id);
   }
 
+  editProject(e){
+    e.stopPropagation();
+    this.props.updateProject(this.props.project.id);
+  }
+
   revealDropdown(project) {
     $(`.project-dropdown`).removeClass('reveal-dropdown')
     $(`#project-dropdown-${project.id}`).addClass('reveal-dropdown')
-  }
+
+    $('.app').click(function (event) {
+      if (!$(event.target).closest(`#project-dropdown-${project.id}`).length && !$(event.target).is(`#project-dropdown-${project.id}`)) {
+        $(`.project-dropdown`).removeClass('reveal-dropdown')
+      }
+    });
+  };
 
   render() {
-    const { project, key, deleteProject, updateProject } = this.props;
+    const { project, updateProject } = this.props;
     return (
       <div key={project.id} className="project-tile">
         <svg onClick={() => this.revealDropdown(project)} id={`ellipsis-${project.id}`} className="ellipsis" viewBox="0 0 32 32" tabIndex="0" focusable="false">
           <path d="M16,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S14.3,13,16,13z M3,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S1.3,13,3,13z M29,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S27.3,13,29,13z"></path>
         </svg>
         <div id={`project-dropdown-${project.id}`} className={`project-dropdown`}>
-          <div className="dropdown-item" onClick={() => updateProject(project.id)}>Edit Project</div>
+          <div className="dropdown-item" onClick={this.editProject}>Edit Project</div>
           <div className="dropdown-item" onClick={this.removeProject}>Delete Project</div>
         </div>
         <div className="tile-card">

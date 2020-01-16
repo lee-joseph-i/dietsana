@@ -1264,8 +1264,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-list"
       }, projects.map(function (project, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_index_item__WEBPACK_IMPORTED_MODULE_2__["default"] // key={project.id} 
-        , {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          key: i,
           project: project,
           deleteProject: deleteProject,
           updateProject: updateProject
@@ -1409,6 +1409,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectIndexItem).call(this, props));
     _this.revealDropdown = _this.revealDropdown.bind(_assertThisInitialized(_this));
     _this.removeProject = _this.removeProject.bind(_assertThisInitialized(_this));
+    _this.editProject = _this.editProject.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1419,10 +1420,21 @@ function (_React$Component) {
       this.props.deleteProject(this.props.project.id);
     }
   }, {
+    key: "editProject",
+    value: function editProject(e) {
+      e.stopPropagation();
+      this.props.updateProject(this.props.project.id);
+    }
+  }, {
     key: "revealDropdown",
     value: function revealDropdown(project) {
       $(".project-dropdown").removeClass('reveal-dropdown');
       $("#project-dropdown-".concat(project.id)).addClass('reveal-dropdown');
+      $('.app').click(function (event) {
+        if (!$(event.target).closest("#project-dropdown-".concat(project.id)).length && !$(event.target).is("#project-dropdown-".concat(project.id))) {
+          $(".project-dropdown").removeClass('reveal-dropdown');
+        }
+      });
     }
   }, {
     key: "render",
@@ -1431,8 +1443,6 @@ function (_React$Component) {
 
       var _this$props = this.props,
           project = _this$props.project,
-          key = _this$props.key,
-          deleteProject = _this$props.deleteProject,
           updateProject = _this$props.updateProject;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         key: project.id,
@@ -1453,9 +1463,7 @@ function (_React$Component) {
         className: "project-dropdown"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dropdown-item",
-        onClick: function onClick() {
-          return updateProject(project.id);
-        }
+        onClick: this.editProject
       }, "Edit Project"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dropdown-item",
         onClick: this.removeProject
