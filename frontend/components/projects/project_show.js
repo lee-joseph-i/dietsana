@@ -12,13 +12,15 @@ class ProjectShow extends React.Component {
 
     return (
       <div>
-        testing show
+        <div>sad show page is sad</div>
         {/* {project.id}
         {project.name}
         {project.description}
         {project.owner_id}
         {project.creator_id} */}
-        <Link to='/app'>Back to Home</Link>
+        <div>
+         <Link to='/app'>Back to Home</Link>
+        </div>
       </div>
     )
   }

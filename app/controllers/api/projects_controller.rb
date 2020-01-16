@@ -38,21 +38,12 @@ class Api::ProjectsController < ApplicationController
     else
       render json: ['Project not found!']
     end
-
-    # @project = Project.find(params[:id]);
-    # if @project
-    #   @project.destroy
-    #   render :show
-      # else
-    #   render ['Could not find project']
-    # end
   end
 
 
   private
 
   def project_params
-    # debugger
     params.require(:project).permit(:name, :owner_id, :description)
   end
 end

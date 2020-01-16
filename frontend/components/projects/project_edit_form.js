@@ -33,7 +33,7 @@ class ProjectEditForm extends React.Component {
   }
 
   render() {
-    debugger
+    debugger;
     return (
       <div className="login-form-container">
         <div onClick={this.props.closeModal} className="close-x">X</div>

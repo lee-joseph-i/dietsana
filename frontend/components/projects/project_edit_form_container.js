@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { updateProject } from '../../actions/project_actions';
 import { closeModal } from '../../actions/modal_actions';
 import ProjectEditForm from './project_edit_form';
 import { clearErrors } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger;
   return {
     errors: state.errors.projects,
     project: state.entities.projects[ownProps.match.params.projectId]
@@ -21,4 +21,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectEditForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProjectEditForm));

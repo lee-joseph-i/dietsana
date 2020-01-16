@@ -5,54 +5,55 @@ import { Route, withRouter } from 'react-router-dom';
 class ProjectIndexItem extends React.Component {
   constructor(props) {
     super(props);
-
-    this.revealDropdown = this.revealDropdown.bind(this);
-    this.removeProject = this.removeProject.bind(this);
-    // this.editProject = this.editProject.bind(this);
   };
 
   componentDidMount() {
     let that = this;
+
+    //open edit modal
     $(`#project-edit-${that.props.project.id}`).click(function(event) {
       event.stopPropagation();
       that.props.openModal('editProject');
     });
 
+    //link to show page
     $(`#project-tile-${that.props.project.id}`).click(function() {
       that.props.history.push(`/app/projects/${that.props.project.id}`);
       <Link to={`/app/projects/${that.props.project.id}`} />
     });
-  }
 
-  removeProject(e){
-    e.stopPropagation();
-    this.props.deleteProject(this.props.project.id);
-  }
+    //open dropdown
+    $(`#ellipsis-${that.props.project.id}`).click(function(e) {
+      e.stopPropagation();
+      $(`.project-dropdown`).removeClass('reveal-dropdown')
+      $(`#project-dropdown-${that.props.project.id}`).addClass('reveal-dropdown')
+    })
 
-  revealDropdown(e) {
-    e.stopPropagation();
-    let that = this;
-    $(`.project-dropdown`).removeClass('reveal-dropdown')
-    $(`#project-dropdown-${that.props.project.id}`).addClass('reveal-dropdown')
-
+    //close dropdown if clicked outside
     $('.app').click(function (event) {
       if (!$(event.target).closest(`#project-dropdown-${that.props.project.id}`).length && !$(event.target).is(`#project-dropdown-${that.props.project.id}`)) {
         $(`.project-dropdown`).removeClass('reveal-dropdown')
       }
     });
-  };
+
+    //delete project
+    $(`#project-delete-${that.props.project.id}`).click(function(e) {
+      e.stopPropagation();
+      that.props.deleteProject(that.props.project.id);
+    })
+  }
 
   render() {
     const { project } = this.props;
     return (
       <div id={`project-tile-${project.id}`} key={project.id} className="project-tile">
-        <svg onClick={() => this.revealDropdown()} id={`ellipsis-${project.id}`} className="ellipsis" viewBox="0 0 32 32" tabIndex="0" focusable="false">
+        <svg id={`ellipsis-${project.id}`} className="ellipsis" viewBox="0 0 32 32" tabIndex="0" focusable="false">
           <path d="M16,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S14.3,13,16,13z M3,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S1.3,13,3,13z M29,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S27.3,13,29,13z"></path>
         </svg>
         <div id={`project-dropdown-${project.id}`} className={`project-dropdown`}>
           {/* <div id={`project-delete-${project.id}`} className="dropdown-item" onClick={this.editProject}>Edit Project</div> */}
           <div id={`project-edit-${project.id}`} className="dropdown-item">Edit Project</div>
-          <div className="dropdown-item" onClick={this.removeProject}>Delete Project</div>
+          <div id={`project-delete-${project.id}`}className="dropdown-item">Delete Project</div>
         </div>
         <div className="tile-card">
           <svg className="project-icon" viewBox="0 0 32 32" tabIndex="0" focusable="false">
