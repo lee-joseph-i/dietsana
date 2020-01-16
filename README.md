@@ -35,6 +35,5 @@ case-sensitive when attempting to sign in.
 
 
 CURRENT PATH:
-controllers
-views/jsonbuilder
-project api util
+ something's wrong with stop event propagation. trying deleting consecutive projects.
+ finally got ownProps to work, but now edit hits a new error. continue working on the modal for edit project

@@ -1,0 +1,20 @@
+.app{
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 0;
+
+    -webkit-box-flex: 1;
+    flex: 1;
+    min-height: 1px;
+    overflow: hidden;
+    width: 100%;
+}

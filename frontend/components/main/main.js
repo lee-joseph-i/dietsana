@@ -1,22 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { render } from 'react-dom';
+import { Route } from 'react-router-dom';
+import SidebarContainer from '../sidebar/sidebar_container';
+import Body from '../body/body';
 
-class Main extends React.Component{
-  constructor(props){
-    super(props)
-  }
-
-  render(){
-    const { currentUser, logout } = this.props;
-
-    return(
-      <div>
-        <h2>Welcome, {currentUser.first_name}!</h2>
-        <button onClick={logout}>Log Out</button>
-      </div>
-    )
-  }
-}
+const Main = () => (
+  <div className="app">
+    <Route path="/app" component={SidebarContainer} />
+    <Route path="/app" component={Body} />
+  </div>
+);
 
 export default Main;

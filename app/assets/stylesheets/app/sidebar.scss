@@ -1,0 +1,81 @@
+.app{
+  .sidebar{
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-transition: margin-left 250ms ease-out,-webkit-transform 250ms ease-out;
+    transition: margin-left 250ms ease-out,-webkit-transform 250ms ease-out;
+    transition: margin-left 250ms ease-out,transform 250ms ease-out;
+    transition: margin-left 250ms ease-out,transform 250ms ease-out,-webkit-transform 250ms ease-out;
+    width: 244px;
+    background-color: #151b26;
+    color: white;    
+
+    .link{
+      color: #cbd4db;
+    font-weight: 400;
+    }
+
+    .link-select{
+      background-color: #434344;
+
+    }
+  }
+
+  .test{
+    text-decoration: none;
+  }
+
+  .sidebar-logo{
+    background-image: url(https://d3ki9tyy5l5ruj.cloudfront.net/obj/3ac85a538c3fc5bb08d0206ede04ae8aa13c20b2/inapp__logo_color_ondark_horizontal.svg);
+    background-position: 17px 0;
+    background-repeat: no-repeat;
+    background-size: 80px 16px;
+    -webkit-box-flex: 1;
+    // flex-grow: 1;
+    height: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 20px 0;
+  }
+
+  .sidebar-item{
+    color: unset;
+    -webkit-box-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: flex;
+    fill: #9ca6af;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px 0 15px;
+  }
+
+  .sidebar-item:hover{
+    background-color: #222833;
+  }
+
+  .sidebar-item-select{
+    background-color: #434344;
+  }
+
+  .sidebar-item:focus{
+    background-color: white;
+  }
+
+
+  .type-icon{
+    fill: #6f7782;
+    margin-right: 10px;
+    -webkit-transition: -webkit-transform 250ms ease-out;
+    transition: -webkit-transform 250ms ease-out;
+    transition: transform 250ms ease-out;
+    transition: transform 250ms ease-out, -webkit-transform 250ms ease-out;
+    height: 20px;
+    width: 20px;
+  }
+}

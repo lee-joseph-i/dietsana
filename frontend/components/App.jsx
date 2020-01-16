@@ -6,7 +6,6 @@ import Main from './main/main_container';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import Footer from './nav_bar/footer';
 import Modal from './modal/modal';
-import ProjectHomeContainer from './projects/project_home_container';
 
 const App = () => (
   <div>
@@ -14,11 +13,7 @@ const App = () => (
       <Route exact path="/" component={NavBarContainer} />
       <Route exact path="/" component={LandingContainer} />
       <Route exact path="/" component={Footer} />
-      <div className="homepage">
-        <ProtectedRoute path="/app" component={Main} />
-        <ProtectedRoute path="/app" component={ProjectHomeContainer} />
-      </div>
-
+      <ProtectedRoute path="/app" component={Main} />
   </div>
 );
 

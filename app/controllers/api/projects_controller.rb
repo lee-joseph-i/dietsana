@@ -4,16 +4,17 @@ class Api::ProjectsController < ApplicationController
     @project.creator_id = current_user.id
     # permit owner_id but leave it blank
     # same with description
+    # debugger
     if @project.save
-      render "api/projects/show"
+      render 'api/projects/show'
     else
-      render json: ['Please name  your project.'], status: 422
+      render json: ['Please name your project.'], status: 422
     end
   end
 
   def index
     @projects = Project.all
-    render :index
+    # render "api/projects/index"
   end
 
   def show
@@ -31,16 +32,12 @@ class Api::ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
-    @project.destroy
-    
-
-    # @project = Project.find(params[:id]);
-    # if @project
-    #   @project.destroy
-    #   render :show
-    # else
-    #   render ['Could not find project']
-    # end
+    if @project
+      @project.destroy
+      render :show
+    else
+      render json: ['Project not found!']
+    end
   end
 
 

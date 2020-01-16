@@ -28,9 +28,16 @@ export const updateProject = project => (
   })
 );
 
-export const deleteProject = projectId => (
-  $.ajax({
+// export const deleteProject = projectId => (
+//   $.ajax({
+//     method: 'DELETE',
+//     url: `/api/projects/${projectId}`
+//   })
+// );
+
+export const deleteProject = projectId => {
+  return $.ajax({
     method: 'DELETE',
     url: `/api/projects/${projectId}`
   })
-);
+};
