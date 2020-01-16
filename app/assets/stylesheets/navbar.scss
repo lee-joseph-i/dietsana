@@ -10,18 +10,13 @@
   background-color: white;
   transition: box-shadow .40s ease-in-out;
   z-index: 4;
-
-  // box-shadow: 0 0px 30px 0 rgba(36,50,66,.14);
 }
 
 html:not([data-scroll='0']) {
-
-    .nav-bar {
-        box-shadow: 0 0px 14px 0 rgba(59, 83, 109, 0.14);
-    }
-    
+  .nav-bar {
+    box-shadow: 0 0px 14px 0 rgba(59, 83, 109, 0.14);
+  }
 }
-
 
 .signup-navbar{
   font-size: 15px;

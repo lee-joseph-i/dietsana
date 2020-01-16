@@ -13,8 +13,18 @@
     min-width: 920px;
     align-items: center;
     min-height: 1px;
-    overflow-y: auto;
     // justify-content: center;
+
+    .home-body{
+      width: 100%;
+      position: absolute;
+      top: 70px;
+      bottom: 0px;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
     .project-list{
       display: -webkit-box;
@@ -23,6 +33,9 @@
       -webkit-box-direction: normal;
       flex-flow: row wrap;
       padding-top: 15px;
+      flex-shrink: 4;
+      width: 900px;
+      margin-top: 50px;
     }
 
     .project-tile{
@@ -132,7 +145,6 @@
     }
     
     .project-dropdown{
-      opacity: 0;
       display: none;
       position: absolute;
       z-index: 2;
@@ -146,6 +158,16 @@
       margin-top: 5px;
       line-height: 20px;
       box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.05);
+      font-size: 13px;
+      max-width: 500px;
+      min-width: 185px;
+      padding: 5px 0;
+
+    //       background: #fff;
+    // border-radius: 4px;
+    // box-shadow: 0 0 0 1px rgba(111,119,130,.15), 0 5px 20px 0 rgba(21,27,38,.08);
+    // -moz-box-sizing: border-box;
+    // box-sizing: border-box;
     }
 
     .project-icon{
@@ -183,7 +205,12 @@
 
     .dropdown-item{
       z-index: 4;
-      position: absolute;
+      position: relative;
+      padding-right: 20px;
+      height: 30px;
+      &:hover{
+        background-color: #e8ecee;
+      }
     }
 
     .reveal-dropdown{

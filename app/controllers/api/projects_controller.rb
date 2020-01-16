@@ -14,7 +14,7 @@ class Api::ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
-    render "api/projects/index"
+    # render "api/projects/index"
   end
 
   def show
@@ -32,8 +32,12 @@ class Api::ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
-    @project.destroy
-    
+    if @project
+      @project.destroy
+      render :show
+    else
+      render json: ['Project not found!']
+    end
 
     # @project = Project.find(params[:id]);
     # if @project
