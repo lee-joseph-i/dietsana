@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 
 class ProjectIndexItem extends React.Component {
   constructor(props) {
@@ -7,39 +8,50 @@ class ProjectIndexItem extends React.Component {
 
     this.revealDropdown = this.revealDropdown.bind(this);
     this.removeProject = this.removeProject.bind(this);
-    this.editProject = this.editProject.bind(this);
+    // this.editProject = this.editProject.bind(this);
   };
+
+  componentDidMount() {
+    let that = this;
+    $(`#project-edit-${that.props.project.id}`).click(function(event) {
+      event.stopPropagation();
+      that.props.openModal('editProject');
+    });
+
+    $(`#project-tile-${that.props.project.id}`).click(function() {
+      that.props.history.push(`/app/projects/${that.props.project.id}`);
+      <Link to={`/app/projects/${that.props.project.id}`} />
+    });
+  }
 
   removeProject(e){
     e.stopPropagation();
     this.props.deleteProject(this.props.project.id);
   }
 
-  editProject(e){
+  revealDropdown(e) {
     e.stopPropagation();
-    this.props.updateProject(this.props.project.id);
-  }
-
-  revealDropdown(project) {
+    let that = this;
     $(`.project-dropdown`).removeClass('reveal-dropdown')
-    $(`#project-dropdown-${project.id}`).addClass('reveal-dropdown')
+    $(`#project-dropdown-${that.props.project.id}`).addClass('reveal-dropdown')
 
     $('.app').click(function (event) {
-      if (!$(event.target).closest(`#project-dropdown-${project.id}`).length && !$(event.target).is(`#project-dropdown-${project.id}`)) {
+      if (!$(event.target).closest(`#project-dropdown-${that.props.project.id}`).length && !$(event.target).is(`#project-dropdown-${that.props.project.id}`)) {
         $(`.project-dropdown`).removeClass('reveal-dropdown')
       }
     });
   };
 
   render() {
-    const { project, updateProject } = this.props;
+    const { project } = this.props;
     return (
-      <div key={project.id} className="project-tile">
-        <svg onClick={() => this.revealDropdown(project)} id={`ellipsis-${project.id}`} className="ellipsis" viewBox="0 0 32 32" tabIndex="0" focusable="false">
+      <div id={`project-tile-${project.id}`} key={project.id} className="project-tile">
+        <svg onClick={() => this.revealDropdown()} id={`ellipsis-${project.id}`} className="ellipsis" viewBox="0 0 32 32" tabIndex="0" focusable="false">
           <path d="M16,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S14.3,13,16,13z M3,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S1.3,13,3,13z M29,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S27.3,13,29,13z"></path>
         </svg>
         <div id={`project-dropdown-${project.id}`} className={`project-dropdown`}>
-          <div className="dropdown-item" onClick={this.editProject}>Edit Project</div>
+          {/* <div id={`project-delete-${project.id}`} className="dropdown-item" onClick={this.editProject}>Edit Project</div> */}
+          <div id={`project-edit-${project.id}`} className="dropdown-item">Edit Project</div>
           <div className="dropdown-item" onClick={this.removeProject}>Delete Project</div>
         </div>
         <div className="tile-card">
@@ -53,5 +65,5 @@ class ProjectIndexItem extends React.Component {
   }
 }
 
-export default ProjectIndexItem;
+export default withRouter(ProjectIndexItem);
 

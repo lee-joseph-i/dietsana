@@ -361,11 +361,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var _projects_project_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../projects/project_index_container */ "./frontend/components/projects/project_index_container.js");
-/* harmony import */ var _header_header_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../header/header-container */ "./frontend/components/header/header-container.js");
+/* harmony import */ var _projects_project_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../projects/project_index_container */ "./frontend/components/projects/project_index_container.js");
+/* harmony import */ var _header_header_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../header/header-container */ "./frontend/components/header/header-container.js");
+/* harmony import */ var _projects_project_create_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../projects/project_create_form_container */ "./frontend/components/projects/project_create_form_container.js");
+/* harmony import */ var _projects_project_show_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../projects/project_show_container */ "./frontend/components/projects/project_show_container.js");
+/* harmony import */ var _projects_project_edit_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../projects/project_edit_form_container */ "./frontend/components/projects/project_edit_form_container.js");
+
 
 
 
@@ -376,12 +377,24 @@ __webpack_require__.r(__webpack_exports__);
 var Body = function Body() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
     path: "/app",
-    component: _header_header_container__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
+    component: _header_header_container__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
     path: "/app",
-    component: _projects_project_index_container__WEBPACK_IMPORTED_MODULE_4__["default"]
+    component: _projects_project_index_container__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/app/projects/new",
+    component: _projects_project_create_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/app/projects/:projectId",
+    component: _projects_project_show_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/app/projects/:projectId/edit",
+    component: _projects_project_edit_form_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }));
 };
 
@@ -562,44 +575,38 @@ function (_React$Component) {
   _createClass(Landing, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      $(document).ready(function () {
-        $('#msg-1').click(function () {
-          $('#msg-1').addClass('intro_highlights_selected');
-          $('#msg-2').removeClass('intro_highlights_selected');
-          $('#msg-3').removeClass('intro_highlights_selected');
-          $('#vid-1').addClass('background-vid');
-          $('#vid-1').removeClass('hidden');
-          $('#vid-2').addClass('hidden');
-          $('#vid-2').removeClass('background-vid');
-          $('#vid-3').addClass('hidden');
-          $('#vid-3').removeClass('background-vid');
-        });
+      $('#msg-1').click(function () {
+        $('#msg-1').addClass('intro_highlights_selected');
+        $('#msg-2').removeClass('intro_highlights_selected');
+        $('#msg-3').removeClass('intro_highlights_selected');
+        $('#vid-1').addClass('background-vid');
+        $('#vid-1').removeClass('hidden');
+        $('#vid-2').addClass('hidden');
+        $('#vid-2').removeClass('background-vid');
+        $('#vid-3').addClass('hidden');
+        $('#vid-3').removeClass('background-vid');
       });
-      $(document).ready(function () {
-        $('#msg-2').click(function () {
-          $('#msg-1').removeClass('intro_highlights_selected');
-          $('#msg-2').addClass('intro_highlights_selected');
-          $('#msg-3').removeClass('intro_highlights_selected');
-          $('#vid-1').addClass('hidden');
-          $('#vid-1').removeClass('background-vid');
-          $('#vid-2').removeClass('hidden');
-          $('#vid-2').addClass('background-vid');
-          $('#vid-3').addClass('hidden');
-          $('#vid-3').removeClass('background-vid');
-        });
+      $('#msg-2').click(function () {
+        $('#msg-1').removeClass('intro_highlights_selected');
+        $('#msg-2').addClass('intro_highlights_selected');
+        $('#msg-3').removeClass('intro_highlights_selected');
+        $('#vid-1').addClass('hidden');
+        $('#vid-1').removeClass('background-vid');
+        $('#vid-2').removeClass('hidden');
+        $('#vid-2').addClass('background-vid');
+        $('#vid-3').addClass('hidden');
+        $('#vid-3').removeClass('background-vid');
       });
-      $(document).ready(function () {
-        $('#msg-3').click(function () {
-          $('#msg-1').removeClass('intro_highlights_selected');
-          $('#msg-2').removeClass('intro_highlights_selected');
-          $('#msg-3').addClass('intro_highlights_selected');
-          $('#vid-1').addClass('hidden');
-          $('#vid-1').removeClass('background-vid');
-          $('#vid-2').addClass('hidden');
-          $('#vid-2').removeClass('background-vid');
-          $('#vid-3').removeClass('hidden');
-          $('#vid-3').addClass('background-vid');
-        });
+      $('#msg-3').click(function () {
+        $('#msg-1').removeClass('intro_highlights_selected');
+        $('#msg-2').removeClass('intro_highlights_selected');
+        $('#msg-3').addClass('intro_highlights_selected');
+        $('#vid-1').addClass('hidden');
+        $('#vid-1').removeClass('background-vid');
+        $('#vid-2').addClass('hidden');
+        $('#vid-2').removeClass('background-vid');
+        $('#vid-3').removeClass('hidden');
+        $('#vid-3').addClass('background-vid');
       });
     }
   }, {
@@ -740,13 +747,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var _sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../sidebar/sidebar_container */ "./frontend/components/sidebar/sidebar_container.js");
-/* harmony import */ var _body_body__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../body/body */ "./frontend/components/body/body.js");
-
-
+/* harmony import */ var _sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../sidebar/sidebar_container */ "./frontend/components/sidebar/sidebar_container.js");
+/* harmony import */ var _body_body__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../body/body */ "./frontend/components/body/body.js");
 
 
 
@@ -755,12 +757,12 @@ __webpack_require__.r(__webpack_exports__);
 var Main = function Main() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "app"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/app",
-    component: _sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
+    component: _sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/app",
-    component: _body_body__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _body_body__WEBPACK_IMPORTED_MODULE_3__["default"]
   }));
 };
 
@@ -820,6 +822,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../session_form/login_form_container */ "./frontend/components/session_form/login_form_container.js");
 /* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.js");
 /* harmony import */ var _projects_project_create_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../projects/project_create_form_container */ "./frontend/components/projects/project_create_form_container.js");
+/* harmony import */ var _projects_project_edit_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../projects/project_edit_form_container */ "./frontend/components/projects/project_edit_form_container.js");
+
 
 
 
@@ -848,6 +852,10 @@ function Modal(_ref) {
 
     case 'createProject':
       component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_project_create_form_container__WEBPACK_IMPORTED_MODULE_5__["default"], null);
+      break;
+
+    case 'editProject':
+      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_project_edit_form_container__WEBPACK_IMPORTED_MODULE_6__["default"], null);
       break;
 
     default:
@@ -1175,6 +1183,175 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/projects/project_edit_form.js":
+/*!***********************************************************!*\
+  !*** ./frontend/components/projects/project_edit_form.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var ProjectEditForm =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ProjectEditForm, _React$Component);
+
+  function ProjectEditForm(props) {
+    var _this;
+
+    _classCallCheck(this, ProjectEditForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectEditForm).call(this, props));
+    _this.state = _this.props.project;
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.renderErrors = _this.renderErrors.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(ProjectEditForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.clearErrors();
+    }
+  }, {
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+      };
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var project = Object.assign({}, this.state);
+      this.props.createProject(project).then(this.props.closeModal);
+    }
+  }, {
+    key: "renderErrors",
+    value: function renderErrors() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "login-error"
+      }, this.props.errors[0]);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      debugger;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login-form-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        onClick: this.props.closeModal,
+        className: "close-x"
+      }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit,
+        className: "login-form-box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Edit project details"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login-form"
+      }, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "formbox"
+      }, "Project name ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: this.state.name,
+        onChange: this.update('name'),
+        className: "login-input"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "formbox"
+      }, "Description ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        value: this.state.password,
+        onChange: this.update('description'),
+        className: "login-input"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "session-submit",
+        type: "submit",
+        value: "Edit project"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))));
+    }
+  }]);
+
+  return ProjectEditForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(ProjectEditForm));
+
+/***/ }),
+
+/***/ "./frontend/components/projects/project_edit_form_container.js":
+/*!*********************************************************************!*\
+  !*** ./frontend/components/projects/project_edit_form_container.js ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/project_actions */ "./frontend/actions/project_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _project_edit_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./project_edit_form */ "./frontend/components/projects/project_edit_form.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  debugger;
+  return {
+    errors: state.errors.projects,
+    project: state.entities.projects[ownProps.match.params.projectId] //might be project.id
+
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    updateProject: function updateProject(project) {
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_1__["updateProject"])(project));
+    },
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["closeModal"])());
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["clearErrors"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_project_edit_form__WEBPACK_IMPORTED_MODULE_3__["default"]));
+
+/***/ }),
+
 /***/ "./frontend/components/projects/project_index.js":
 /*!*******************************************************!*\
   !*** ./frontend/components/projects/project_index.js ***!
@@ -1226,38 +1403,18 @@ function (_React$Component) {
     value: function componentDidMount() {
       this.props.requestProjects();
       var that = this;
-      $(document).ready(function () {
-        $('#new-project').click(function () {
-          that.props.openModal('createProject');
-        });
+      $('#new-project').click(function () {
+        that.props.openModal('createProject');
       });
-      $(document).ready(function () {
-        that.props.projects.map(function (project, i) {
-          $("#ellipsis-".concat(project.id)).click(function () {
-            alert("test");
-            $(".project-dropdown-".concat(project.id)).addClass('reveal-dropdown');
-          });
-        });
-      });
-    } // revealDropdown(project){
-    //   const { projects } = this.props;
-    //   projects.map( (proj, i) => {
-    //     if(proj.id === project.id){
-    //       $(`#project-dropdown-${proj.id}`).addClass('reveal-dropdown');
-    //     } else {
-    //       $(`#project-dropdown-${proj.id}`).removeClass('reveal-dropdown');
-    //     }
-    //   })
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
-      var that = this;
       var _this$props = this.props,
           projects = _this$props.projects,
           updateProject = _this$props.updateProject,
-          deleteProject = _this$props.deleteProject;
+          deleteProject = _this$props.deleteProject,
+          openModal = _this$props.openModal;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "home-body",
         id: "home-body"
@@ -1268,23 +1425,9 @@ function (_React$Component) {
           key: i,
           project: project,
           deleteProject: deleteProject,
-          updateProject: updateProject
-        }) // <div key={i} className="project-tile">
-        //   <svg onClick={() => that.revealDropdown(project)} id={`ellipsis-${project.id}`} className="ellipsis" viewBox="0 0 32 32" tabIndex="0" focusable="false">
-        //     <path d="M16,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S14.3,13,16,13z M3,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S1.3,13,3,13z M29,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S27.3,13,29,13z"></path>
-        //   </svg>
-        //   <div id={`project-dropdown-${project.id}`} className={`project-dropdown`}>
-        //     <div className="dropdown-item" onClick={() => updateProject(project.id)}>Edit Project</div>
-        //     <div className="dropdown-item" onClick={() => deleteProject(project.id)}>Delete Project</div>
-        //   </div>
-        //   <div className="tile-card">
-        //     <svg className="project-icon" viewBox="0 0 32 32" tabIndex="0" focusable="false">
-        //       <path d="M 26 2 H 6 C 2.7 2 0 4.7 0 8 v 14 c 0 3.3 2.7 6 6 6 h 20 c 3.3 0 6 -2.7 6 -6 V 8 C 32 4.7 29.3 2 26 2 Z M 30 22 c 0 2.2 -1.8 4 -4 4 H 6 c -2.2 0 -4 -1.8 -4 -4 V 8 c 0 -2.2 1.8 -4 4 -4 h 20 c 2.2 0 4 1.8 4 4 V 22 Z M 26 9 c 0 0.6 -0.4 1 -1 1 H 13 c -0.6 0 -1 -0.4 -1 -1 s 0.4 -1 1 -1 h 12 C 25.6 8 26 8.4 26 9 Z M 12 15 c 0 -0.6 0.4 -1 1 -1 h 6 c 0.6 0 1 0.4 1 1 s -0.4 1 -1 1 h -6 C 12.4 16 12 15.6 12 15 Z M 24 21 c 0 0.6 -0.4 1 -1 1 H 13 c -0.6 0 -1 -0.4 -1 -1 s 0.4 -1 1 -1 h 10 C 23.6 20 24 20.4 24 21 Z M 9.2 9 c 0 0.7 -0.5 1.2 -1.2 1.2 S 6.8 9.7 6.8 9 S 7.3 7.8 8 7.8 S 9.2 8.3 9.2 9 Z M 9.2 15 c 0 0.7 -0.5 1.2 -1.2 1.2 S 6.8 15.7 6.8 15 s 0.5 -1.2 1.2 -1.2 S 9.2 14.3 9.2 15 Z M 9.2 21 c 0 0.7 -0.5 1.2 -1.2 1.2 S 6.8 21.7 6.8 21 s 0.5 -1.2 1.2 -1.2 S 9.2 20.3 9.2 21 Z"></path>
-        //     </svg>
-        //   </div>
-        //   <div className="tile-name">{project.name}</div>
-        // </div>
-        ;
+          updateProject: updateProject,
+          openModal: openModal
+        });
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "new-project",
         className: "project-tile"
@@ -1320,7 +1463,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _project_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project_index */ "./frontend/components/projects/project_index.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/project_actions */ "./frontend/actions/project_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/project_actions */ "./frontend/actions/project_actions.js");
+
 
 
 
@@ -1336,30 +1481,30 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     requestProjects: function requestProjects() {
-      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["requestProjects"])());
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_4__["requestProjects"])());
     },
     createProject: function createProject(project) {
-      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["createProject"])(project));
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_4__["createProject"])(project));
     },
     updateProject: function updateProject(project) {
-      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["updateProject"])(project));
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_4__["updateProject"])(project));
     },
     deleteProject: function deleteProject(projectId) {
-      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["deleteProject"])(projectId));
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_4__["deleteProject"])(projectId));
     },
-    openModal: function openModal() {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["openModal"])('createProject'));
+    openModal: function openModal(form) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["openModal"])(form));
     },
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["closeModal"])());
     },
     clearErrors: function clearErrors() {
-      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["clearErrors"])());
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_4__["clearErrors"])());
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_project_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_project_index__WEBPACK_IMPORTED_MODULE_1__["default"])));
 
 /***/ }),
 
@@ -1396,6 +1541,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var ProjectIndexItem =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1408,30 +1554,41 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectIndexItem).call(this, props));
     _this.revealDropdown = _this.revealDropdown.bind(_assertThisInitialized(_this));
-    _this.removeProject = _this.removeProject.bind(_assertThisInitialized(_this));
-    _this.editProject = _this.editProject.bind(_assertThisInitialized(_this));
+    _this.removeProject = _this.removeProject.bind(_assertThisInitialized(_this)); // this.editProject = this.editProject.bind(this);
+
     return _this;
   }
 
   _createClass(ProjectIndexItem, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var that = this;
+      $("#project-edit-".concat(that.props.project.id)).click(function (event) {
+        event.stopPropagation();
+        that.props.openModal('editProject');
+      });
+      $("#project-tile-".concat(that.props.project.id)).click(function () {
+        that.props.history.push("/app/projects/".concat(that.props.project.id));
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/app/projects/".concat(that.props.project.id)
+        });
+      });
+    }
+  }, {
     key: "removeProject",
     value: function removeProject(e) {
       e.stopPropagation();
       this.props.deleteProject(this.props.project.id);
     }
   }, {
-    key: "editProject",
-    value: function editProject(e) {
-      e.stopPropagation();
-      this.props.updateProject(this.props.project.id);
-    }
-  }, {
     key: "revealDropdown",
-    value: function revealDropdown(project) {
+    value: function revealDropdown(e) {
+      e.stopPropagation();
+      var that = this;
       $(".project-dropdown").removeClass('reveal-dropdown');
-      $("#project-dropdown-".concat(project.id)).addClass('reveal-dropdown');
+      $("#project-dropdown-".concat(that.props.project.id)).addClass('reveal-dropdown');
       $('.app').click(function (event) {
-        if (!$(event.target).closest("#project-dropdown-".concat(project.id)).length && !$(event.target).is("#project-dropdown-".concat(project.id))) {
+        if (!$(event.target).closest("#project-dropdown-".concat(that.props.project.id)).length && !$(event.target).is("#project-dropdown-".concat(that.props.project.id))) {
           $(".project-dropdown").removeClass('reveal-dropdown');
         }
       });
@@ -1441,15 +1598,14 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var _this$props = this.props,
-          project = _this$props.project,
-          updateProject = _this$props.updateProject;
+      var project = this.props.project;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "project-tile-".concat(project.id),
         key: project.id,
         className: "project-tile"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
         onClick: function onClick() {
-          return _this2.revealDropdown(project);
+          return _this2.revealDropdown();
         },
         id: "ellipsis-".concat(project.id),
         className: "ellipsis",
@@ -1462,8 +1618,8 @@ function (_React$Component) {
         id: "project-dropdown-".concat(project.id),
         className: "project-dropdown"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dropdown-item",
-        onClick: this.editProject
+        id: "project-edit-".concat(project.id),
+        className: "dropdown-item"
       }, "Edit Project"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dropdown-item",
         onClick: this.removeProject
@@ -1485,7 +1641,101 @@ function (_React$Component) {
   return ProjectIndexItem;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ProjectIndexItem);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(ProjectIndexItem));
+
+/***/ }),
+
+/***/ "./frontend/components/projects/project_show.js":
+/*!******************************************************!*\
+  !*** ./frontend/components/projects/project_show.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var ProjectShow =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ProjectShow, _React$Component);
+
+  function ProjectShow() {
+    _classCallCheck(this, ProjectShow);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ProjectShow).apply(this, arguments));
+  }
+
+  _createClass(ProjectShow, [{
+    key: "render",
+    // componentDidMount() {
+    //   this.props.requestProject(this.props.match.params.projectId)
+    // }
+    value: function render() {
+      var project = this.props.project;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "testing show", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/app"
+      }, "Back to Home"));
+    }
+  }]);
+
+  return ProjectShow;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (ProjectShow);
+
+/***/ }),
+
+/***/ "./frontend/components/projects/project_show_container.js":
+/*!****************************************************************!*\
+  !*** ./frontend/components/projects/project_show_container.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _project_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project_show */ "./frontend/components/projects/project_show.js");
+/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/project_actions */ "./frontend/actions/project_actions.js");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {// project: state.projects[ownProps.match.params.projectId]
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {// requestProject: projectId => dispatch(requestProject(projectId))
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_project_show__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 

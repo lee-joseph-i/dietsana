@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import ProjectIndex from './project_index';
 import { openModal, closeModal } from '../../actions/modal_actions';
+import { withRouter } from 'react-router-dom';
 import { 
   clearErrors,
   createProject, 
@@ -21,9 +22,9 @@ const mapDispatchToProps = dispatch => ({
   createProject: project => dispatch(createProject(project)),
   updateProject: project => dispatch(updateProject(project)),
   deleteProject: projectId => dispatch(deleteProject(projectId)),
-  openModal: () => dispatch(openModal('createProject')),
+  openModal: form => dispatch(openModal(form)),
   closeModal: () => dispatch(closeModal()),
   clearErrors: () => dispatch(clearErrors())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectIndex);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProjectIndex));

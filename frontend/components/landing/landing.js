@@ -8,46 +8,40 @@ class Landing extends React.Component{
   }
 
   componentDidMount(){
-    $(document).ready(function () {
-      $('#msg-1').click(function () {
-        $('#msg-1').addClass('intro_highlights_selected');
-        $('#msg-2').removeClass('intro_highlights_selected');
-        $('#msg-3').removeClass('intro_highlights_selected');
-        $('#vid-1').addClass('background-vid');
-        $('#vid-1').removeClass('hidden');
-        $('#vid-2').addClass('hidden');
-        $('#vid-2').removeClass('background-vid');
-        $('#vid-3').addClass('hidden');
-        $('#vid-3').removeClass('background-vid');
-      });
+    $('#msg-1').click(function () {
+      $('#msg-1').addClass('intro_highlights_selected');
+      $('#msg-2').removeClass('intro_highlights_selected');
+      $('#msg-3').removeClass('intro_highlights_selected');
+      $('#vid-1').addClass('background-vid');
+      $('#vid-1').removeClass('hidden');
+      $('#vid-2').addClass('hidden');
+      $('#vid-2').removeClass('background-vid');
+      $('#vid-3').addClass('hidden');
+      $('#vid-3').removeClass('background-vid');
     });
 
-    $(document).ready(function () {
-      $('#msg-2').click(function () {
-        $('#msg-1').removeClass('intro_highlights_selected');
-        $('#msg-2').addClass('intro_highlights_selected');
-        $('#msg-3').removeClass('intro_highlights_selected');
-        $('#vid-1').addClass('hidden');
-        $('#vid-1').removeClass('background-vid');
-        $('#vid-2').removeClass('hidden');
-        $('#vid-2').addClass('background-vid');
-        $('#vid-3').addClass('hidden');
-        $('#vid-3').removeClass('background-vid');
-      });
+    $('#msg-2').click(function () {
+      $('#msg-1').removeClass('intro_highlights_selected');
+      $('#msg-2').addClass('intro_highlights_selected');
+      $('#msg-3').removeClass('intro_highlights_selected');
+      $('#vid-1').addClass('hidden');
+      $('#vid-1').removeClass('background-vid');
+      $('#vid-2').removeClass('hidden');
+      $('#vid-2').addClass('background-vid');
+      $('#vid-3').addClass('hidden');
+      $('#vid-3').removeClass('background-vid');
     });
 
-    $(document).ready(function () {
-      $('#msg-3').click(function () {
-        $('#msg-1').removeClass('intro_highlights_selected');
-        $('#msg-2').removeClass('intro_highlights_selected');
-        $('#msg-3').addClass('intro_highlights_selected');
-        $('#vid-1').addClass('hidden');
-        $('#vid-1').removeClass('background-vid');
-        $('#vid-2').addClass('hidden');
-        $('#vid-2').removeClass('background-vid');
-        $('#vid-3').removeClass('hidden');
-        $('#vid-3').addClass('background-vid');
-      });
+    $('#msg-3').click(function () {
+      $('#msg-1').removeClass('intro_highlights_selected');
+      $('#msg-2').removeClass('intro_highlights_selected');
+      $('#msg-3').addClass('intro_highlights_selected');
+      $('#vid-1').addClass('hidden');
+      $('#vid-1').removeClass('background-vid');
+      $('#vid-2').addClass('hidden');
+      $('#vid-2').removeClass('background-vid');
+      $('#vid-3').removeClass('hidden');
+      $('#vid-3').addClass('background-vid');
     });
   }
 
