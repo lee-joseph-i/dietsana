@@ -51,14 +51,13 @@ class ProjectIndexItem extends React.Component {
 
   componentDidUpdate(prevProps){
     if(prevProps.project.id !== this.props.project.id){
-      debugger;
       this.eventListeners();
     }
   }
 
 
   render() {
-    const { project } = this.props;
+    const { project, creator } = this.props;
     return (
       <div id={`project-tile-${project.id}`} key={project.id} className="project-tile">
         <svg id={`ellipsis-${project.id}`} className="ellipsis" viewBox="0 0 32 32" tabIndex="0" focusable="false">

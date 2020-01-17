@@ -13,7 +13,8 @@ import {
 const mapStateToProps = state => {
   return {
     projects: Object.values(state.entities.projects),
-    errors: state.errors.projects
+    errors: state.errors.projects,
+    creator: state.entities.users[state.ui.projectId]
   };
 };
 

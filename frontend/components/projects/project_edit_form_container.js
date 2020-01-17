@@ -8,7 +8,7 @@ import { clearErrors } from '../../actions/session_actions';
 const mapStateToProps = (state) => {
   return {
     errors: state.errors.projects,
-    project: state.entities.projects[state.ui.projectId]
+    project: state.entities.projects[state.ui.projectId],
   };
 };
 

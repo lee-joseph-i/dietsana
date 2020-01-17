@@ -293,7 +293,6 @@ var login = function login(formUser) {
 };
 var logout = function logout() {
   return function (dispatch) {
-    debugger;
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["logout"]().then(function () {
       return dispatch(logoutCurrentUser());
     });
@@ -1399,7 +1398,7 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "formbox"
       }, "Description ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        value: this.state.password,
+        value: this.state.description,
         onChange: this.update('description'),
         className: "login-input"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -1587,7 +1586,8 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state) {
   return {
     projects: Object.values(state.entities.projects),
-    errors: state.errors.projects
+    errors: state.errors.projects,
+    creator: state.entities.users[state.ui.projectId]
   };
 };
 
@@ -1709,14 +1709,15 @@ function (_React$Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (prevProps.project.id !== this.props.project.id) {
-        debugger;
         this.eventListeners();
       }
     }
   }, {
     key: "render",
     value: function render() {
-      var project = this.props.project;
+      var _this$props = this.props,
+          project = _this$props.project,
+          creator = _this$props.creator;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "project-tile-".concat(project.id),
         key: project.id,
@@ -2353,6 +2354,15 @@ function (_React$Component) {
   }
 
   _createClass(Sidebar, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this = this;
+
+      $('.sidebar-logo').click(function () {
+        _this.props.history.push('/');
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2376,7 +2386,7 @@ function (_React$Component) {
   return Sidebar;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Sidebar);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Sidebar));
 
 /***/ }),
 
@@ -2390,9 +2400,11 @@ function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sidebar */ "./frontend/components/sidebar/sidebar.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _sidebar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sidebar */ "./frontend/components/sidebar/sidebar.js");
+
 
 
 
@@ -2405,7 +2417,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {};
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_sidebar__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_sidebar__WEBPACK_IMPORTED_MODULE_3__["default"])));
 
 /***/ }),
 

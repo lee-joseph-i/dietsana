@@ -55,17 +55,9 @@ class ProjectEditForm extends React.Component {
               />
             </label>
             <br />
-            {/* <label className="formbox">Owner <br />
-              <input type="text"
-                value={this.state.name}
-                onChange={this.update('name')}
-                className="login-input"
-              />
-            </label>
-            <br /> */}
             <label className="formbox">Description <br />
               <textarea
-                value={this.state.password}
+                value={this.state.description}
                 onChange={this.update('description')}
                 className="login-input"
               />

@@ -1,7 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class Sidebar extends React.Component{
+
+  componentDidMount(){
+    $('.sidebar-logo').click( () => {
+      this.props.history.push('/')
+    })
+  }
+
   render(){
     return(
       <div className="sidebar">
@@ -17,4 +24,4 @@ class Sidebar extends React.Component{
   }
 }
 
-export default Sidebar;
+export default withRouter(Sidebar);

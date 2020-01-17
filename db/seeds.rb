@@ -39,14 +39,42 @@ ApplicationRecord.transaction do
 
   Project.create!(
     name: 'Flex Project',
-    owner_id: 1,
-    creator_id: 2,
+    owner_id: 2,
+    creator_id: 1,
     description: 'Build a project using the MERN stack with a team.',
   )
 
   Project.create!(
     name: 'Javascript Project',
     owner_id: 1,
+    creator_id: 3,
+    description: 'Build your own game using JS! pew pew~',
+  )
+
+  Project.create!(
+    name: 'Graduation',
+    owner_id: 1,
+    creator_id: 3,
+    description: 'Build your own game using JS! pew pew~',
+  )
+
+  Project.create!(
+    name: 'Job Search Curriculum',
+    owner_id: 3,
+    creator_id: 3,
+    description: 'Build your own game using JS! pew pew~',
+  )
+
+  Project.create!(
+    name: 'MERN Part II',
+    owner_id: 2,
+    creator_id: 1,
+    description: 'Build your own game using JS! pew pew~',
+  )
+  
+  Project.create!(
+    name: 'FullStack Project, Part II',
+    owner_id: 3,
     creator_id: 3,
     description: 'Build your own game using JS! pew pew~',
   )

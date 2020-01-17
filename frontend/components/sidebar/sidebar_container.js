@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
 import React from 'react';
 import Sidebar from './sidebar';
 
@@ -14,4 +15,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Sidebar));

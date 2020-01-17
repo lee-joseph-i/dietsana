@@ -16,9 +16,9 @@ class Api::ProjectsController < ApplicationController
     # render "api/projects/index"
   end
 
-  def show
-    @project = Project.find(params[:id])
-  end
+  # def show
+  #   @project = Project.find(params[:id])
+  # end
 
   def update
     @project = Project.find(params[:id])
