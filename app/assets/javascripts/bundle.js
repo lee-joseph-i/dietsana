@@ -1780,7 +1780,7 @@ function (_React$Component) {
         className: "profile-icon-parent"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-icon-child"
-      }, project.owner ? project.owner.first_name[0] : null, project.owner ? project.owner.last_name[0] : null))));
+      }, project.owner ? project.owner.first_name[0] : null, project.owner ? project.owner.last_name[0] : "N/A"))));
     }
   }]);
 

@@ -81,7 +81,7 @@ class ProjectIndexItem extends React.Component {
       <span id={`project-owner-${project.id}`} className="project-owner">
           <div className="profile-icon-parent">
             <div className="profile-icon-child">
-              {project.owner ? project.owner.first_name[0] : null}{project.owner ? project.owner.last_name[0] : null}
+              {project.owner ? project.owner.first_name[0] : null}{project.owner ? project.owner.last_name[0] : "N/A"}
             </div>
         </div>
       </span>
