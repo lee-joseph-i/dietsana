@@ -1171,6 +1171,10 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectCreateForm).call(this, props));
     _this.state = {
       name: '',
+      owner: {
+        first_name: '',
+        last_name: ''
+      },
       description: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -1188,6 +1192,18 @@ function (_React$Component) {
     value: function update(field) {
       var _this2 = this;
 
+      if (field == 'owner') {
+        return function (e) {
+          return _this2.setState({
+            owner: {
+              first_name: e.currentTarget.value.split(' ')[0],
+              last_name: e.currentTarget.value.split(' ')[1]
+            }
+          });
+        };
+      }
+
+      ;
       return function (e) {
         return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
       };
@@ -1225,6 +1241,13 @@ function (_React$Component) {
         type: "text",
         value: this.state.name,
         onChange: this.update('name'),
+        className: "login-input"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "formbox"
+      }, "Owner ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: this.state.owner ? this.state.owner.first_name + ' ' + this.state.owner.last_name : null,
+        onChange: this.update('owner'),
         className: "login-input"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "formbox"

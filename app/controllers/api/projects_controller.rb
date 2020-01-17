@@ -2,9 +2,14 @@ class Api::ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.creator_id = current_user.id
-    # permit owner_id but leave it blank
-    # same with description
+
+    @updated_user = User.find_by(
+      first_name: params[:project][:owner][:first_name],
+      last_name: params[:project][:owner][:last_name]
+      )
+
     if @project.save
+      @project.owner = @updated_user
       render 'api/projects/show'
     else
       render json: ['Please name your project.'], status: 422

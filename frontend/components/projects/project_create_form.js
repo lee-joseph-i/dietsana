@@ -6,6 +6,10 @@ class ProjectCreateForm extends React.Component {
     super(props);
     this.state = {
       name: '',
+      owner: {
+        first_name: '',
+        last_name: ''
+      },
       description: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,6 +21,15 @@ class ProjectCreateForm extends React.Component {
   }
 
   update(field) {
+    if (field == 'owner') {
+      return e => this.setState({
+        owner: {
+          first_name: e.currentTarget.value.split(' ')[0],
+          last_name: e.currentTarget.value.split(' ')[1]
+        }
+      })
+    };
+
     return e => this.setState({
       [field]: e.currentTarget.value
     });
@@ -51,6 +64,14 @@ class ProjectCreateForm extends React.Component {
               <input type="text"
                 value={this.state.name}
                 onChange={this.update('name')}
+                className="login-input"
+              />
+            </label>
+            <br/>
+            <label className="formbox">Owner <br />
+              <input type="text"
+                value={this.state.owner ? this.state.owner.first_name + ' ' + this.state.owner.last_name : null}
+                onChange={this.update('owner')}
                 className="login-input"
               />
             </label>
