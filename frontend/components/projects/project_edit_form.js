@@ -5,6 +5,8 @@ class ProjectEditForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.project;
+
+    // { owner: "Joseph Lee"}
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
   }
@@ -14,13 +16,26 @@ class ProjectEditForm extends React.Component {
   }
 
   update(field) {
+    if (field == 'owner') {
+      return e => this.setState({
+        owner: {
+          first_name: e.currentTarget.value.split(' ')[0], 
+          last_name: e.currentTarget.value.split(' ')[1]
+        }
+      })
+    };
+
     return e => this.setState({
       [field]: e.currentTarget.value
     });
+    
   }
 
-  handleSubmit(e) {
+  handleSubmit(e){
     e.preventDefault();
+    // change your state shape
+    // first_naem: Joseph
+    // last_name: Lee
     const project = Object.assign({}, this.state);
     this.props.updateProject(project)
       .then(this.props.closeModal)
@@ -51,6 +66,14 @@ class ProjectEditForm extends React.Component {
               <input type="text"
                 value={this.state.name}
                 onChange={this.update('name')}
+                className="login-input"
+              />
+            </label>
+            <br/>
+            <label className="formbox">Owner <br />
+              <input type="text"
+                value={ this.state.owner ? this.state.owner.first_name + ' ' +this.state.owner.last_name : null}
+                onChange={this.update('owner')}
                 className="login-input"
               />
             </label>

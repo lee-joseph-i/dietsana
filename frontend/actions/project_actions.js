@@ -13,10 +13,11 @@ export const receiveProjects = projects => {
   }
 };
 
-const receiveProject = project => ({
+const receiveProject = project => {
+  return {
   type: RECEIVE_PROJECT,
   project
-});
+}};
 
 const receiveErrors = errors => ({
   type: RECEIVE_PROJECT_ERRORS,
@@ -53,7 +54,9 @@ export const createProject = project => dispatch => (
 export const updateProject = project => dispatch => (
   APIUtil.updateProject(project)
     .then(
-      updatedProject => dispatch(receiveProject(updatedProject)),
+      updatedProject => {
+        dispatch(receiveProject(updatedProject))
+      },
       errors => dispatch(receiveErrors(errors.responseJSON))
     )
 );

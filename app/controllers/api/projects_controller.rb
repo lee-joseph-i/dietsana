@@ -22,8 +22,13 @@ class Api::ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
+    @updated_user = User.find_by(
+      first_name: params[:project][:owner][:first_name],
+      last_name: params[:project][:owner][:last_name]
+      )
     if @project.update(project_params)
-      render :show
+        @project.owner = @updated_user
+        render :show
     else
       render json: ['Please name your project.'], status: 422
     end
@@ -43,6 +48,6 @@ class Api::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :owner_id, :description)
+    params.require(:project).permit(:name, :owner_id, :description, :owner)
   end
 end

@@ -58,6 +58,7 @@ class ProjectIndexItem extends React.Component {
 
   render() {
     const { project, creator } = this.props;
+    
     return (
       <div id={`project-tile-${project.id}`} key={project.id} className="project-tile">
         <svg id={`ellipsis-${project.id}`} className="ellipsis" viewBox="0 0 32 32" tabIndex="0" focusable="false">
@@ -80,7 +81,7 @@ class ProjectIndexItem extends React.Component {
       <span id={`project-owner-${project.id}`} className="project-owner">
           <div className="profile-icon-parent">
             <div className="profile-icon-child">
-              JL
+              {project.owner ? project.owner.first_name[0] : null}{project.owner ? project.owner.last_name[0] : null}
             </div>
         </div>
       </span>

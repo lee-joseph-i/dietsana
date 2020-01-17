@@ -1,27 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+About:
+  The Dietsana project is a built-from-scratch clone of Asana. 
+  From the Asana page:
+  Asana is a web and mobile application designed to help teams organize, track, and manage their work. Forrester, Inc. reports that “Asana simplifies team-based work management.”
 
-Things you may want to cover:
+Link to live site: 
+  https://dietsana.herokuapp.com/
 
-* Ruby version
 
-* System dependencies
+Discussion of technologies used:
+  Backend: Ruby on Rails
+  Frontend: React (Javascript)
+  Notable Libraries: JQuery
 
-* Configuration
 
-* Database creation
+Feature Highlights:
+  1. Modals: 
 
-* Database initialization
+  2. Nested event listeners:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Code snippets to highlight your best code (markdown code snippets, NOT screenshots)
 
 
 DEV NOTES:

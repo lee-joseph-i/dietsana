@@ -205,7 +205,7 @@ var createProject = function createProject(project) {
 var updateProject = function updateProject(project) {
   return function (dispatch) {
     return _util_project_api_util__WEBPACK_IMPORTED_MODULE_0__["updateProject"](project).then(function (updatedProject) {
-      return dispatch(receiveProject(updatedProject));
+      dispatch(receiveProject(updatedProject));
     }, function (errors) {
       return dispatch(receiveErrors(errors.responseJSON));
     });
@@ -1341,7 +1341,8 @@ function (_React$Component) {
     _classCallCheck(this, ProjectEditForm);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectEditForm).call(this, props));
-    _this.state = _this.props.project;
+    _this.state = _this.props.project; // { owner: "Joseph Lee"}
+
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.renderErrors = _this.renderErrors.bind(_assertThisInitialized(_this));
     return _this;
@@ -1357,6 +1358,18 @@ function (_React$Component) {
     value: function update(field) {
       var _this2 = this;
 
+      if (field == 'owner') {
+        return function (e) {
+          return _this2.setState({
+            owner: {
+              first_name: e.currentTarget.value.split(' ')[0],
+              last_name: e.currentTarget.value.split(' ')[1]
+            }
+          });
+        };
+      }
+
+      ;
       return function (e) {
         return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
       };
@@ -1364,7 +1377,10 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      e.preventDefault();
+      e.preventDefault(); // change your state shape
+      // first_naem: Joseph
+      // last_name: Lee
+
       var project = Object.assign({}, this.state);
       this.props.updateProject(project).then(this.props.closeModal).then($(".project-dropdown").removeClass('reveal-dropdown'));
     }
@@ -1394,6 +1410,13 @@ function (_React$Component) {
         type: "text",
         value: this.state.name,
         onChange: this.update('name'),
+        className: "login-input"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "formbox"
+      }, "Owner ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: this.state.owner ? this.state.owner.first_name + ' ' + this.state.owner.last_name : null,
+        onChange: this.update('owner'),
         className: "login-input"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "formbox"
@@ -1757,7 +1780,7 @@ function (_React$Component) {
         className: "profile-icon-parent"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-icon-child"
-      }, "JL"))));
+      }, project.owner ? project.owner.first_name[0] : null, project.owner ? project.owner.last_name[0] : null))));
     }
   }]);
 

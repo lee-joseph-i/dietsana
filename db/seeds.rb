@@ -19,14 +19,20 @@ ApplicationRecord.transaction do
     password: "password123")
 
   User.create!(
-    first_name: 'John', 
-    last_name: 'Lee', 
+    first_name: 'Helen', 
+    last_name: 'Yu', 
     email: 'johnlee@dietsana.com', 
     password: "password123")
 
   User.create!(
-    first_name: 'Chris', 
-    last_name: 'Lee', 
+    first_name: 'Lina', 
+    last_name: 'Kherchi', 
+    email: 'chrislee@dietsana.com', 
+    password: "password123")
+
+  User.create!(
+    first_name: 'Mike', 
+    last_name: 'Madsen', 
     email: 'chrislee@dietsana.com', 
     password: "password123")
 
@@ -53,30 +59,44 @@ ApplicationRecord.transaction do
 
   Project.create!(
     name: 'Graduation',
-    owner_id: 1,
+    owner_id: 4,
     creator_id: 3,
-    description: 'Build your own game using JS! pew pew~',
+    description: 'You graduated! Now what?',
   )
 
   Project.create!(
     name: 'Job Search Curriculum',
     owner_id: 3,
     creator_id: 3,
-    description: 'Build your own game using JS! pew pew~',
+    description: "Keep applying until you find a job or until you're dead.",
   )
 
   Project.create!(
     name: 'MERN Part II',
     owner_id: 2,
     creator_id: 1,
-    description: 'Build your own game using JS! pew pew~',
+    description: 'Continue working on your MERN project with your buds.',
   )
   
   Project.create!(
     name: 'FullStack Project, Part II',
-    owner_id: 3,
+    owner_id: 4,
     creator_id: 3,
-    description: 'Build your own game using JS! pew pew~',
+    description: 'Continue working on your FullStack after your buds have abandoned you.',
+  )
+
+  Project.create!(
+    name: 'Self Care',
+    owner_id: 1,
+    creator_id: 3,
+    description: "Don't forget to take care of yourself",
+  )
+
+  Project.create!(
+    name: 'Algorithms',
+    owner_id: 1,
+    creator_id: 3,
+    description: "Work on your algorithms.",
   )
 
 end
