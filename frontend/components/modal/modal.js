@@ -14,10 +14,22 @@ function Modal({ modal, closeModal, currentProject }) {
   switch (modal) {
     case 'login':
       component = <LoginFormContainer />;
-      break;
+      return (
+        <div className="modal-background" onClick={closeModal}>
+          <div className="modal-child" onClick={e => e.stopPropagation()}>
+            {component}
+          </div>
+        </div>
+      );
     case 'signup':
       component = <SignupFormContainer />;
-      break;
+      return (
+        <div className="modal-background" onClick={closeModal}>
+          <div className="modal-child" onClick={e => e.stopPropagation()}>
+            {component}
+          </div>
+        </div>
+      );
     case 'createProject':
       component = <ProjectCreateFormContainer />;
       break;
@@ -28,8 +40,8 @@ function Modal({ modal, closeModal, currentProject }) {
       return null;
   }
   return (
-    <div className="modal-background" onClick={closeModal}>
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
+    <div className="modal-background-project" onClick={closeModal}>
+      <div className="modal-child-project" onClick={e => e.stopPropagation()}>
         {component}
       </div>
     </div>

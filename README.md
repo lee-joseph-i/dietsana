@@ -32,9 +32,3 @@ admittingly I do not understand this solution.
 
 Backlog: Currently, user login and signup are NOT case insensitive! therefore, you must be 
 case-sensitive when attempting to sign in. 
-
-
-CURRENT PATH:
- something's wrong with stop event propagation. trying deleting consecutive projects.
- finally got ownProps to work, but now edit hits a new error. continue working on the modal for edit project
-

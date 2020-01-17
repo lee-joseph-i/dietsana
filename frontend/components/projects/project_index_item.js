@@ -75,6 +75,17 @@ class ProjectIndexItem extends React.Component {
           </svg>
         </div>
         <div className="tile-name">{project.name}</div>
+        
+
+
+      <span id={`project-owner-${project.id}`} className="project-owner">
+          <div className="profile-icon-parent">
+            <div className="profile-icon-child">
+              JL
+            </div>
+        </div>
+      </span>
+  
       </div>
     )
   }

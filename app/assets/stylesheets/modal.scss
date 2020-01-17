@@ -1,28 +1,16 @@
 .modal-background {
-  // position: absolute;
-  // top: 0;
-  // bottom: -200px;
-  // right: 0;
-  // left: 0;
-  // background-color: rgba(21,27,38,.85);
-  // z-index: 10;
-  // max-height: 1000vh;
-  // overflow: scroll;
-  //   overflow-x: scroll;
-  //   overflow-y: scroll;
-
-    background-color: rgba(21,27,38,.85);
-    bottom: 0;
-    left: 0;
-    margin: 0;
-    overflow: scroll;
-    overflow-x: scroll;
-    overflow-y: scroll;
-    position: fixed;
-    right: 0;
-    top: 0;
-    transition: all .15s ease-in;
-    z-index: 1000;
+  background-color: rgba(21,27,38,.85);
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: all .15s ease-in;
+  z-index: 1000;
 }
 
 .modal-child {
@@ -126,6 +114,7 @@ input[type=submit]:hover{
   flex-direction: column;
   align-items: center;
   width: 100%;
+  height: 100%
 }
 
 .login-form section{
@@ -165,6 +154,15 @@ input[type=submit]:hover{
   border-left-width: 2px;
   box-sizing: border-box;
   transition: border .15s ease-in-out;
+
+}
+
+.modal-background-project .formbox > input{
+    margin: 10px 0px 20px 0px;
+}
+
+.modal-background-project .formbox > textarea{
+    margin: 10px 0px 20px 0px;
 }
 
 .formbox > input:not([type=password]){

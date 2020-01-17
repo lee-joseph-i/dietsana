@@ -25,6 +25,7 @@
 @import './app/body.scss';
 @import './app/header.scss';
 @import './app/profile.scss';
+@import './app/project_modal.scss';
 
 input:focus,
 select:focus,
@@ -50,4 +51,35 @@ input:focus {
 
 .construction{
   font-size: 100px;
+}
+
+textarea{
+  resize: none;
+  padding: 15px;
+  font-size: inherit;
+  height: 200px;
+  line-height: normal;
+  margin: 26px 0px 8px 0px;
+  width: 500px;
+  border: 2px solid #e0e6e8;
+  border-top-color: rgb(224, 230, 232);
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-right-color: rgb(224, 230, 232);
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-bottom-color: rgb(224, 230, 232);
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-left-color: rgb(224, 230, 232);
+  border-left-style: solid;
+  border-left-width: 2px;
+  box-sizing: border-box;
+  transition: border .15s ease-in-out;
+    color: #646F79;
+  &:focus{
+    border: 2px solid #a59dff;
+    border-radius: 3px;
+  }
+
 }

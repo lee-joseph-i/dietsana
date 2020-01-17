@@ -15,7 +15,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     updateProject: project => dispatch(updateProject(project)),
-    closeModal: () => dispatch(closeModal()),
+    closeModal: () => {
+      dispatch(closeModal());
+      $(`.project-dropdown`).removeClass('reveal-dropdown')
+    },
     clearErrors: () => dispatch(clearErrors())
   };
 };

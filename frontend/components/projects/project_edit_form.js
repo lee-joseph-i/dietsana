@@ -24,6 +24,9 @@ class ProjectEditForm extends React.Component {
     const project = Object.assign({}, this.state);
     this.props.updateProject(project)
       .then(this.props.closeModal)
+      .then(
+        $(`.project-dropdown`).removeClass('reveal-dropdown')
+      )
   }
 
   renderErrors() {
@@ -52,6 +55,14 @@ class ProjectEditForm extends React.Component {
               />
             </label>
             <br />
+            {/* <label className="formbox">Owner <br />
+              <input type="text"
+                value={this.state.name}
+                onChange={this.update('name')}
+                className="login-input"
+              />
+            </label>
+            <br /> */}
             <label className="formbox">Description <br />
               <textarea
                 value={this.state.password}

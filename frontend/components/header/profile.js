@@ -1,5 +1,6 @@
-import React, { Profiler } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { logout } from '../../actions/session_actions';
 
 class Profile extends React.Component{
   constructor(props){
@@ -7,15 +8,35 @@ class Profile extends React.Component{
   }
 
   componentDidMount(){
-    $('.profile-icon-parent').click(() => {
-      $('.profile-dropdown').addClass('project-reveal-dropdown')
-    })
+    let that = this;
+    //reveal dropdown
+    $('.profile-icon-parent').click( e => {
+      e.stopPropagation();
+      $('.profile-dropdown').addClass('profile-dropdown-reveal')
+    });
 
+    //remove dropdown if clicked outside
     $('.app').click(function (event) {
-      if (!$(event.target).closest(`.profile-dropdown`).length && !$(event.target).is(`.profile-dropdown`)) {
-        $(`.profile-dropdown`).removeClass('project-reveal-dropdown')
+      if (!$(event.target).closest('.profile-dropdown').length && !$(event.target).is('.profile-dropdown')) {
+        $('.profile-dropdown').removeClass('profile-dropdown-reveal')
       }
     });
+
+    //hover name show (doesn't work yet)
+    $(".profile-icon-parent").hover(
+      function () {
+        $(".profile-hover").addClass("profile-dropdown-reveal");
+      },
+      function () {
+        $(".profile-hover").removeClass("profile-dropdown-reveal");
+      }
+    );
+
+    //logout
+    $('.profile-dropdown-item').click(function (e) {
+      e.stopPropagation();
+      that.props.logout();
+    })
 
   }
 
@@ -31,8 +52,8 @@ class Profile extends React.Component{
         <div className="profile-hover">
           <p>{`${currentUser.first_name} ${currentUser.last_name}`}</p>
         </div>
-        <div className="profile-dropdown">
-          <p>Log Out</p>
+        <div className="profile-dropdown profile-dropdown-hide">
+          <div className="profile-dropdown-item">Log Out</div>
         </div>
       </div>
     )

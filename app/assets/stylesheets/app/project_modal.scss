@@ -1,0 +1,25 @@
+
+.modal-background-project {
+  background-color: #f6f8f9;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: all .15s ease-in;
+  z-index: 1000;
+}
+
+.modal-child-project {
+  color: #646F79;
+  background-color: #f6f8f9;
+  margin-top: 50px;
+}
+.modal-child-project h3 {
+  color: #151b26;
+  font-size: 30px;  
+}
