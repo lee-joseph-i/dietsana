@@ -1,6 +1,8 @@
 .app{
   .body{
-    .home-body:not([data-scroll='0']) {
+
+    //doesn't work
+    .html:not([data-scroll='0']) {
       .header {
         box-shadow: 0 0px 14px 0 rgba(59, 83, 109, 0.14) !important;
       }
@@ -43,6 +45,7 @@
     transition: box-shadow .4s ease-in-out;
     padding: 0 20px;
     box-sizing: border-box;
+    border-bottom: 1px solid rgb(211, 211, 211);
   }
 
 }
