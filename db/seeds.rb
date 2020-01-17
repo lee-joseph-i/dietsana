@@ -27,13 +27,19 @@ ApplicationRecord.transaction do
   User.create!(
     first_name: 'Lina', 
     last_name: 'Kherchi', 
-    email: 'chrislee@dietsana.com', 
+    email: 'linakherchi@dietsana.com', 
     password: "password123")
 
   User.create!(
     first_name: 'Mike', 
     last_name: 'Madsen', 
-    email: 'chrislee@dietsana.com', 
+    email: 'mikemadsen@dietsana.com', 
+    password: "password123")
+
+  User.create!(
+    first_name: 'Sam', 
+    last_name: 'Walker', 
+    email: 'samwalker@dietsana.com', 
     password: "password123")
 
   Project.create!(
@@ -73,21 +79,21 @@ ApplicationRecord.transaction do
 
   Project.create!(
     name: 'MERN Part II',
-    owner_id: 2,
+    owner_id: 3,
     creator_id: 1,
     description: 'Continue working on your MERN project with your buds.',
   )
   
   Project.create!(
     name: 'FullStack Project, Part II',
-    owner_id: 4,
+    owner_id: 5,
     creator_id: 3,
     description: 'Continue working on your FullStack after your buds have abandoned you.',
   )
 
   Project.create!(
     name: 'Self Care',
-    owner_id: 1,
+    owner_id: 4,
     creator_id: 3,
     description: "Don't forget to take care of yourself",
   )
