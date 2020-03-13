@@ -1364,8 +1364,7 @@ function (_React$Component) {
     _classCallCheck(this, ProjectEditForm);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectEditForm).call(this, props));
-    _this.state = _this.props.project; // { owner: "Joseph Lee"}
-
+    _this.state = _this.props.project;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.renderErrors = _this.renderErrors.bind(_assertThisInitialized(_this));
     return _this;

@@ -6,7 +6,6 @@ class ProjectEditForm extends React.Component {
     super(props);
     this.state = this.props.project;
 
-    // { owner: "Joseph Lee"}
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
   }
