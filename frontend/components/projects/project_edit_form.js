@@ -71,7 +71,7 @@ class ProjectEditForm extends React.Component {
             <br/>
             <label className="formbox">Owner <br />
               <input type="text"
-                value={ this.state.owner ? this.state.owner.first_name + ' ' +this.state.owner.last_name : null}
+                value={ this.state.owner ? this.state.owner.first_name + ' ' +this.state.owner.last_name : ''}
                 onChange={this.update('owner')}
                 className="login-input"
               />
