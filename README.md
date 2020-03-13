@@ -13,21 +13,3 @@ Discussion of technologies used:
   Backend: Ruby on Rails
   Frontend: React (Javascript)
   Notable Libraries: JQuery
-
-
-Feature Highlights:
-  1. Modals: 
-
-  2. Nested event listeners:
-
-Code snippets to highlight your best code (markdown code snippets, NOT screenshots)
-
-
-DEV NOTES:
-
-Set config.assets.compile from false to true in production.rb. 
-This was a solution that fixed some of my image assets from loading on heroku app,
-admittingly I do not understand this solution.
-
-Backlog: Currently, user login and signup are NOT case insensitive! therefore, you must be 
-case-sensitive when attempting to sign in. 
