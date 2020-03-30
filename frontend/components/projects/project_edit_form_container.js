@@ -4,7 +4,7 @@ import { updateProject } from '../../actions/project_actions';
 import { closeModal } from '../../actions/modal_actions';
 import ProjectEditForm from './project_edit_form';
 import { clearErrors } from '../../actions/session_actions';
-//comment test
+
 const mapStateToProps = (state) => {
   return {
     errors: state.errors.projects,

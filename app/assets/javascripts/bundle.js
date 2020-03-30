@@ -1481,7 +1481,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- //comment test
+
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
