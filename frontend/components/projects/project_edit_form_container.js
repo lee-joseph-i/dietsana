@@ -4,6 +4,7 @@ import { updateProject } from '../../actions/project_actions';
 import { closeModal } from '../../actions/modal_actions';
 import ProjectEditForm from './project_edit_form';
 import { clearErrors } from '../../actions/session_actions';
+import Select from 'react-select';
 
 const mapStateToProps = (state) => {
   return {
