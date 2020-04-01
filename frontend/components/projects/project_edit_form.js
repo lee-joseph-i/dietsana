@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import Select from 'react-select';
 
 const users = [
   { label: "Joseph Lee", value: 1 },
@@ -75,11 +76,12 @@ class ProjectEditForm extends React.Component {
             </label>
             <br/>
             <label className="formbox">Owner <br />
-              <input type="text"
+              {/* <input type="text"
                 value={ this.state.owner ? this.state.owner.first_name + ' ' +this.state.owner.last_name : ''}
                 onChange={this.update('owner')}
                 className="login-input"
-              />
+              /> */}
+              <Select options={users} />
             </label>
             <br />
             <label className="formbox">Description <br />
