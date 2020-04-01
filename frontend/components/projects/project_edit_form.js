@@ -1,6 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+const users = [
+  { label: "Joseph Lee", value: 1 },
+  { label: "Helen Yu", value: 2 },
+];
+
 class ProjectEditForm extends React.Component {
   constructor(props) {
     super(props);
