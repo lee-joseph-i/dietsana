@@ -6,6 +6,7 @@ const users = [
   { label: "Joseph Lee", value: 1 },
   { label: "Helen Yu", value: 2 },
   { label: "Christable Lee", value: 3}
+  { label: "Mike Madsen", value: 3}
 ];
 
 class ProjectEditForm extends React.Component {
