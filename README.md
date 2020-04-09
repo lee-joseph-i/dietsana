@@ -22,11 +22,13 @@ Dietsana's frontend pages are rendered with React/Redux. Slices of state are cur
 
 
 ## Features
-* Landing Page - Rendition of Asana's own landing page. CSS and HTML rules applied to load and switch between showcase videos 
+* Landing Page - Rendition of Asana's own landing page. CSS, HTML and JQuery applied to load and make videos toggle-able.
 
 * User Accounts - Sign up and login modals with their backend validations. Demo login account available for browsing the app. 
+
   Backend
   ``` ruby
+    <!-- Backend -->
     def self.find_by_credentials(email, password)
       user = User.find_by(email: email)
       return nil unless user
@@ -37,9 +39,10 @@ Dietsana's frontend pages are rendered with React/Redux. Slices of state are cur
       BCrypt::Password.new(self.password_digest).is_password?(password)
     end
   ```
-  
+
   Frontend
   ``` javascript
+    //Frontend
     handleSubmit(e) {
       e.preventDefault();
       const user = Object.assign({}, this.state);
