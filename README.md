@@ -76,7 +76,9 @@ Dietsana's frontend pages are rendered with React/Redux. Slices of state are cur
   ```
 
   ``` javascript
-    // Each project is rendered as a component index item, styled with SVGs and JQuery methods key into variable property ids to enable unique handlers.
+    // Each project is rendered as a component index item, styled with SVGs
+    /* JQuery methods key into variable property ids to enable unique handlers
+    (unique edit and delete dropdowns). */
   render() {
     const { project, creator } = this.props;
     return (
