@@ -27,7 +27,7 @@ Dietsana's frontend pages are rendered with React/Redux. Slices of state are cur
 * User Accounts - Sign up and login modals with their backend validations, with a demo login option available.
 
   ``` ruby
-    #Backend
+    # User model Backend
     def self.find_by_credentials(email, password)
       user = User.find_by(email: email)
       return nil unless user
@@ -40,7 +40,7 @@ Dietsana's frontend pages are rendered with React/Redux. Slices of state are cur
   ```
 
   ``` javascript
-    //Frontend
+    // React sign up form submission Frontend
     handleSubmit(e) {
       e.preventDefault();
       const user = Object.assign({}, this.state);
