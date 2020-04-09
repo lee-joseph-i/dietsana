@@ -50,7 +50,6 @@ Dietsana's frontend pages are rendered with React/Redux. Slices of state are cur
     }
   ```
   <img width="1000" alt="Sign Up modal" src="https://user-images.githubusercontent.com/39147326/78844328-4a8f3a80-79ba-11ea-9828-0f410daea9fa.png">
-<br/> 
 
 * Projects - Projects have creators (user creates projects), owners (users can assign projects to existing users in the database), names and descriptions. All project fields can be edited, and projects can be deleted.
 
@@ -99,7 +98,6 @@ Dietsana's frontend pages are rendered with React/Redux. Slices of state are cur
     }
   ```
   <img width="500" alt="Project Index" src="https://user-images.githubusercontent.com/39147326/78924698-203b8c80-7a4f-11ea-90c9-bc16cd6da1da.png">
-<br/> 
 
 ## Future Direction
 * Dropdown search implementation on a project's Owner field.
