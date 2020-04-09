@@ -24,21 +24,20 @@ Dietsana's frontend pages are rendered with React/Redux. Slices of state are cur
 ## Features
 * Landing Page - Rendition of Asana's own landing page. CSS and HTML rules applied to load and switch between showcase videos 
 
-* User Accounts - Sign up and login modals with their backend validations. Demo login account available for browsing the app. <br/><img width="1000" alt="Sign Up modal" src="https://user-images.githubusercontent.com/39147326/78844328-4a8f3a80-79ba-11ea-9828-0f410daea9fa.png">
-<br/> 
-
+* User Accounts - Sign up and login modals with their backend validations. Demo login account available for browsing the app. 
 ``` ruby
-  validates :first_name, :last_name, :email, :password_digest, :session_token, presence: true
-  validates :email, uniqueness: true
-  validates :password, length: { minimum: 8 }, allow_nil: true
-  
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     return nil unless user
     user.is_password?(password) ? user : nil
   end
-
+  
+  def is_password?(password)
+    BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
 ```
+<img width="1000" alt="Sign Up modal" src="https://user-images.githubusercontent.com/39147326/78844328-4a8f3a80-79ba-11ea-9828-0f410daea9fa.png">
+<br/> 
 
 ## Future Direction
 * Dropdown search implementation on a project's Owner field.
