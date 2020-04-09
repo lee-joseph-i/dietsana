@@ -39,7 +39,6 @@ class User < ApplicationRecord
     self.session_token
   end
 
-  # practice 'private' good practices!
   private 
 
   def ensure_session_token
