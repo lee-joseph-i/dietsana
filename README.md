@@ -96,7 +96,7 @@ Dietsana's frontend pages are rendered with React/Redux. Slices of state are cur
         <div className="tile-name">{project.name}</div>
     }
   ```
-  <img width="1000" alt="Project Index" src="https://user-images.githubusercontent.com/39147326/78924698-203b8c80-7a4f-11ea-90c9-bc16cd6da1da.png">
+  <img width="600" alt="Project Index" src="https://user-images.githubusercontent.com/39147326/78924698-203b8c80-7a4f-11ea-90c9-bc16cd6da1da.png">
 <br/> 
 
 ## Future Direction
