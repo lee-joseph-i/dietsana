@@ -58,14 +58,12 @@ class ProjectIndexItem extends React.Component {
 
   render() {
     const { project, creator } = this.props;
-    
     return (
       <div id={`project-tile-${project.id}`} key={project.id} className="project-tile">
         <svg id={`ellipsis-${project.id}`} className="ellipsis" viewBox="0 0 32 32" tabIndex="0" focusable="false">
           <path d="M16,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S14.3,13,16,13z M3,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S1.3,13,3,13z M29,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S27.3,13,29,13z"></path>
         </svg>
         <div id={`project-dropdown-${project.id}`} className={`project-dropdown`}>
-          {/* <div id={`project-delete-${project.id}`} className="dropdown-item" onClick={this.editProject}>Edit Project</div> */}
           <div id={`project-edit-${project.id}`} className="dropdown-item">Edit Project</div>
           <div id={`project-delete-${project.id}`} className="dropdown-item">Delete Project</div>
         </div>
@@ -76,8 +74,6 @@ class ProjectIndexItem extends React.Component {
         </div>
         <div className="tile-name">{project.name}</div>
         
-
-
       <span id={`project-owner-${project.id}`} className="project-owner">
           <div className="profile-icon-parent">
             <div className="profile-icon-child">
