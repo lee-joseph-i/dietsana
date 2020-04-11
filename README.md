@@ -24,6 +24,8 @@ Dietsana's frontend pages are rendered with React/Redux. Slices of state are cur
 ## Features
 * Landing Page - Rendition of Asana's own landing page. Videos and other elements can be viewed and toggled.
 
+![landingpage](https://i.imgur.com/OTA0Zku.mp4)
+
 * User Accounts - Sign up and login modals with their backend validations, with a demo login option available.
 
   ``` ruby
@@ -103,4 +105,3 @@ Dietsana's frontend pages are rendered with React/Redux. Slices of state are cur
 * Dropdown search implementation on a project's Owner field.
 * Projects can have tasks.
 * Project tasks Kanban Board.
-
