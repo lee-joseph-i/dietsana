@@ -5,12 +5,12 @@ import Select from 'react-select';
 const users = [
   { label: "Joseph Lee", value: 1 },
   { label: "Helen Yu", value: 2 },
-  { label: "Christable Lee", value: 3}
-  { label: "Mike Madsen", value: 4}
-  { label: "Ronil Bhatia", value: 5}
-  { label: "Sam Walker", value: 6}
-  { label: "Joey Fehrman", value: 7}
-  { label: "Matt Andreson", value: 8}
+  { label: "Christable Lee", value: 3},
+  { label: "Mike Madsen", value: 4},
+  { label: "Ronil Bhatia", value: 5},
+  { label: "Sam Walker", value: 6},
+  { label: "Joey Fehrman", value: 7},
+  { label: "Matt Andreson", value: 8},
 ];
 
 class ProjectEditForm extends React.Component {
