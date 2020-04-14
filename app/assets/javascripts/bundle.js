@@ -1375,12 +1375,6 @@ var users = [{
 }, {
   label: "Joey Fehrman",
   value: 7
-}, {
-  label: "Matt Andreson",
-  value: 8
-}, {
-  label: "n",
-  value: 8
 }];
 
 var ProjectEditForm =
