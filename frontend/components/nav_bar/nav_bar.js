@@ -35,7 +35,7 @@ export default ({ currentUser, openModal }) => {
     );
   return (
     <header className="nav-bar">
-      <img src={window.logo} className="asana-logo"/>
+      <img src={window.logo} className="asana-logo"/> 
       <div>
         {display}
       </div>
@@ -43,5 +43,4 @@ export default ({ currentUser, openModal }) => {
   )
 }
 
-//openModal('signup')
-//window.scrollTo(0, 0)
+//change asana logo, referenced line 38

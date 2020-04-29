@@ -1080,8 +1080,7 @@ __webpack_require__.r(__webpack_exports__);
     src: window.logo,
     className: "asana-logo"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, display));
-}); //openModal('signup')
-//window.scrollTo(0, 0)
+}); //change asana logo, referenced line 38
 
 /***/ }),
 
