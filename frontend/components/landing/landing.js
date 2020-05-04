@@ -105,12 +105,12 @@ class Landing extends React.Component{
                   <p>Create visual project plans to see how every step maps out over time. Pinpoint risks. Eliminate roadblocks. Even when plans change.</p>
                 </section>
             </li>
-
+{/* 
             <li>
               <div className="construction">
                 <p>(Under Construction, more to come!)</p>
               </div>
-            </li>
+            </li> */}
 
           </ul>
         </section>

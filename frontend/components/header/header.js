@@ -12,7 +12,7 @@ export default ({ currentUser, openModal }) => {
           "Home"
         )} />
         <Route path="/app/projects" render={(props) => (
-          "Oh noes"
+          "Work in Progress"
         )} />
       </div>
       <div>
