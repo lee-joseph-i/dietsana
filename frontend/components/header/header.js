@@ -4,7 +4,7 @@ import ProfileContainer from './profile-container';
 import { Redirect, Route, withRouter } from 'react-router-dom';
 
 export default ({ currentUser, openModal }) => {
-
+  // console.log(this.props)
   return (
     <div className="header">
       <div className="home">

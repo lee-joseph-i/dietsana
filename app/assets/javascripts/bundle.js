@@ -461,6 +461,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var currentUser = _ref.currentUser,
       openModal = _ref.openModal;
+  // console.log(this.props)
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "header"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1753,10 +1754,8 @@ function (_React$Component) {
       }); //link to show page
 
       $("#project-tile-".concat(that.props.project.id)).click(function () {
-        that.props.history.push("/app/projects/".concat(that.props.project.id));
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/app/projects/".concat(that.props.project.id)
-        });
+        that.props.history.push("/app/projects/".concat(that.props.project.id)); //need to figure out how to pass properties
+        // <Link to={`/app/projects/${that.props.project.id}`} /> 
       }); //open dropdown
 
       $("#ellipsis-".concat(that.props.project.id)).click(function (e) {

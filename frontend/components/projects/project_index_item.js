@@ -19,8 +19,8 @@ class ProjectIndexItem extends React.Component {
 
     //link to show page
     $(`#project-tile-${that.props.project.id}`).click(function () {
-      that.props.history.push(`/app/projects/${that.props.project.id}`);
-      <Link to={`/app/projects/${that.props.project.id}`} />
+      that.props.history.push(`/app/projects/${that.props.project.id}`); //need to figure out how to pass properties
+      // <Link to={`/app/projects/${that.props.project.id}`} /> 
     });
 
     //open dropdown
