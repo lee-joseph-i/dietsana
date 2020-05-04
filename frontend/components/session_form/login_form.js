@@ -82,7 +82,9 @@ class LoginForm extends React.Component {
               <p>Don't have an account?</p>
               {this.props.otherForm}
             </section>
-            <section>
+            {/* note: className is being assigned, but properties from sass file not going through for some reason */}
+            {/* note: for now, resorting to in-line styling (yuck) */}
+            <section className="demo-prompt" style={{marginTop: -25 + 'px'}}> 
               <p>Want to try a demo?</p>
               <p className="linkify" onClick={this.demo}>Click here</p>
             </section>

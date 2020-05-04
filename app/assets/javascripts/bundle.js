@@ -2106,7 +2106,12 @@ function (_React$Component) {
         className: "session-submit",
         type: "submit",
         value: "Log In"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Don't have an account?"), this.props.otherForm), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Want to try a demo?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Don't have an account?"), this.props.otherForm), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "demo-prompt",
+        style: {
+          marginTop: -25 + 'px'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Want to try a demo?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "linkify",
         onClick: this.demo
       }, "Click here")))));
@@ -2319,7 +2324,7 @@ function (_React$Component) {
         className: "session-submit",
         type: "submit",
         value: "Sign Up"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Already have an account?"), this.props.otherForm))));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Already have an account, or want to try a demo?"), this.props.otherForm))));
     }
   }]);
 
@@ -2370,7 +2375,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       onClick: function onClick() {
         return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])('login'));
       }
-    }, "Log In!"),
+    }, "Click here!"),
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["closeModal"])());
     },

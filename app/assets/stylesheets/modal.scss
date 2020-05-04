@@ -64,6 +64,10 @@
   color: rgb(73, 73, 73);
 }
 
+.demo-prompt {
+  margin: -35px 0px 0px 0px;
+}
+
 .linkify {
   font-weight: 900;
   cursor: pointer;
@@ -154,7 +158,6 @@ input[type=submit]:hover{
   border-left-width: 2px;
   box-sizing: border-box;
   transition: border .15s ease-in-out;
-
 }
 
 .modal-background-project .formbox > input{
@@ -199,6 +202,3 @@ input[type=submit]:hover{
   box-sizing: border-box;
   width: 240px;
 }
-
-
-// stuff for signup modal

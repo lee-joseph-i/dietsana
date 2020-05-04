@@ -97,7 +97,7 @@ class SignupForm extends React.Component {
             <input className="session-submit" type="submit" value="Sign Up" />
             <br />
             <section>
-              <p>Already have an account?</p>
+              <p>Already have an account, or want to try a demo?</p>
               {this.props.otherForm}
             </section>
           </div>
