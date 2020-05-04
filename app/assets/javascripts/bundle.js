@@ -474,7 +474,7 @@ __webpack_require__.r(__webpack_exports__);
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/app/projects",
     render: function render(props) {
-      return "Oh noes";
+      return "Work in Progress";
     }
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_profile_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
 });
@@ -780,9 +780,7 @@ function (_React$Component) {
         id: "msg-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "pos-3"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hit deadlines"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Create visual project plans to see how every step maps out over time. Pinpoint risks. Eliminate roadblocks. Even when plans change."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "construction"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "(Under Construction, more to come!)"))))));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hit deadlines"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Create visual project plans to see how every step maps out over time. Pinpoint risks. Eliminate roadblocks. Even when plans change."))))));
     }
   }]);
 
@@ -1020,7 +1018,19 @@ __webpack_require__.r(__webpack_exports__);
     className: "footer"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Joseph Lee"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "calling_card"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Github"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "LinkedIn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "AngelList")));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    target: "_blank",
+    rel: "noopener noreferrer",
+    href: "https://josephlee.io"
+  }, "Portfolio")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    target: "_blank",
+    rel: "noopener noreferrer",
+    href: "https://www.linkedin.com/in/josephinlee/"
+  }, "LinkedIn")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    target: "_blank",
+    rel: "noopener noreferrer",
+    href: "https://github.com/lee-joseph-i"
+  }, "Github"))));
 });
 
 /***/ }),
@@ -1371,9 +1381,6 @@ var users = [{
 }, {
   label: "Sam Walker",
   value: 6
-}, {
-  label: "Joey Fehrman",
-  value: 7
 }];
 
 var ProjectEditForm =
