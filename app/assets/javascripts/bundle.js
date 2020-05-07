@@ -1231,7 +1231,8 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "login-error"
       }, this.props.errors[0]);
-    }
+    } //need to add react-select and change the owner field to a dropdown pulling data from the backend
+
   }, {
     key: "render",
     value: function render() {

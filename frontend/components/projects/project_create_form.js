@@ -47,7 +47,7 @@ class ProjectCreateForm extends React.Component {
       <p className="login-error">{this.props.errors[0]}</p>
     );
   }
-
+  //need to add react-select and change the owner field to a dropdown pulling data from the backend
   render() {
     return (
       <div className="login-form-container">
