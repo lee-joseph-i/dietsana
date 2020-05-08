@@ -1435,23 +1435,32 @@ function (_React$Component) {
     value: function update(field) {
       var _this3 = this;
 
-      console.log(field);
-
-      if (field == 'owner') {
-        return function (e) {
-          return _this3.setState({
-            owner: e.currentTarget.value // owner: {
-            //   first_name: e.currentTarget.value.split(' ')[0], 
-            //   last_name: e.currentTarget.value.split(' ')[1]
-            // }
-
-          });
-        };
-      }
-
-      ;
+      // if (field == 'owner') {
+      //   console.log("hi")
+      //   return e => this.setState({
+      //     owner: e.currentTarget.value
+      //     // owner: {
+      //     //   first_name: e.currentTarget.value.split(' ')[0], 
+      //     //   last_name: e.currentTarget.value.split(' ')[1]
+      //     // }
+      //   })
+      // };
+      // return e => this.setState({
+      //   [field]: e.currentTarget.value
+      // });
       return function (e) {
-        return _this3.setState(_defineProperty({}, field, e.currentTarget.value));
+        console.log(e);
+
+        if (field == 'owner') {
+          _this3.setState({
+            owner: {
+              first_name: e.label.split(' ')[0],
+              last_name: e.label.split(' ')[1]
+            }
+          });
+        } else {
+          _this3.setState(_defineProperty({}, field, e.currentTarget.value));
+        }
       };
     }
   }, {
