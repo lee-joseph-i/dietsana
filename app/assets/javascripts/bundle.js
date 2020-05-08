@@ -1233,6 +1233,8 @@ function (_React$Component) {
     value: function update(field) {
       var _this2 = this;
 
+      console.log(field);
+
       if (field == 'owner') {
         return function (e) {
           return _this2.setState({
@@ -1397,14 +1399,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
- // const users = [
-//   { label: "Joseph Lee", value: 1 },
-//   { label: "Helen Yu", value: 2 },
-//   { label: "Christable Lee", value: 3},
-//   { label: "Mike Madsen", value: 4},
-//   { label: "Ronil Bhatia", value: 5},
-//   { label: "Sam Walker", value: 6},
-// ];
+
 
 var ProjectEditForm =
 /*#__PURE__*/
@@ -1440,14 +1435,21 @@ function (_React$Component) {
     value: function update(field) {
       var _this3 = this;
 
-      // if (field == 'owner') {
-      //   return e => this.setState({
-      //     owner: {
-      //       first_name: e.currentTarget.value.split(' ')[0], 
-      //       last_name: e.currentTarget.value.split(' ')[1]
-      //     }
-      //   })
-      // };
+      console.log(field);
+
+      if (field == 'owner') {
+        return function (e) {
+          return _this3.setState({
+            owner: e.currentTarget.value // owner: {
+            //   first_name: e.currentTarget.value.split(' ')[0], 
+            //   last_name: e.currentTarget.value.split(' ')[1]
+            // }
+
+          });
+        };
+      }
+
+      ;
       return function (e) {
         return _this3.setState(_defineProperty({}, field, e.currentTarget.value));
       };
@@ -1455,7 +1457,9 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      e.preventDefault();
+      e.preventDefault(); // this.setState({
+      // })
+
       var project = Object.assign({}, this.state);
       this.props.updateProject(project).then(this.props.closeModal).then($(".project-dropdown").removeClass('reveal-dropdown'));
     }
@@ -1469,7 +1473,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.state);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1492,6 +1495,11 @@ function (_React$Component) {
       }, "Owner ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "owner-dropdown"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        value: this.state.owner ? {
+          label: this.state.owner.first_name + " " + this.state.owner.last_name,
+          value: this.state.owner.id
+        } : '',
+        onChange: this.update('owner'),
         options: this.state && this.state.users
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "formbox"

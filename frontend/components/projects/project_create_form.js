@@ -21,6 +21,7 @@ class ProjectCreateForm extends React.Component {
   }
 
   update(field) {
+    console.log(field)
     if (field == 'owner') {
       return e => this.setState({
         owner: {

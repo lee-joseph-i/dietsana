@@ -3,15 +3,6 @@ import { withRouter } from 'react-router-dom';
 import Select from 'react-select';
 import { modifyUsers } from '../../selectors/users_selectors';
 
-// const users = [
-//   { label: "Joseph Lee", value: 1 },
-//   { label: "Helen Yu", value: 2 },
-//   { label: "Christable Lee", value: 3},
-//   { label: "Mike Madsen", value: 4},
-//   { label: "Ronil Bhatia", value: 5},
-//   { label: "Sam Walker", value: 6},
-// ];
-
 class ProjectEditForm extends React.Component {
   constructor(props) {
     super(props);
@@ -30,23 +21,26 @@ class ProjectEditForm extends React.Component {
   }
 
   update(field) {
-    // if (field == 'owner') {
-    //   return e => this.setState({
-    //     owner: {
-    //       first_name: e.currentTarget.value.split(' ')[0], 
-    //       last_name: e.currentTarget.value.split(' ')[1]
-    //     }
-    //   })
-    // };
+    console.log(field)
+    if (field == 'owner') {
+      return e => this.setState({
+        owner: e.currentTarget.value
+        // owner: {
+        //   first_name: e.currentTarget.value.split(' ')[0], 
+        //   last_name: e.currentTarget.value.split(' ')[1]
+        // }
+      })
+    };
     return e => this.setState({
       [field]: e.currentTarget.value
     });
-    
   }
 
   handleSubmit(e){
     e.preventDefault();
-    
+    // this.setState({
+
+    // })
     const project = Object.assign({}, this.state);
     this.props.updateProject(project)
       .then(this.props.closeModal)
@@ -62,7 +56,6 @@ class ProjectEditForm extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="login-form-container">
         <div onClick={this.props.closeModal} className="close-x">X</div>
@@ -89,7 +82,11 @@ class ProjectEditForm extends React.Component {
                 className="login-input"
               /> */}
               <div className="owner-dropdown">
-                <Select options={this.state && this.state.users} />
+                <Select 
+                  value= {this.state.owner ? {label: this.state.owner.first_name + " " + this.state.owner.last_name, value: this.state.owner.id } : ''}
+                  onChange={this.update('owner')} 
+                  options={this.state && this.state.users} 
+                />
               </div>
             </label>
             <br />
