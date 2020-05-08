@@ -1,15 +1,16 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Select from 'react-select';
+import { modifyUsers } from '../../selectors/users_selectors';
 
-const users = [
-  { label: "Joseph Lee", value: 1 },
-  { label: "Helen Yu", value: 2 },
-  { label: "Christable Lee", value: 3},
-  { label: "Mike Madsen", value: 4},
-  { label: "Ronil Bhatia", value: 5},
-  { label: "Sam Walker", value: 6},
-];
+// const users = [
+//   { label: "Joseph Lee", value: 1 },
+//   { label: "Helen Yu", value: 2 },
+//   { label: "Christable Lee", value: 3},
+//   { label: "Mike Madsen", value: 4},
+//   { label: "Ronil Bhatia", value: 5},
+//   { label: "Sam Walker", value: 6},
+// ];
 
 class ProjectEditForm extends React.Component {
   constructor(props) {
@@ -22,18 +23,21 @@ class ProjectEditForm extends React.Component {
 
   componentDidMount() {
     this.props.clearErrors();
+    this.props.requestUsers()
+      .then( (users) => {
+        this.setState( Object.assign( {}, this.state, { users: modifyUsers(users.users) } ))
+      });
   }
 
   update(field) {
-    if (field == 'owner') {
-      return e => this.setState({
-        owner: {
-          first_name: e.currentTarget.value.split(' ')[0], 
-          last_name: e.currentTarget.value.split(' ')[1]
-        }
-      })
-    };
-
+    // if (field == 'owner') {
+    //   return e => this.setState({
+    //     owner: {
+    //       first_name: e.currentTarget.value.split(' ')[0], 
+    //       last_name: e.currentTarget.value.split(' ')[1]
+    //     }
+    //   })
+    // };
     return e => this.setState({
       [field]: e.currentTarget.value
     });
@@ -42,9 +46,7 @@ class ProjectEditForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    // change your state shape
-    // first_naem: Joseph
-    // last_name: Lee
+    
     const project = Object.assign({}, this.state);
     this.props.updateProject(project)
       .then(this.props.closeModal)
@@ -60,6 +62,7 @@ class ProjectEditForm extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className="login-form-container">
         <div onClick={this.props.closeModal} className="close-x">X</div>
@@ -86,7 +89,7 @@ class ProjectEditForm extends React.Component {
                 className="login-input"
               /> */}
               <div className="owner-dropdown">
-                <Select options={users} />
+                <Select options={this.state && this.state.users} />
               </div>
             </label>
             <br />
