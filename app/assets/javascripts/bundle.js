@@ -1456,7 +1456,8 @@ function (_React$Component) {
             owner: {
               first_name: e.label.split(' ')[0],
               last_name: e.label.split(' ')[1]
-            }
+            },
+            owner_id: e.value
           });
         } else {
           _this3.setState(_defineProperty({}, field, e.currentTarget.value));
@@ -1470,6 +1471,7 @@ function (_React$Component) {
       // })
 
       var project = Object.assign({}, this.state);
+      console.log(project);
       this.props.updateProject(project).then(this.props.closeModal).then($(".project-dropdown").removeClass('reveal-dropdown'));
     }
   }, {

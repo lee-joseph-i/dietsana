@@ -27,14 +27,8 @@ class Api::ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    @updated_user = User.find_by(
-      first_name: params[:project][:owner][:first_name],
-      last_name: params[:project][:owner][:last_name]
-      )
-    @project.owner_id = @updated_user.id # this doesn't work.
-    if @project.update(project_params) # need to update project_params to have the owner_id.
-      debugger
-        render :show
+    if @project.update(project_params)
+          render :show
     else
       render json: ['Please name your project.'], status: 422
     end

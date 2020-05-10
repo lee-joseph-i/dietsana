@@ -42,7 +42,8 @@ class ProjectEditForm extends React.Component {
           owner: {
             first_name: e.label.split(' ')[0],
             last_name: e.label.split(' ')[1],
-          }
+          },
+          owner_id: e.value,
         })
       } else {
         this.setState({
@@ -58,6 +59,7 @@ class ProjectEditForm extends React.Component {
 
     // })
     const project = Object.assign({}, this.state);
+    console.log(project)
     this.props.updateProject(project)
       .then(this.props.closeModal)
       .then(
