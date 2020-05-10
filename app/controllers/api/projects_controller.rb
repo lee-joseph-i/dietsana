@@ -7,9 +7,9 @@ class Api::ProjectsController < ApplicationController
       first_name: params[:project][:owner][:first_name],
       last_name: params[:project][:owner][:last_name]
       )
-
+    @project.owner_id = @updated_user.id
     if @project.save
-      @project.owner = @updated_user
+      # @project.owner_id = @updated_user.id # note: this doesn't work AFTER you save the project. 
       render 'api/projects/show'
     else
       render json: ['Please name your project.'], status: 422
@@ -31,8 +31,9 @@ class Api::ProjectsController < ApplicationController
       first_name: params[:project][:owner][:first_name],
       last_name: params[:project][:owner][:last_name]
       )
-    if @project.update(project_params)
-        @project.owner = @updated_user
+    @project.owner_id = @updated_user.id # this doesn't work.
+    if @project.update(project_params) # need to update project_params to have the owner_id.
+      debugger
         render :show
     else
       render json: ['Please name your project.'], status: 422
