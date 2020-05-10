@@ -102,7 +102,5 @@ Dietsana's frontend pages are rendered with React/Redux. Slices of state are cur
   ![projects-index](https://user-images.githubusercontent.com/39147326/79030959-8f4cda00-7b50-11ea-8c2b-45330dba09d8.gif)
 
 ## Future Direction
-* Dropdown search implementation on a project's Owner field.
-* Projects can have tasks.
-* Project tasks Kanban Board.
-* Drag and Drop implementation for Tasks.
+* Projects Show page populates list view of Tasks.
+* Project tasks Kanban Board with Drag and Drop.
