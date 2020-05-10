@@ -13,6 +13,7 @@ class ProjectShow extends React.Component {
     return (
       <div className="construction">
         <div>Under Construction</div>
+        <p className="construction-p">In the meantime, go back Home to create and edit your Projects!</p>
       </div>
     )
   }

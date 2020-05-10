@@ -12,7 +12,7 @@ export default ({ currentUser, openModal }) => {
           "Home"
         )} />
         <Route path="/app/projects" render={(props) => (
-          "Work in Progress"
+          "[Project] Task List"
         )} />
       </div>
       <div>

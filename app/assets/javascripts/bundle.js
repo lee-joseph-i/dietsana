@@ -506,7 +506,7 @@ __webpack_require__.r(__webpack_exports__);
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/app/projects",
     render: function render(props) {
-      return "Work in Progress";
+      return "[Project] Task List";
     }
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_profile_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
 });
@@ -1936,7 +1936,9 @@ function (_React$Component) {
       var project = this.props.project;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "construction"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Under Construction"));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Under Construction"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "construction-p"
+      }, "In the meantime, go back Home to create and edit your Projects!"));
     }
   }]);
 
