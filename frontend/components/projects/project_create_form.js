@@ -1,5 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import Select from 'react-select';
+import { modifyUsers } from '../../selectors/users_selectors';
 
 class ProjectCreateForm extends React.Component {
   constructor(props) {
@@ -18,22 +20,28 @@ class ProjectCreateForm extends React.Component {
 
   componentDidMount() {
     this.props.clearErrors();
+    this.props.requestUsers()
+      .then((users) => {
+        this.setState(Object.assign({}, this.state, { users: modifyUsers(users.users) }))
+      });
   }
 
   update(field) {
-    console.log(field)
-    if (field == 'owner') {
-      return e => this.setState({
-        owner: {
-          first_name: e.currentTarget.value.split(' ')[0],
-          last_name: e.currentTarget.value.split(' ')[1]
-        }
-      })
+    return e => {
+      if (field == 'owner') {
+        this.setState({
+          owner: {
+            first_name: e.label.split(' ')[0],
+            last_name: e.label.split(' ')[1],
+          },
+          owner_id: e.value,
+        })
+      } else {
+        this.setState({
+          [field]: e.currentTarget.value
+        })
+      }
     };
-
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
   }
 
   handleSubmit(e) {
@@ -48,7 +56,7 @@ class ProjectCreateForm extends React.Component {
       <p className="login-error">{this.props.errors[0]}</p>
     );
   }
-  //need to add react-select and change the owner field to a dropdown pulling data from the backend
+
   render() {
     return (
       <div className="login-form-container">
@@ -70,11 +78,18 @@ class ProjectCreateForm extends React.Component {
             </label>
             <br/>
             <label className="formbox">Owner <br />
-              <input type="text"
+              {/* <input type="text"
                 value={this.state.owner ? this.state.owner.first_name + ' ' + this.state.owner.last_name : ''}
                 onChange={this.update('owner')}
                 className="login-input"
-              />
+              /> */}
+              <div className="owner-dropdown">
+                <Select
+                  value={this.state.owner ? { label: this.state.owner.first_name + " " + this.state.owner.last_name, value: this.state.owner.id } : ''}
+                  onChange={this.update('owner')}
+                  options={this.state && this.state.users}
+                />
+              </div>
             </label>
             <br />
             <label className="formbox">Description <br />

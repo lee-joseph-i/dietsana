@@ -5,7 +5,6 @@ import { closeModal } from '../../actions/modal_actions';
 import ProjectEditForm from './project_edit_form';
 import { clearErrors } from '../../actions/session_actions';
 import { requestUsers } from '../../actions/user_action';
-import Select from 'react-select';
 
 const mapStateToProps = (state) => {
   return {

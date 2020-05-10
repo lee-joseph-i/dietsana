@@ -1176,6 +1176,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.es.js");
+/* harmony import */ var _selectors_users_selectors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../selectors/users_selectors */ "./frontend/selectors/users_selectors.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1195,6 +1197,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -1226,29 +1230,32 @@ function (_React$Component) {
   _createClass(ProjectCreateForm, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this2 = this;
+
       this.props.clearErrors();
+      this.props.requestUsers().then(function (users) {
+        _this2.setState(Object.assign({}, _this2.state, {
+          users: Object(_selectors_users_selectors__WEBPACK_IMPORTED_MODULE_3__["modifyUsers"])(users.users)
+        }));
+      });
     }
   }, {
     key: "update",
     value: function update(field) {
-      var _this2 = this;
+      var _this3 = this;
 
-      console.log(field);
-
-      if (field == 'owner') {
-        return function (e) {
-          return _this2.setState({
-            owner: {
-              first_name: e.currentTarget.value.split(' ')[0],
-              last_name: e.currentTarget.value.split(' ')[1]
-            }
-          });
-        };
-      }
-
-      ;
       return function (e) {
-        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+        if (field == 'owner') {
+          _this3.setState({
+            owner: {
+              first_name: e.label.split(' ')[0],
+              last_name: e.label.split(' ')[1]
+            },
+            owner_id: e.value
+          });
+        } else {
+          _this3.setState(_defineProperty({}, field, e.currentTarget.value));
+        }
       };
     }
   }, {
@@ -1264,8 +1271,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "login-error"
       }, this.props.errors[0]);
-    } //need to add react-select and change the owner field to a dropdown pulling data from the backend
-
+    }
   }, {
     key: "render",
     value: function render() {
@@ -1288,12 +1294,16 @@ function (_React$Component) {
         className: "login-input"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "formbox"
-      }, "Owner ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.owner ? this.state.owner.first_name + ' ' + this.state.owner.last_name : '',
+      }, "Owner ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "owner-dropdown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        value: this.state.owner ? {
+          label: this.state.owner.first_name + " " + this.state.owner.last_name,
+          value: this.state.owner.id
+        } : '',
         onChange: this.update('owner'),
-        className: "login-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        options: this.state && this.state.users
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "formbox"
       }, "Description ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         value: this.state.password,
@@ -1324,12 +1334,11 @@ function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/project_actions */ "./frontend/actions/project_actions.js");
-/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-/* harmony import */ var _project_create_form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./project_create_form */ "./frontend/components/projects/project_create_form.js");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/project_actions */ "./frontend/actions/project_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _project_create_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./project_create_form */ "./frontend/components/projects/project_create_form.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_user_action__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/user_action */ "./frontend/actions/user_action.js");
 
 
 
@@ -1337,28 +1346,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(_ref) {
-  var errors = _ref.errors;
+var mapStateToProps = function mapStateToProps(state) {
   return {
-    errors: errors.projects
+    users: state.entities.users,
+    errors: state.errors.projects
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    requestUsers: function requestUsers(users) {
+      return dispatch(Object(_actions_user_action__WEBPACK_IMPORTED_MODULE_5__["requestUsers"])(users));
+    },
     createProject: function createProject(project) {
-      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_2__["createProject"])(project));
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_1__["createProject"])(project));
     },
     closeModal: function closeModal() {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["closeModal"])());
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["closeModal"])());
     },
     clearErrors: function clearErrors() {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_5__["clearErrors"])());
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["clearErrors"])());
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_project_create_form__WEBPACK_IMPORTED_MODULE_4__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_project_create_form__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -1435,22 +1447,7 @@ function (_React$Component) {
     value: function update(field) {
       var _this3 = this;
 
-      // if (field == 'owner') {
-      //   console.log("hi")
-      //   return e => this.setState({
-      //     owner: e.currentTarget.value
-      //     // owner: {
-      //     //   first_name: e.currentTarget.value.split(' ')[0], 
-      //     //   last_name: e.currentTarget.value.split(' ')[1]
-      //     // }
-      //   })
-      // };
-      // return e => this.setState({
-      //   [field]: e.currentTarget.value
-      // });
       return function (e) {
-        console.log(e);
-
         if (field == 'owner') {
           _this3.setState({
             owner: {
@@ -1467,11 +1464,8 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      e.preventDefault(); // this.setState({
-      // })
-
+      e.preventDefault();
       var project = Object.assign({}, this.state);
-      console.log(project);
       this.props.updateProject(project).then(this.props.closeModal).then($(".project-dropdown").removeClass('reveal-dropdown'));
     }
   }, {
@@ -1549,8 +1543,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _project_edit_form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./project_edit_form */ "./frontend/components/projects/project_edit_form.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_user_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/user_action */ "./frontend/actions/user_action.js");
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.es.js");
-
 
 
 

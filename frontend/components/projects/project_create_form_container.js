@@ -1,18 +1,20 @@
 import { connect } from 'react-redux';
-import React from 'react';
 import { createProject } from '../../actions/project_actions';
-import { openModal, closeModal } from '../../actions/modal_actions';
+import { closeModal } from '../../actions/modal_actions';
 import ProjectCreateForm from './project_create_form';
 import { clearErrors } from '../../actions/session_actions';
+import { requestUsers } from '../../actions/user_action';
 
-const mapStateToProps = ({ errors }) => {
+const mapStateToProps = (state) => {
   return {
-    errors: errors.projects
+    users: state.entities.users,
+    errors: state.errors.projects
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    requestUsers: users => dispatch(requestUsers(users)),
     createProject: project => dispatch(createProject(project)),
     closeModal: () => dispatch(closeModal()),
     clearErrors: () => dispatch(clearErrors())

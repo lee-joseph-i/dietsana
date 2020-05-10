@@ -21,22 +21,7 @@ class ProjectEditForm extends React.Component {
   }
 
   update(field) {
-    // if (field == 'owner') {
-    //   console.log("hi")
-    //   return e => this.setState({
-    //     owner: e.currentTarget.value
-    //     // owner: {
-    //     //   first_name: e.currentTarget.value.split(' ')[0], 
-    //     //   last_name: e.currentTarget.value.split(' ')[1]
-    //     // }
-    //   })
-    // };
-    // return e => this.setState({
-    //   [field]: e.currentTarget.value
-    // });
-
     return e => {
-      console.log(e)
       if (field == 'owner'){
         this.setState({
           owner: {
@@ -55,11 +40,7 @@ class ProjectEditForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    // this.setState({
-
-    // })
     const project = Object.assign({}, this.state);
-    console.log(project)
     this.props.updateProject(project)
       .then(this.props.closeModal)
       .then(
