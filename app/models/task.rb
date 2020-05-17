@@ -11,5 +11,3 @@ class Task < ApplicationRecord
     foreign_key: :creator_id
   
 end
-
-# test
