@@ -10,6 +10,11 @@ class Api::TasksController < ApplicationController
     end
   end
 
+  def index
+    @tasks = Task.all
+    # this may need to be configured to index all tasks associated with the project
+  end
+
   private
 
   def task_params
