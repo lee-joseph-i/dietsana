@@ -13,9 +13,5 @@ class Task < ApplicationRecord
 end
 
 
-# does a project have many tasks AND sections?
-# or
-# does a section have many tasks?
-# sections can be named... 
-# tasks can be "assigned" to a section...
-# need to take another look at my schema
+# a section has many tasks.
+# a project has many sections (starts with one by default)
