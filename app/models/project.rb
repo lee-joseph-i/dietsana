@@ -17,4 +17,15 @@ class Project < ApplicationRecord
   has_many :tasks,
       through: :columns
 
+  def add_section(section_id)
+    self.section_will_change!
+    self.section.push(section_id)
+    self.save
+  end
+
+  def move_section(old_idx, new_idx)
+    self.section_will_change!
+    self.section.insert(new_idx, self.section.delete_at(old_idx))
+    self.save
+  end
 end
