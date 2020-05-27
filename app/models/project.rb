@@ -15,7 +15,7 @@ class Project < ApplicationRecord
       class_name: :Section
 
   has_many :tasks,
-      through: :columns
+      through: :sections
 
   def add_section(section_id)
     self.section_will_change!
