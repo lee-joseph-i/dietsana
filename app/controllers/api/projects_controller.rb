@@ -27,6 +27,8 @@ class Api::ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
+    @project.section_will_change! # Joseph-Review
+    project_params[:section] = [] unless project_params[:section] # Joseph-Review
     if @project.update(project_params)
           render :show
     else
