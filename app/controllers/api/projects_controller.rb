@@ -50,6 +50,7 @@ class Api::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :owner_id, :description, :owner)
+    params.require(:project).permit!
+    # params.require(:project).permit(:name, :owner_id, :description, :owner) # may need to include section here
   end
 end
