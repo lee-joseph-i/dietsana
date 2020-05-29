@@ -50,7 +50,7 @@ class Api::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit!
-    # params.require(:project).permit(:name, :owner_id, :description, :owner) # may need to include section here
+    # params.require(:project).permit! #this does not work, when attempting to edit or create a project i get a server error
+    params.require(:project).permit(:name, :owner_id, :description, :owner) # may need to include section here
   end
 end
