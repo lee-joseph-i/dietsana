@@ -12,10 +12,18 @@ const Body = () => (
     <Route exact path="/app" component={ProjectIndexContainer} />
     {/* <Route path="/app/projects/new" component={ProjectCreateFormContainer} />  */}
     {/* creating projects does not need a route, may need to just delete the commented route on line 13 */}
-    <Route exact path="/app/projects/:projectId" component={ProjectShowContainer} />
+    {/* <Route exact path="/app/projects/:projectId" component={ProjectShowContainer} /> */}
     <Route path="/app/projects/:projectId/edit" component={ProjectEditFormContainer} />
   </div>
 );
+
+/*
+when user goes to /app/projects/:projectId
+- I need the header container to get state of the project name
+- I need to simultaneously load the SectionIndexContainer
+
+the second part is easy enough, how do I support the first?
+*/
 
 export default Body;
 

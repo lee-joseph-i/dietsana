@@ -418,14 +418,18 @@ var Body = function Body() {
     path: "/app",
     component: _projects_project_index_container__WEBPACK_IMPORTED_MODULE_2__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    exact: true,
-    path: "/app/projects/:projectId",
-    component: _projects_project_show_container__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/app/projects/:projectId/edit",
     component: _projects_project_edit_form_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }));
 };
+/*
+when user goes to /app/projects/:projectId
+- I need the header container to get state of the project name
+- I need to simultaneously load the SectionIndexContainer
+
+the second part is easy enough, how do I support the first?
+*/
+
 
 /* harmony default export */ __webpack_exports__["default"] = (Body);
 
@@ -489,7 +493,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var currentUser = _ref.currentUser,
       openModal = _ref.openModal;
-  // console.log(this.props)
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "header"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
