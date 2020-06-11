@@ -418,6 +418,10 @@ var Body = function Body() {
     path: "/app",
     component: _projects_project_index_container__WEBPACK_IMPORTED_MODULE_2__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/app/projects/:projectId",
+    component: _projects_project_show_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/app/projects/:projectId/edit",
     component: _projects_project_edit_form_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }));
