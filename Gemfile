@@ -3,15 +3,25 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+#july 29, 2020
+gem "actionview", ">= 5.2.4.3"
+gem "rack", ">= 2.2.3"
+gem "websocket-extensions", ">= 0.1.5"
+gem "activesupport", ">= 5.2.4.3"
+gem "actionpack", ">= 5.2.4.3"
+gem "activestorage", ">= 5.2.4.3"
+
+
 gem 'bcrypt'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3' 
 gem 'rails_12factor'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.12.4'
+gem 'puma', '~> 3.12.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
