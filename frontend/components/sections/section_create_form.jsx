@@ -1,5 +1,6 @@
 // setup using React hooks! 
 // also incorporate memoization when possible
+// joe to do
 
 import React, { useState } from 'react';
 

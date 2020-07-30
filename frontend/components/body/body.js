@@ -26,4 +26,3 @@ the second part is easy enough, how do I support the first?
 */
 
 export default Body;
-
