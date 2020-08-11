@@ -22,7 +22,6 @@ when user goes to /app/projects/:projectId
 - I need the header container to get state of the project name
 - I need to simultaneously load the SectionIndexContainer
 
-the second part is easy enough, how do I support the first?
 */
 //Joseph-Review
 
