@@ -21,7 +21,7 @@ const Body = () => (
 when user goes to /app/projects/:projectId
 - I need the header container to get state of the project name
 - I need to simultaneously load the SectionIndexContainer
-
+- Maybe learn React Hooks first and see if that makes this more palatable.
 */
 //Joseph-Review
 
