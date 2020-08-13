@@ -1,7 +1,7 @@
 class Section < ApplicationRecord
   validates :name, :project_id, presence: true
-  belongs_to :project,
-  has_many :tasks,
+  belongs_to :project
+  has_many :tasks
 
   def add_task(task_id)
     # task methods
