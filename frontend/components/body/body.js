@@ -12,7 +12,7 @@ const Body = () => (
     <Route exact path="/app" component={ProjectIndexContainer} />
     {/* <Route path="/app/projects/new" component={ProjectCreateFormContainer} />  */}
     {/* creating projects does not need a route, may need to just delete the commented route on line 13 */}
-    <Route exact path="/app/projects/:projectId" component={SectionIndexContainer} />
+    {/* <Route exact path="/app/projects/:projectId" component={SectionIndexContainer} /> */}
     <Route path="/app/projects/:projectId/edit" component={ProjectEditFormContainer} />
   </div>
 );
@@ -24,5 +24,7 @@ when user goes to /app/projects/:projectId
 - Maybe learn React Hooks first and see if that makes this more palatable.
 */
 //Joseph-Review
+// Line 15 Needs to be reinstated! commented out because SectionIndexContainer 
+// not imported. 
 
 export default Body;
