@@ -34,7 +34,7 @@ class LoginForm extends React.Component {
   // demo login function
 
   demo(e){
-    this.setState({email: 'josephlee@dietsana.com', password: 'password123'});
+    this.setState({email: 'josephlee@maru.com', password: 'password123'});
     return setTimeout( () => {
       this.props.processForm(this.state)
         .then(this.props.closeModal)

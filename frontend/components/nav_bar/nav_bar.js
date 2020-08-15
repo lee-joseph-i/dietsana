@@ -25,7 +25,7 @@ export default ({ currentUser, openModal }) => {
 
   const display = !!currentUser ? (
     <div>
-      <Link className="return" to="/app">Return to my Dietsana</Link>
+      <Link className="return" to="/app">Return to Maru</Link>
     </div>
   ) : (
       <div>

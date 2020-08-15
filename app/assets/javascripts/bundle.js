@@ -1115,7 +1115,7 @@ __webpack_require__.r(__webpack_exports__);
   var display = !!currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "return",
     to: "/app"
-  }, "Return to my Dietsana")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, "Return to Maru")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "login",
     onClick: function onClick() {
       return openModal('login');
@@ -2131,7 +2131,7 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
       var _this4 = this;
 
       this.setState({
-        email: 'josephlee@dietsana.com',
+        email: 'josephlee@maru.com',
         password: 'password123'
       });
       return setTimeout(function () {
