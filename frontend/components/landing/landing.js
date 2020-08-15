@@ -55,10 +55,10 @@ class Landing extends React.Component{
             <li>
               <div className="welcome_intro">
                 <h1>Make more time for the work that matters most</h1>
-                <p>Dietsana is the work management platform teams use to stay focused on the goals, projects, and daily tasks that grow business.</p>
+                <p>Maru is the work management platform teams use to stay focused on the goals, projects, and daily tasks that grow business.</p>
                 {
                   currentUser ? 
-                  <Link className="return" to="/app">Return to my Dietsana</Link> 
+                  <Link className="return" to="/app">Return to Maru</Link> 
                   : 
                   <button className="signup" onClick={() => openModal('signup')}>Try for free</button>
                 }

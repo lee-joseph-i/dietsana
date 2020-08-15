@@ -15,94 +15,85 @@ ApplicationRecord.transaction do
   User.create!(
     first_name: 'Joseph', 
     last_name: 'Lee', 
-    email: 'josephlee@dietsana.com', 
+    email: 'josephlee@maru.com', 
     password: "password123")
 
   User.create!(
     first_name: 'Helen', 
     last_name: 'Yu', 
-    email: 'johnlee@dietsana.com', 
+    email: 'johnlee@maru.com', 
     password: "password123")
 
   User.create!(
     first_name: 'Lina', 
     last_name: 'Kherchi', 
-    email: 'linakherchi@dietsana.com', 
+    email: 'linakherchi@maru.com', 
     password: "password123")
 
   User.create!(
     first_name: 'Mike', 
     last_name: 'Madsen', 
-    email: 'mikemadsen@dietsana.com', 
+    email: 'mikemadsen@maru.com', 
     password: "password123")
 
   User.create!(
     first_name: 'Sam', 
     last_name: 'Walker', 
-    email: 'samwalker@dietsana.com', 
+    email: 'samwalker@maru.com', 
     password: "password123")
 
   Project.create!(
-    name: 'Full Stack Project',
+    name: 'The Maru Project',
     owner_id: 1,
     creator_id: 1,
-    description: 'Build your first (but not last) FS project - from scratch!',
+    description: "Hey! Welcome to my Asana inspired project management web application.
+    \n
+    Here, you'll have the MVPs of what Asana typically touts: projects, tasks, users and owners, and pipeline views.
+    ",
   )
 
   Project.create!(
-    name: 'Flex Project',
+    name: 'MERN Stack Project: Space Balls',
     owner_id: 2,
     creator_id: 1,
-    description: 'Build a project using the MERN stack with a team.',
+    description: "
+    I've created a project using the MERN stack, a collaborative effort with three others engineers. Check it out!
+    \n http://space-ball.herokuapp.com/#/",
   )
 
   Project.create!(
     name: 'Javascript Project',
     owner_id: 1,
     creator_id: 3,
-    description: 'Build your own game using JS! pew pew~',
-  )
-
-  Project.create!(
-    name: 'Graduation',
-    owner_id: 4,
-    creator_id: 3,
-    description: 'You graduated! Now what?',
-  )
-
-  Project.create!(
-    name: 'Job Search Curriculum',
-    owner_id: 3,
-    creator_id: 3,
-    description: "Keep applying until you find a job or until you're dead.",
-  )
-
-  Project.create!(
-    name: 'MERN Part II',
-    owner_id: 3,
-    creator_id: 1,
-    description: 'Continue working on your MERN project with your buds.',
-  )
-  
-  Project.create!(
-    name: 'FullStack Project, Part II',
-    owner_id: 5,
-    creator_id: 3,
-    description: 'Continue working on your FullStack after your buds have abandoned you.',
+    description: "
+    I've created a purely frontend JS project. It's a fun typing game! Knock yourself out :)
+    \n https://lee-joseph-i.github.io/gotta-type-em-all/
+    ",
   )
 
   Project.create!(
     name: 'Self Care',
     owner_id: 4,
     creator_id: 3,
-    description: "Don't forget to take care of yourself",
+    description: "In times like these, don't forget to take care of yourself. Progress on your own pace.",
   )
 
   Project.create!(
-    name: 'Algorithms',
-    owner_id: 1,
+    name: 'Job Search: Algos and Data Structures',
+    owner_id: 3,
     creator_id: 3,
-    description: "Work on your algorithms.",
+    description: "Leetcode, AlgoExpert, ... more Leetcode.",
   )
 
+  Project.create!(
+    name: 'MVP: Kanban Board',
+    owner_id: 3,
+    creator_id: 1,
+    description: "
+    The Kanban Board is a pipeline view where tasks can be read along in a progressive manner. This allows users and teams to follow a sequential list of tasks and track the progress of a project completion.
+    \n- Tasks associated with projects.
+    \n- Sections for tasks.
+    \n- Drag and Drop functionality.
+    ",
+  )
 end
