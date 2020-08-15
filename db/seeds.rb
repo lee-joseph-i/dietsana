@@ -46,10 +46,7 @@ ApplicationRecord.transaction do
     name: 'The Maru Project',
     owner_id: 1,
     creator_id: 1,
-    description: "Hey! Welcome to my Asana inspired project management web application.
-    \n
-    Here, you'll have the MVPs of what Asana typically touts: projects, tasks, users and owners, and pipeline views.
-    ",
+    description: "Hey! Welcome to my Asana inspired project management web application.\nHere, you'll have the MVPs of what Asana typically touts: projects, tasks, users and owners, and pipeline views.",
   )
 
   Project.create!(
@@ -57,8 +54,7 @@ ApplicationRecord.transaction do
     owner_id: 2,
     creator_id: 1,
     description: "
-    I've created a project using the MERN stack, a collaborative effort with three others engineers. Check it out!
-    \n http://space-ball.herokuapp.com/#/",
+    I've created a project using the MERN stack, a collaborative effort with three others engineers. Check it out!\n http://space-ball.herokuapp.com/#/",
   )
 
   Project.create!(
@@ -66,9 +62,7 @@ ApplicationRecord.transaction do
     owner_id: 1,
     creator_id: 3,
     description: "
-    I've created a purely frontend JS project. It's a fun typing game! Knock yourself out :)
-    \n https://lee-joseph-i.github.io/gotta-type-em-all/
-    ",
+    I've created a purely frontend JS project. It's a fun typing game! Knock yourself out :)\n https://lee-joseph-i.github.io/gotta-type-em-all/",
   )
 
   Project.create!(
@@ -90,10 +84,6 @@ ApplicationRecord.transaction do
     owner_id: 3,
     creator_id: 1,
     description: "
-    The Kanban Board is a pipeline view where tasks can be read along in a progressive manner. This allows users and teams to follow a sequential list of tasks and track the progress of a project completion.
-    \n- Tasks associated with projects.
-    \n- Sections for tasks.
-    \n- Drag and Drop functionality.
-    ",
+    The Kanban Board is a pipeline view where tasks can be read along in a progressive manner. This allows users and teams to follow a sequential list of tasks and track the progress of a project completion.\n- Tasks associated with projects.\n- Sections for tasks.\n- Drag and Drop functionality.",
   )
 end
