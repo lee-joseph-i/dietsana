@@ -84,6 +84,7 @@ ApplicationRecord.transaction do
     owner_id: 3,
     creator_id: 1,
     description: "
-    The Kanban Board is a pipeline view where tasks can be read along in a progressive manner. This allows users and teams to follow a sequential list of tasks and track the progress of a project completion.\n- Tasks associated with projects.\n- Sections for tasks.\n- Drag and Drop functionality.",
+    The Kanban Board is a pipeline view where tasks can be read along in a progressive manner. This allows users and teams to follow a sequential list of tasks and track the progress of a project completion.
+    \n- Tasks associated with projects.\n- Sections for tasks.\n- Drag and Drop functionality.",
   )
 end
