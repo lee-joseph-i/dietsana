@@ -1,6 +1,6 @@
-# Dietsana
-[Dietsana live link!](https://dietsana.herokuapp.com/)</br>
-![Dietsana landing page](https://i.ibb.co/pZvVwJY/dietsana-screenshot.png)
+# Maru
+[Maru live link!](https://dietsana.herokuapp.com/)</br>
+![Maru landing page](https://i.ibb.co/pZvVwJY/dietsana-screenshot.png)
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -10,15 +10,15 @@
 
 ## Introduction
 
-The Dietsana project is a built-from-scratch clone of Asana. Asana is a web and mobile application designed to help teams organize, track, and manage their work. Users will be able to sign up and log in, create, edit and delete their own projects, view an index of all projects across users, and view details of individual projects.
+The Maru project is an Asana-inspired project management tool designed to help teams organize, track, and manage their work. Users will be able to sign up and log in, create, edit and delete their own projects, view an index of all projects across users, and view details of individual projects.
 
 ## Technologies
 
 **Backend** <br/> 
-Dietsana uses PostgreSQL, Ruby on Rails, Node.js as the foundation to its backend.  User accounts and projects are stored in the Postgres database. User authentication is secured through standard OAuth hash and salt process.
+Maru uses PostgreSQL, Ruby on Rails, Node.js as the foundation to its backend.  User accounts and projects are stored in the Postgres database. User authentication is secured through standard OAuth hash and salt process.
 
 **Frontend** <br/> 
-Dietsana's frontend pages are rendered with React/Redux. Slices of state are curated for use across all React components, including the navbars, user profile modals, and individual projects.
+Maru's frontend pages are rendered with React/Redux. Slices of state are curated for use across all React components, including the navbars, user profile modals, and individual projects.
 
 
 ## Features
