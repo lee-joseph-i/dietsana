@@ -1,6 +1,6 @@
 # Maru
-[Maru live link!](https://dietsana.herokuapp.com/)</br>
-![Maru landing page](https://i.ibb.co/pZvVwJY/dietsana-screenshot.png)
+[Maru live link!](https://maru-sana.herokuapp.com/)</br>
+![Maru landing page](https://user-images.githubusercontent.com/39147326/90926049-2ea79680-e3a7-11ea-8035-f823918d15b4.png)
 
 ## Table of Contents
 1. [Introduction](#introduction)
