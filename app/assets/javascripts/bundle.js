@@ -3183,37 +3183,9 @@ var ProtectedRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withR
   !*** ./frontend/util/session_api_util.js ***!
   \*******************************************/
 /*! exports provided: login, signup, logout */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
-var login = function login(user) {
-  return $.ajax({
-    method: 'POST',
-    url: '/api/session',
-    data: {
-      user: user
-    }
-  });
-};
-var signup = function signup(user) {
-  return $.ajax({
-    method: 'POST',
-    url: '/api/users',
-    data: {
-      user: user
-    }
-  });
-};
-var logout = function logout() {
-  return $.ajax({
-    method: 'DELETE',
-    url: '/api/session'
-  });
-};
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/josephlee/Desktop/Projects/dietsana/dietsana/frontend/util/session_api_util.js'");
 
 /***/ }),
 
