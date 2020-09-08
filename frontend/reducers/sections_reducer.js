@@ -5,24 +5,24 @@ import {
 } from '../actions/section_actions';
 import { RECEIVE_PROJECT } from '../actions/project_actions';
 
-const sectionsReducer = (oldState = {}, action) => {
-  Object.freeze(oldState);
-  let nextState = Object.assign({}, oldState);
+const sectionsReducer = (state = {}, action) => {
+  Object.freeze(state);
+  let newState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_SECTIONS:
-      nextState = Object.assign({}, oldState, action.sections);
-      return nextState;
+      newState = Object.assign({}, state, action.sections);
+      return newState;
     case RECEIVE_SECTION:
-      nextState[action.section.id] = action.section;
-      return nextState;
+      newState[action.section.id] = action.section;
+      return newState;
     case REMOVE_SECTION:
-      delete nextState[action.sectionId]
-      return nextState;
+      delete newState[action.sectionId]
+      return newState;
     case RECEIVE_PROJECT:
-      nextState = Object.assign({}, oldState, action.sections)
-      return nextState;
+      newState = Object.assign({}, state, action.sections)
+      return newState;
     default:
-      return oldState;
+      return state;
   };
 };
 
