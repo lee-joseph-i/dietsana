@@ -1,5 +1,5 @@
 import React from 'react';
-import SectionIndexItem from './section_index_item';
+import SectionIndexItem from './section_index_item.jsx';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 class SectionIndex extends React.Component{
