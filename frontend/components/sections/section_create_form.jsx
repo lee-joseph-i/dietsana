@@ -1,6 +1,8 @@
 // setup using React hooks! 
 // also incorporate memoization when possible
 
+// section_create_form SHELVED as of 9/9/20 - not using a modal for this implementation.
+
 import React, { useState } from 'react';
 
 // function Example() {
