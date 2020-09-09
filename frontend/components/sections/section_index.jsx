@@ -2,7 +2,7 @@ import React from 'react';
 import SectionIndexItem from './section_index_item';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
-class SectionIndex extends React.component{
+class SectionIndex extends React.Component{
   constructor(props){
     super(props);
   };
