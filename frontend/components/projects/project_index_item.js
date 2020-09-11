@@ -19,7 +19,9 @@ class ProjectIndexItem extends React.Component {
 
     //link to show page
     $(`#project-tile-${that.props.project.id}`).click(function () {
-      that.props.history.push(`/app/projects/${that.props.project.id}`); //need to figure out how to pass properties
+      that.props.history.push(`/app/projects/${that.props.project.id}`); 
+      //need to figure out how to pass properties
+      // this will be pivotal in making sections_index work. 
       // <Link to={`/app/projects/${that.props.project.id}`} /> 
     });
 
