@@ -225,6 +225,88 @@ var deleteProject = function deleteProject(projectId) {
 
 /***/ }),
 
+/***/ "./frontend/actions/section_actions.js":
+/*!*********************************************!*\
+  !*** ./frontend/actions/section_actions.js ***!
+  \*********************************************/
+/*! exports provided: RECEIVE_SECTIONS, RECEIVE_SECTION, REMOVE_SECTION, fetchSections, fetchSection, createSection, updateSection, deleteSection */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SECTIONS", function() { return RECEIVE_SECTIONS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SECTION", function() { return RECEIVE_SECTION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_SECTION", function() { return REMOVE_SECTION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSections", function() { return fetchSections; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSection", function() { return fetchSection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createSection", function() { return createSection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateSection", function() { return updateSection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteSection", function() { return deleteSection; });
+/* harmony import */ var _util_section_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/section_api_util */ "./frontend/util/section_api_util.jsx");
+
+var RECEIVE_SECTIONS = 'RECEIVE_SECTIONS';
+var RECEIVE_SECTION = 'RECEIVE_SECTION';
+var REMOVE_SECTION = 'REMOVE_SECTION';
+
+var receiveSections = function receiveSections(sections) {
+  return {
+    type: RECEIVE_SECTIONS,
+    sections: sections
+  };
+};
+
+var receiveSection = function receiveSection(section) {
+  return {
+    type: RECEIVE_SECTION,
+    section: section
+  };
+};
+
+var removeSection = function removeSection(sectionId) {
+  return {
+    type: REMOVE_SECTION,
+    sectionId: sectionId
+  };
+};
+
+var fetchSections = function fetchSections(projectId) {
+  return function (dispatch) {
+    return _util_section_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchSections"](projectId).then(function (sections) {
+      return dispatch(receiveSections(sections));
+    });
+  };
+};
+var fetchSection = function fetchSection(sectionId) {
+  return function (dispatch) {
+    return _util_section_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchSection"](sectionId).then(function (section) {
+      return dispatch(receiveSection(section));
+    });
+  };
+};
+var createSection = function createSection(section) {
+  return function (dispatch) {
+    return _util_section_api_util__WEBPACK_IMPORTED_MODULE_0__["createSection"](section).then(function (section) {
+      return dispatch(receiveSection(section));
+    });
+  };
+};
+var updateSection = function updateSection(section) {
+  return function (dispatch) {
+    return _util_section_api_util__WEBPACK_IMPORTED_MODULE_0__["updateSection"](section).then(function (section) {
+      return dispatch(receiveSection(section));
+    });
+  };
+};
+var deleteSection = function deleteSection(sectionId) {
+  return function (dispatch) {
+    return _util_section_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteSection"](sectionId).then(function () {
+      return dispatch(removeSection(sectionId));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -245,7 +327,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
-/* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_api_util */ "./frontend/util/session_api_util.js");
+/* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_api_util */ "./frontend/util/session_api_util.jsx");
 
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
@@ -295,6 +377,88 @@ var logout = function logout() {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["logout"]().then(function () {
       return dispatch(logoutCurrentUser());
+    });
+  };
+};
+
+/***/ }),
+
+/***/ "./frontend/actions/task_actions.js":
+/*!******************************************!*\
+  !*** ./frontend/actions/task_actions.js ***!
+  \******************************************/
+/*! exports provided: RECEIVE_TASKS, RECEIVE_TASK, REMOVE_TASK, fetchTasks, fetchTask, createTask, updateTask, deleteTask */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_TASKS", function() { return RECEIVE_TASKS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_TASK", function() { return RECEIVE_TASK; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_TASK", function() { return REMOVE_TASK; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTasks", function() { return fetchTasks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTask", function() { return fetchTask; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createTask", function() { return createTask; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateTask", function() { return updateTask; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteTask", function() { return deleteTask; });
+/* harmony import */ var _util_task_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/task_api_util */ "./frontend/util/task_api_util.jsx");
+
+var RECEIVE_TASKS = "RECEIVE_TASKS";
+var RECEIVE_TASK = "RECEIVE_TASK";
+var REMOVE_TASK = "REMOVE_TASK";
+
+var receiveTasks = function receiveTasks(tasks) {
+  return {
+    type: RECEIVE_TASKS,
+    tasks: tasks
+  };
+};
+
+var receiveTask = function receiveTask(task) {
+  return {
+    type: RECEIVE_TASK,
+    task: task
+  };
+};
+
+var removeTask = function removeTask(taskId) {
+  return {
+    type: REMOVE_TASK,
+    taskId: taskId
+  };
+};
+
+var fetchTasks = function fetchTasks(sectionId) {
+  return function (dispatch) {
+    return _util_task_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTasks"](sectionId).then(function (tasks) {
+      return dispatch(receiveTasks(tasks));
+    });
+  };
+};
+var fetchTask = function fetchTask(taskId) {
+  return function (dispatch) {
+    return _util_task_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTask"](taskId).then(function (task) {
+      return dispatch(receiveTask(task));
+    });
+  };
+};
+var createTask = function createTask(task) {
+  return function (dispatch) {
+    return _util_task_api_util__WEBPACK_IMPORTED_MODULE_0__["createTask"](task).then(function (task) {
+      return dispatch(receiveTask(task));
+    });
+  };
+};
+var updateTask = function updateTask(task) {
+  return function (dispatch) {
+    return _util_task_api_util__WEBPACK_IMPORTED_MODULE_0__["updateTask"](task).then(function (task) {
+      return dispatch(receiveTask(task));
+    });
+  };
+};
+var deleteTask = function deleteTask(taskId) {
+  return function (dispatch) {
+    return _util_task_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteTask"](taskId).then(function () {
+      return dispatch(removeTask(taskId));
     });
   };
 };
@@ -417,6 +581,10 @@ var Body = function Body() {
     exact: true,
     path: "/app",
     component: _projects_project_index_container__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/app/projects/:projectId",
+    component: SectionIndexContainer
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/app/projects/:projectId/edit",
     component: _projects_project_edit_form_container__WEBPACK_IMPORTED_MODULE_6__["default"]
@@ -1821,6 +1989,7 @@ var ProjectIndexItem = /*#__PURE__*/function (_React$Component) {
 
       $("#project-tile-".concat(that.props.project.id)).click(function () {
         that.props.history.push("/app/projects/".concat(that.props.project.id)); //need to figure out how to pass properties
+        // this will be pivotal in making sections_index work. 
         // <Link to={`/app/projects/${that.props.project.id}`} /> 
       }); //open dropdown
 
@@ -2599,7 +2768,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
-/* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util/session_api_util */ "./frontend/util/session_api_util.js");
+/* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util/session_api_util */ "./frontend/util/session_api_util.jsx");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2681,12 +2850,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _projects_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./projects_reducer */ "./frontend/reducers/projects_reducer.js");
+/* harmony import */ var _sections_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sections_reducer */ "./frontend/reducers/sections_reducer.js");
+/* harmony import */ var _tasks_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tasks_reducer */ "./frontend/reducers/tasks_reducer.js");
+
+
 
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  projects: _projects_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  projects: _projects_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  sections: _sections_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  tasks: _tasks_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -2878,6 +3053,54 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 
 /***/ }),
 
+/***/ "./frontend/reducers/sections_reducer.js":
+/*!***********************************************!*\
+  !*** ./frontend/reducers/sections_reducer.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_section_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/section_actions */ "./frontend/actions/section_actions.js");
+/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/project_actions */ "./frontend/actions/project_actions.js");
+
+
+
+var sectionsReducer = function sectionsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var newState = Object.assign({}, state);
+
+  switch (action.type) {
+    case _actions_section_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SECTIONS"]:
+      newState = Object.assign({}, state, action.sections);
+      return newState;
+
+    case _actions_section_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SECTION"]:
+      newState[action.section.id] = action.section;
+      return newState;
+
+    case _actions_section_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_SECTION"]:
+      delete newState[action.sectionId];
+      return newState;
+
+    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_PROJECT"]:
+      newState = Object.assign({}, state, action.sections);
+      return newState;
+
+    default:
+      return state;
+  }
+
+  ;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (sectionsReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/session_errors_reducer.js":
 /*!*****************************************************!*\
   !*** ./frontend/reducers/session_errors_reducer.js ***!
@@ -2951,6 +3174,54 @@ var sessionReducer = function sessionReducer() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (sessionReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/tasks_reducer.js":
+/*!********************************************!*\
+  !*** ./frontend/reducers/tasks_reducer.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/task_actions */ "./frontend/actions/task_actions.js");
+/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/project_actions */ "./frontend/actions/project_actions.js");
+
+
+
+var tasksReducer = function tasksReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var newState = Object.assign({}, state);
+
+  switch (action.type) {
+    case _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TASKS"]:
+      newState = Object.assign({}, action.tasks);
+      return newState;
+
+    case _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TASK"]:
+      newState[action.task.id] = action.task;
+      return newState;
+
+    case _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_TASK"]:
+      delete newState[action.taskId];
+      return newState;
+
+    case _actions_project_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_PROJECT"]:
+      newState = Object.assign({}, state, action.tasks);
+      return newState;
+
+    default:
+      return state;
+  }
+
+  ;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (tasksReducer);
 
 /***/ }),
 
@@ -3178,14 +3449,154 @@ var ProtectedRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withR
 
 /***/ }),
 
-/***/ "./frontend/util/session_api_util.js":
-/*!*******************************************!*\
-  !*** ./frontend/util/session_api_util.js ***!
-  \*******************************************/
-/*! exports provided: login, signup, logout */
-/***/ (function(module, exports) {
+/***/ "./frontend/util/section_api_util.jsx":
+/*!********************************************!*\
+  !*** ./frontend/util/section_api_util.jsx ***!
+  \********************************************/
+/*! exports provided: fetchSections, fetchSection, createSection, updateSection, deleteSection */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/josephlee/Desktop/Projects/dietsana/dietsana/frontend/util/session_api_util.js'");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSections", function() { return fetchSections; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSection", function() { return fetchSection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createSection", function() { return createSection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateSection", function() { return updateSection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteSection", function() { return deleteSection; });
+var fetchSections = function fetchSections(projectId) {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/sections',
+    data: {
+      projectId: projectId
+    }
+  });
+};
+var fetchSection = function fetchSection(sectionId) {
+  return $.ajax({
+    method: 'GET',
+    url: "/api/sections/".concat(sectionId)
+  });
+};
+var createSection = function createSection(section) {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/sections',
+    data: {
+      section: section
+    }
+  });
+};
+var updateSection = function updateSection(section) {
+  return $.ajax({
+    method: 'PATCH',
+    url: "api/sections/".concat(section.id),
+    data: {
+      section: section
+    }
+  });
+};
+var deleteSection = function deleteSection(sectionId) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "/api/sections/".concat(sectionId)
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/session_api_util.jsx":
+/*!********************************************!*\
+  !*** ./frontend/util/session_api_util.jsx ***!
+  \********************************************/
+/*! exports provided: login, signup, logout */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
+var login = function login(user) {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/session',
+    data: {
+      user: user
+    }
+  });
+};
+var signup = function signup(user) {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/users',
+    data: {
+      user: user
+    }
+  });
+};
+var logout = function logout() {
+  return $.ajax({
+    method: 'DELETE',
+    url: '/api/session'
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/task_api_util.jsx":
+/*!*****************************************!*\
+  !*** ./frontend/util/task_api_util.jsx ***!
+  \*****************************************/
+/*! exports provided: fetchTasks, fetchTask, createTask, updateTask, deleteTask */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTasks", function() { return fetchTasks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTask", function() { return fetchTask; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createTask", function() { return createTask; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateTask", function() { return updateTask; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteTask", function() { return deleteTask; });
+var fetchTasks = function fetchTasks(sectionId) {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/tasks',
+    data: {
+      sectionId: sectionId
+    }
+  });
+};
+var fetchTask = function fetchTask(taskId) {
+  return $.ajax({
+    method: 'GET',
+    url: "/api/tasks/".concat(taskId)
+  });
+};
+var createTask = function createTask(task) {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/tasks',
+    data: {
+      task: task
+    }
+  });
+};
+var updateTask = function updateTask(task) {
+  return $.ajax({
+    method: 'PATCH',
+    url: "api/tasks/".concat(task.id),
+    data: {
+      section: section
+    }
+  });
+};
+var deleteTask = function deleteTask(taskId) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "/api/tasks/".concat(taskId)
+  });
+};
 
 /***/ }),
 

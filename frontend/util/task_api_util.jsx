@@ -21,7 +21,7 @@ export const createTask = task => (
   })
 );
 
-export const updateSection = section => {
+export const updateTask = task => {
   return $.ajax({
     method: 'PATCH',
     url: `api/tasks/${task.id}`,
@@ -29,7 +29,7 @@ export const updateSection = section => {
   })
 };
 
-export const deleteSection = taskId => {
+export const deleteTask = taskId => {
   return $.ajax({
     method: 'DELETE',
     url: `/api/tasks/${taskId}`

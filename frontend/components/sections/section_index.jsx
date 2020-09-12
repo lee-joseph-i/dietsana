@@ -14,7 +14,7 @@ class SectionIndex extends React.Component{
   render(){
 
     return(
-      <div>placeholder</div>
+      <div>section placeholder text</div>
     );
   };
 

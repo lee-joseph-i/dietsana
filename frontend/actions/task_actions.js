@@ -1,7 +1,7 @@
 import * as TaskApiUtil from '../util/task_api_util';
 
 export const RECEIVE_TASKS = "RECEIVE_TASKS";
-export const RECIEVE_TASK = "RECEIVE_TASK";
+export const RECEIVE_TASK = "RECEIVE_TASK";
 export const REMOVE_TASK = "REMOVE_TASK";
 
 const receiveTasks = tasks => ({
