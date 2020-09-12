@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import SectionIndex from './section_index';
-import { fetchProject, updateProject } from '../../actions/project_actions';
+import { requestProject, updateProject } from '../../actions/project_actions';
 import { withRouter } from 'react-router-dom';
 import {
-  fetchSections,
+  requestSections,
   createSection,
   updateSection,
   deleteSection
@@ -16,13 +16,13 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchSections: projectId => dispatch(fetchSections(projectId)),
+  requestSections: projectId => dispatch(requestSections(projectId)),
   createTask: task => dispatch(createTask(task)),
   updateTask: task => dispatch(updateTask(task)),
   createSection: section => dispatch(createSection(section)),
   updateSection: section => dispatch(updateSection(section)),
   updateProject: project => dispatch(updateProject(project)),
-  fetchProject: projectId => dispatch(fetchProject(projectId)),
+  requestProject: projectId => dispatch(requestProject(projectId)),
   deleteSection: sectionId => dispatch(deleteSection(sectionId))
 });
 

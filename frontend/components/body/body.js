@@ -5,6 +5,7 @@ import HeaderContainer from '../header/header-container';
 import ProjectCreateFormContainer from '../projects/project_create_form_container';
 import ProjectShowContainer from '../projects/project_show_container';
 import ProjectEditFormContainer from '../projects/project_edit_form_container';
+import SectionIndexContainer from '../sections/section_index_container';
 
 const Body = () => (
   <div className="body">
