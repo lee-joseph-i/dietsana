@@ -2221,9 +2221,16 @@ var Root = function Root(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _section_index_item_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./section_index_item.jsx */ "./frontend/components/sections/section_index_item.jsx");
-/* harmony import */ var react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-beautiful-dnd */ "./node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _section_index_item_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./section_index_item.jsx */ "./frontend/components/sections/section_index_item.jsx");
+/* harmony import */ var react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-beautiful-dnd */ "./node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2245,6 +2252,9 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -2255,18 +2265,281 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(SectionIndex);
 
   function SectionIndex(props) {
+    var _this;
+
     _classCallCheck(this, SectionIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "onDragEnd", function (result) {
+      var _objectSpread3;
+
+      var destination = result.destination,
+          source = result.source,
+          draggableId = result.draggableId,
+          type = result.type;
+
+      if (!destination) {
+        return;
+      }
+
+      if (destination.droppableId === source.droppableId && destination.index === source.index) {
+        return;
+      }
+
+      if (type === 'column') {
+        var newSectionOrder = Array.from(_this.state.sectionOrder);
+        newSectionOrder.splice(source.index, 1);
+        newSectionOrder.splice(destination.index, 0, parseInt(draggableId) - 999999);
+
+        var _newState = _objectSpread(_objectSpread({}, _this.state), {}, {
+          sectionOrder: newSectionOrder
+        });
+
+        _this.setState(_newState, function () {
+          _this.props.updateProject({
+            id: _this.props.project.id,
+            section_order: newSectionOrder
+          });
+        });
+
+        return;
+      }
+
+      var start = _this.state.sections[source.droppableId];
+      var finish = _this.state.sections[destination.droppableId];
+
+      if (start === finish) {
+        var newTaskOrder = Array.from(start.taskOrder);
+        newTaskOrder.splice(source.index, 1);
+        newTaskOrder.splice(destination.index, 0, draggableId);
+
+        var newSection = _objectSpread(_objectSpread({}, start), {}, {
+          taskOrder: newTaskOrder
+        });
+
+        var _newState2 = _objectSpread(_objectSpread({}, _this.state), {}, {
+          sections: _objectSpread(_objectSpread({}, _this.state.sections), {}, _defineProperty({}, newSection.id, newSection))
+        });
+
+        _this.setState(_newState2, function () {
+          _this.props.updateSection({
+            id: start.id,
+            task_order: newTaskOrder
+          });
+        });
+
+        return;
+      }
+
+      var startTaskOrder = Array.from(start.taskOrder);
+      startTaskOrder.splice(source.index, 1);
+
+      var newStart = _objectSpread(_objectSpread({}, start), {}, {
+        taskOrder: startTaskOrder
+      });
+
+      var finishTaskOrder = Array.from(finish.taskOrder);
+      finishTaskOrder.splice(destination.index, 0, parseInt(draggableId));
+
+      var newFinish = _objectSpread(_objectSpread({}, finish), {}, {
+        taskOrder: finishTaskOrder
+      });
+
+      var newState = _objectSpread(_objectSpread({}, _this.state), {}, {
+        sections: _objectSpread(_objectSpread({}, _this.state.sections), {}, (_objectSpread3 = {}, _defineProperty(_objectSpread3, newStart.id, newStart), _defineProperty(_objectSpread3, newFinish.id, newFinish), _objectSpread3))
+      });
+
+      _this.setState(newState, function () {
+        return console.log('new state', _this.state);
+      });
+
+      _this.props.updateSection({
+        id: start.id,
+        task_order: startTaskOrder
+      });
+
+      _this.props.updateSection({
+        id: finish.id,
+        task_order: finishTaskOrder
+      });
+
+      _this.props.updateTask({
+        id: draggableId,
+        section_id: finish.id
+      });
+    });
+
+    var sections = _this.props.sections ? _this.props.sections : {};
+    _this.state = {
+      title: '',
+      project_id: _this.props.match.params.projectId,
+      project: _this.props.project,
+      sections: sections,
+      sectionOrder: _this.props.project.sectionOrder
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.revealForm = _this.revealForm.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(SectionIndex, [{
     key: "componentDidMount",
-    value: function componentDidMount() {}
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.props.fetchSections(this.props.match.params.projectId).then(function (result) {
+        _this2.setState({
+          sections: result.sections
+        }); // console.log('section-index CDM, sections state: ', this.state.sections)
+
+      });
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      var _this3 = this;
+
+      if (prevProps.match.params.projectId !== this.props.match.params.projectId) {
+        this.setState({
+          title: '',
+          project_id: this.props.match.params.projectId,
+          sectionOrder: this.props.project.sectionOrder
+        });
+      }
+
+      ;
+
+      if (prevProps.project.sectionOrder !== this.props.project.sectionOrder) {
+        this.setState({
+          sectionOrder: this.props.sectionOrder
+        });
+      }
+
+      if (Object.keys(prevProps.sections).length !== Object.keys(this.props.sections).length) {
+        this.setState({
+          sections: this.props.sections
+        });
+      }
+
+      Object.keys(this.props.sections).forEach(function (sectionId) {
+        if (!prevProps.sections[sectionId]) return;
+
+        if (_this3.props.sections[sectionId].taskOrder.length !== prevProps.sections[sectionId].taskOrder.length) {
+          _this3.setState(_objectSpread(_objectSpread({}, _this3.state), {}, {
+            sections: _objectSpread(_objectSpread({}, _this3.state.sections), {}, _defineProperty({}, sectionId, _this3.props.sections[sectionId]))
+          }));
+        }
+
+        if (_this3.props.sections[sectionId].title !== prevProps.sections[sectionId].title) {
+          _this3.setState(_objectSpread(_objectSpread({}, _this3.state), {}, {
+            sections: _objectSpread(_objectSpread({}, _this3.state.sections), {}, _defineProperty({}, sectionId, _this3.props.sections[sectionId]))
+          }));
+        }
+      });
+    }
+  }, {
+    key: "update",
+    value: function update(field) {
+      var _this4 = this;
+
+      return function (e) {
+        return _this4.setState(_defineProperty({}, field, e.currentTarget.value));
+      };
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this5 = this;
+
+      e.preventDefault();
+      var updatedSectionOrder = this.state.sectionOrder;
+      this.props.createSection({
+        title: this.state.title,
+        project_id: this.state.project_id
+      }).then(function (data) {
+        updatedSectionOrder.push(data.section.id);
+
+        _this5.setState({
+          sectionOrder: updatedSectionOrder,
+          sections: _objectSpread(_objectSpread({}, _this5.state.sections), {}, _defineProperty({}, data.section.id, data.section))
+        }, function () {
+          _this5.props.updateProject({
+            id: _this5.props.project.id,
+            section_order: updatedSectionOrder
+          });
+        });
+      });
+      this.setState({
+        title: ''
+      });
+      var form = document.getElementById("new-section-form-".concat(this.props.projectId));
+      if (form.classList.contains('show')) form.classList.remove('show');
+      var toggle = document.getElementById("new-section-toggle-".concat(this.props.projectId));
+      if (!toggle.classList.contains('show')) toggle.classList.toggle('show');
+    }
+  }, {
+    key: "revealForm",
+    value: function revealForm() {
+      var toggle = document.getElementById("new-section-toggle-".concat(this.props.projectId));
+      toggle.classList.toggle('show');
+      var form = document.getElementById("new-section-form-".concat(this.props.projectId));
+      form.classList.toggle('show');
+      var input = document.getElementById("new-section-input-".concat(this.props.projectId));
+      input.focus();
+    }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "section placeholder text");
+      var _this6 = this;
+
+      if (!this.props) return null;
+      if (!this.props.sections) return null;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "section-index-parent"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "section-index-content"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_3__["DragDropContext"], {
+        onDragEnd: this.onDragEnd
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_3__["Droppable"], {
+        droppableId: "all-sections",
+        direction: "horizontal",
+        type: "column"
+      }, function (provided, snapshot) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", _extends({
+          className: "sections-droppable"
+        }, provided.droppableProps, {
+          ref: provided.innerRef
+        }), _this6.state.sectionOrder.map(function (sectionId, index) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_section_index_item_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            key: sectionId,
+            sectionId: sectionId,
+            section: _this6.state.sections[sectionId],
+            createTask: _this6.props.createTask,
+            project: _this6.props.project,
+            index: index,
+            updateProject: _this6.props.updateProject
+          });
+        }), provided.placeholder);
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "new-section-form-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "new-section-form-toggle show",
+        id: "new-section-toggle-".concat(this.props.projectId),
+        onClick: this.revealForm
+      }, "+ Add Column"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit,
+        className: "new-section-form",
+        id: "new-section-form-".concat(this.props.projectId)
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "new-section-input",
+        id: "new-section-input-".concat(this.props.projectId),
+        onChange: this.update('title'),
+        type: "text",
+        value: this.state.title,
+        placeholder: "Section title",
+        onBlur: this.handleSubmit
+      })))));
     }
   }]);
 
@@ -2274,7 +2547,7 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 ;
-/* harmony default export */ __webpack_exports__["default"] = (SectionIndex);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(SectionIndex));
 
 /***/ }),
 
