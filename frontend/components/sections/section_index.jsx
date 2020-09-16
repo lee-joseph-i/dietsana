@@ -24,7 +24,6 @@ class SectionIndex extends React.Component{
       this.setState({
         sections: result.sections
       })
-      // console.log('section-index CDM, sections state: ', this.state.sections)
     })
   }
 

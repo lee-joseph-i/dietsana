@@ -2391,8 +2391,7 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchSections(this.props.match.params.projectId).then(function (result) {
         _this2.setState({
           sections: result.sections
-        }); // console.log('section-index CDM, sections state: ', this.state.sections)
-
+        });
       });
     }
   }, {
