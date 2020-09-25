@@ -6,10 +6,12 @@ export const RECEIVE_PROJECT_ERRORS = 'RECEIVE_PROJECT_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const REMOVE_PROJECT = 'REMOVE_PROJECT';
 
-export const receiveProjects = projects => {
+export const receiveProjects = (projects, sections, tasks) => {
   return {
     type: RECEIVE_PROJECTS,
-    projects
+    projects,
+    sections,
+    tasks
   }
 };
 

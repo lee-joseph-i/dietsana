@@ -11,6 +11,9 @@ ActiveRecord::Base.connection.execute("TRUNCATE TABLE users, projects RESTART ID
 ApplicationRecord.transaction do 
   User.destroy_all
   Project.destroy_all
+  ProjectMembership.destroy_all
+  Section.destroy_all
+  Task.destroy_all
 
   User.create!(
     first_name: 'Joseph', 
@@ -46,6 +49,7 @@ ApplicationRecord.transaction do
     name: 'The Maru Project',
     owner_id: 1,
     creator_id: 1,
+    # section_order: [1,2,3],
     description: "Hey! Welcome to my Asana inspired project management web application.\nHere, you'll have the MVPs of what Asana typically touts: projects, tasks, users and owners, and pipeline views.",
   )
 
@@ -87,4 +91,50 @@ ApplicationRecord.transaction do
     The Kanban Board is a pipeline view where tasks can be read along in a progressive manner. This allows users and teams to follow a sequential list of tasks and track the progress of a project completion.
     \n- Tasks associated with projects.\n- Sections for tasks.\n- Drag and Drop functionality.",
   )
+
+  ProjectMembership.create!(
+    member_id: 1,
+    project_id: 1
+  )
+
+  ProjectMembership.create!(
+    member_id: 1,
+    project_id: 2
+  )
+
+  ProjectMembership.create!(
+    member_id: 1,
+    project_id: 3
+  )
+
+  Section.create!(
+    project_id: 1, 
+    name: 'Backlog'
+  )
+  
+  Section.create!(
+    project_id: 1, 
+    name: 'In Progress',
+  )
+  
+  Section.create!(
+    project_id: 1, 
+    name: 'Done',
+  )
+
+  Task.create!(
+    title: 'Your very first Task!', 
+    creator_id: 1,
+    complete: false,
+    section_id: Section.second.id
+  )
+
+  Project.first.update_attributes(
+    section_order: [Section.first.id, Section.second.id, Section.third.id]
+  )
+
+  Section.first.update_attributes(
+    task_order: [Task.first.id]
+  )
+
 end

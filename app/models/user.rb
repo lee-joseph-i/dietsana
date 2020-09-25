@@ -9,11 +9,31 @@ class User < ApplicationRecord
   has_many :owned_projects,
     foreign_key: :owner_id
 
-  has_many :created_tasks,
-    foreign_key: :creator_id
+  has_many :projects,
+    through: :project_memberships,
+    source: :project
 
-  has_many :assigned_tasks,
-    foreign_key: :assignee_id
+  has_many :project_memberships,
+    primary_key: :id,
+    foreign_key: :member_id,
+    class_name: :ProjectMembership,
+    inverse_of: :member,
+    dependent: :destroy
+
+  has_many :task_assignments,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :TaskAssignment,
+    inverse_of: :user,
+    dependent: :destroy
+
+  has_many :tasks,
+    through: :task_assignments,
+    source: :task
+
+  has_many :project_sections,
+    through: :projects,
+    source: :sections
 
   attr_reader :password
   after_initialize :ensure_session_token

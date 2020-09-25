@@ -1,7 +1,13 @@
 class Api::SectionsController < ApplicationController
 
+  # def index
+  #   @sections = Project.find_by(id: params[:project_id]).sections
+  # end
+
   def index
-    @sections = Project.find_by(id: params[:project_id]).sections
+    p "SECTION CONTROLER INDEX"
+    @sections = current_user.project_sections
+    render :index
   end
 
   def create
@@ -12,21 +18,28 @@ class Api::SectionsController < ApplicationController
       render :show
     else
       # render json: ['Please include a name.'], status: 422
-      render json: @section.errors.full_messages, status: 401
+      render json: @section.errors.full_messages, status: 422
     end
   end
 
-  def show #necessary?
-    @section = Section.find_by(id: params[:id])
+  def show
+    @section = Section.find(params[:id])
+    render :show
   end
 
   def update
-    @section = Section.find_by(id: params[:id])
-    @section.task_will_change!
-    @section.update_attributes(section_params)
-    @section.task = [] unless section_params[:task]
-    @section.save!
-    render :update
+    @section = Section.find(params[:id])
+    # p section_params
+    if @section.update(section_params)
+      @section.task_order = [] unless section_params[:task_order]
+      if @section.save!
+        render :show
+      else
+        render json: @section.errors.full_messages, status: 422
+      end
+    else
+      render json: @section.errors.full_messages, status: 422
+    end
   end
 
   def destroy
@@ -37,6 +50,6 @@ class Api::SectionsController < ApplicationController
   private
 
   def section_params
-    params.require(:section).permit(:name)
+    params.require(:section).permit(:project_id, :name, task_order: [])
   end
 end

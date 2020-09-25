@@ -1,18 +1,26 @@
 class Task < ApplicationRecord
-  validates :title, :complete, presence: true
+  validates :title, presence: true
 
-  belongs_to :section,
-    foreign_key: :section_id
+  belongs_to :section
 
-  belongs_to :assignee,
-    foreign_key: :assignee_id
+  # belongs_to :section,
+  #   foreign_key: :section_id,
+  #   class_name: :Section
 
-  belongs_to :creator,
-    foreign_key: :creator_id
+  has_one :project,
+    through: :section,
+    source: :project
 
-  belongs_to :project,
-    foreign_key: :project_id
-  
+  has_many :task_assignments,
+    primary_key: :id,
+    foreign_key: :task_id,
+    class_name: :TaskAssignment,
+    inverse_of: :task,
+    dependent: :destroy
+
+  has_many :users,
+    through: :task_assignments,
+    source: :user
 end
 
 

@@ -1,1 +1,1 @@
-json.partial! 'section', section: @section
+json.partial! 'api/sections/section', section: @section

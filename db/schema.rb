@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_28_204636) do
+ActiveRecord::Schema.define(version: 2020_09_18_003420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "project_memberships", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.integer "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id", "project_id"], name: "index_project_memberships_on_member_id_and_project_id", unique: true
+    t.index ["project_id"], name: "index_project_memberships_on_project_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "name", null: false
@@ -22,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_05_28_204636) do
     t.datetime "updated_at", null: false
     t.integer "owner_id"
     t.text "description"
-    t.integer "section", default: [], array: true
+    t.integer "section_order", default: [], array: true
     t.index ["creator_id"], name: "index_projects_on_creator_id"
     t.index ["owner_id"], name: "index_projects_on_owner_id"
   end
@@ -32,8 +41,17 @@ ActiveRecord::Schema.define(version: 2020_05_28_204636) do
     t.integer "project_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "task", default: [], array: true
+    t.integer "task_order", default: [], array: true
     t.index ["project_id"], name: "index_sections_on_project_id"
+  end
+
+  create_table "task_assignments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "task_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_task_assignments_on_task_id"
+    t.index ["user_id", "task_id"], name: "index_task_assignments_on_user_id_and_task_id", unique: true
   end
 
   create_table "tasks", force: :cascade do |t|

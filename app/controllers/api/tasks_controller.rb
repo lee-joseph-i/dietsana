@@ -1,44 +1,46 @@
 class Api::TasksController < ApplicationController
   
   def index
-    # established that tasks cannot exist without a section... may need to check my model/db validations
-    @tasks = Section.find_by(id: params[:section_id]).project.tasks
+    p "TASK CONTROLLER"
+    p params[:sectionId]
+    @tasks = Section.find_by(id: params[:sectionId]).tasks
+    p @tasks
+    render :index
   end
   
   def create
     @task = Task.new(task_params)
-    @task.section_id = @task.section_id
     @task.creator_id = current_user.id
-
     if @task.save
-      # login(@user)
-      # render "api/tasks/show"
       render :show
     else
-      # render json: ['Please include a title.'], status: 422
-      render json: @task.errors.full_messages, status: 401
+      render json: @task.errors.full_messages, status: 422
     end
   end
 
   def show
-    @task = Task.find_by(id: params[:id])
+    @task = Task.find(params[:id])
+    render :show
   end
 
   def update
-    @task = Task.find_by(id: params[:id])
-    @task.subtask_will_change!
-    @task.update_attributes(task_params)
-    render :update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      render :show
+    else
+      render json: @task.errors.full_messages, status: 422
+    end
   end
 
   def destroy
-    @task = Task.find_by(id: params[:id])
+    @task = Task.find(params[:id])
     @task.destroy
+    render json: @task
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:title, :body, :due_date)
+    params.require(:task).permit(:title, :due_date, :complete, :section_id, :description, user_ids: [])
   end
 end

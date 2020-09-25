@@ -1,4 +1,5 @@
-import { RECEIVE_TASKS, 
+import { 
+  RECEIVE_TASKS, 
   RECEIVE_TASK, 
   REMOVE_TASK 
 } from '../actions/task_actions';
@@ -9,7 +10,7 @@ const tasksReducer = (state = {}, action) => {
   let newState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_TASKS:
-      newState = Object.assign({}, action.tasks);
+      newState = Object.assign({}, state, action.tasks);
       return newState;
     case RECEIVE_TASK:
       newState[action.task.id] = action.task;

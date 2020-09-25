@@ -21,25 +21,30 @@ const removeSection = sectionId => ({
 
 export const requestSections = projectId => dispatch => {
   return SectionApiUtil.fetchSections(projectId)
-    .then(sections => dispatch(receiveSections(sections)))
+    .then(sections => dispatch(receiveSections(sections))
+  );
 };
 
 export const requestSection = sectionId => dispatch => {
   return SectionApiUtil.fetchSection(sectionId)
-    .then(section => dispatch(receiveSection(section)))
+    .then(section => dispatch(receiveSection(section))
+  );
 };
 
 export const createSection = section => dispatch => {
   return SectionApiUtil.createSection(section)
-    .then(section => dispatch(receiveSection(section)))
+    .then(section => dispatch(receiveSection(section))
+  );
 };
 
 export const updateSection = section => dispatch => {
   return SectionApiUtil.updateSection(section)
-    .then(section => dispatch(receiveSection(section)))
+    .then(section => dispatch(receiveSection(section))
+  );
 };
 
 export const deleteSection = sectionId => dispatch => {
   return SectionApiUtil.deleteSection(sectionId)
-    .then(() => dispatch(removeSection(sectionId)))
+    .then(() => dispatch(removeSection(sectionId))
+  );
 };

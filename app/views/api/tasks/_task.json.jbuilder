@@ -1,1 +1,1 @@
-json.extract! task, :id, :name, :description, :creator_id, :owner_id, :section_id, :task_id, :subtask, :completed, :due_date
+json.extract! task, :title, :id, :due_date, :complete, :section_id, :body

@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import SectionIndexItem from './section_index_item.jsx';
+import SectionIndexItemContainer from './section_index_item_container.jsx';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 class SectionIndex extends React.Component{
@@ -9,18 +9,18 @@ class SectionIndex extends React.Component{
     let sections = this.props.sections ? this.props.sections : {};
 
     this.state = {
-      title: '',
+      name: '',
       project_id: this.props.match.params.projectId,
       project: this.props.project,
       sections: sections,
-      sectionOrder: this.props.project.sectionOrder
+      sectionOrder: this.props.sectionOrder
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.revealForm = this.revealForm.bind(this);
   };
 
   componentDidMount() {
-    this.props.fetchSections(this.props.match.params.projectId).then(result => {
+    this.props.requestSections(this.props.match.params.projectId).then(result => {
       this.setState({
         sections: result.sections
       })
@@ -30,9 +30,9 @@ class SectionIndex extends React.Component{
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.projectId !== this.props.match.params.projectId) {
       this.setState({ 
-        title: '',
+        name: '',
         project_id: this.props.match.params.projectId,
-        sectionOrder: this.props.project.sectionOrder
+        sectionOrder: this.props.sectionOrder
       });
     };
     
@@ -42,7 +42,7 @@ class SectionIndex extends React.Component{
       })
     }
 
-    if (Object.keys(prevProps.sections).length !== Object.keys(this.props.sections).length) {
+    if (Object.keys(prevProps.sections)?.length !== Object.keys(this.props.sections).length) {
       this.setState({
         sections: this.props.sections
       })
@@ -50,9 +50,8 @@ class SectionIndex extends React.Component{
 
     Object.keys(this.props.sections).forEach(sectionId => {
       if (!prevProps.sections[sectionId]) return;
-
-      if (this.props.sections[sectionId].taskOrder.length !== 
-        prevProps.sections[sectionId].taskOrder.length) {
+      if (this.props.sections[sectionId].task_order?.length !== 
+        prevProps.sections[sectionId].task_order.length) {
           this.setState({
             ...this.state,
             sections: {
@@ -62,8 +61,8 @@ class SectionIndex extends React.Component{
           })
       }
 
-      if (this.props.sections[sectionId].title !== 
-        prevProps.sections[sectionId].title) {
+      if (this.props.sections[sectionId].name !== 
+        prevProps.sections[sectionId].name) {
           this.setState({
             ...this.state,
             sections: {
@@ -83,7 +82,7 @@ class SectionIndex extends React.Component{
     e.preventDefault();
     let updatedSectionOrder = this.state.sectionOrder
     this.props.createSection({
-      title: this.state.title,
+      name: this.state.name,
       project_id: this.state.project_id,
     })
       .then(data => {
@@ -102,7 +101,7 @@ class SectionIndex extends React.Component{
           })
       })
       })
-    this.setState({ title: '' })
+    this.setState({ name: '' })
     const form = document.getElementById(`new-section-form-${this.props.projectId}`)
     if (form.classList.contains('show')) form.classList.remove('show');
     const toggle = document.getElementById(`new-section-toggle-${this.props.projectId}`);
@@ -139,7 +138,7 @@ class SectionIndex extends React.Component{
 
       const newState = {
         ...this.state,
-        sectionOrder: newSectionOrder
+        section: newSectionOrder
       };
       this.setState(newState, () => {
         this.props.updateProject({
@@ -174,7 +173,7 @@ class SectionIndex extends React.Component{
       this.setState(newState, () => {
         this.props.updateSection({
           id: start.id,
-          task_order: newTaskOrder
+          task: newTaskOrder
         })
       });
       return;
@@ -206,11 +205,11 @@ class SectionIndex extends React.Component{
     this.setState(newState, () => console.log('new state', this.state));
     this.props.updateSection({
       id: start.id,
-      task_order: startTaskOrder
+      task: startTaskOrder
     });
     this.props.updateSection({
       id: finish.id,
-      task_order: finishTaskOrder
+      task: finishTaskOrder
     });
     this.props.updateTask({
       id: draggableId,
@@ -223,6 +222,10 @@ class SectionIndex extends React.Component{
   render() {
     if (!this.props) return null;
     if (!this.props.sections) return null;
+    // console.log("===");
+    // console.log("section index: this.state.sectionOrder:")
+    // console.log(this.state.sectionOrder)
+    //     console.log("===");
 
     return (
       <div className='section-index-parent'>
@@ -233,7 +236,7 @@ class SectionIndex extends React.Component{
               direction='horizontal' 
               type='column'
             >
-              {(provided, snapshot) => (
+              {(provided) => (
                 <div
                   className='sections-droppable'
                   {...provided.droppableProps}
@@ -241,7 +244,7 @@ class SectionIndex extends React.Component{
                 >
                   {
                     this.state.sectionOrder.map((sectionId, index) => (
-                      <SectionIndexItem 
+                      <SectionIndexItemContainer
                         key={sectionId}
                         sectionId={sectionId}
                         section={this.state.sections[sectionId]}
@@ -258,13 +261,13 @@ class SectionIndex extends React.Component{
             </Droppable>
           </DragDropContext>
           <div className='new-section-form-container'>
-            <div 
+            {/* <div 
               className='new-section-form-toggle show' 
               id={`new-section-toggle-${this.props.projectId}`}
               onClick={this.revealForm}
             >
               + Add Column
-            </div>
+            </div> */}
             <form 
               onSubmit={this.handleSubmit} 
               className='new-section-form'
@@ -273,10 +276,10 @@ class SectionIndex extends React.Component{
               <input
                 className='new-section-input'
                 id={`new-section-input-${this.props.projectId}`}
-                onChange={this.update('title')}
+                onChange={this.update('name')}
                 type="text" 
-                value={this.state.title}
-                placeholder='Section title'
+                value={this.state.name}
+                placeholder='Section Title'
                 onBlur={this.handleSubmit}
               />
             </form>

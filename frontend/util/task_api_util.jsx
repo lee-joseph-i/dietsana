@@ -2,7 +2,7 @@ export const fetchTasks = sectionId => (
   $.ajax({
     method: 'GET',
     url: '/api/tasks',
-    data: { sectionId }
+    data: { sectionId: sectionId }
   })
 );
 
@@ -25,7 +25,7 @@ export const updateTask = task => {
   return $.ajax({
     method: 'PATCH',
     url: `api/tasks/${task.id}`,
-    data: { section }
+    data: { task }
   })
 };
 

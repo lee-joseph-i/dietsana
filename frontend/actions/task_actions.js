@@ -1,4 +1,4 @@
-import * as TaskApiUtil from '../util/task_api_util';
+import * as TaskApiUtil from "../util/task_api_util";
 
 export const RECEIVE_TASKS = "RECEIVE_TASKS";
 export const RECEIVE_TASK = "RECEIVE_TASK";
@@ -6,40 +6,45 @@ export const REMOVE_TASK = "REMOVE_TASK";
 
 const receiveTasks = tasks => ({
   type: RECEIVE_TASKS,
-  tasks
+  tasks,
 });
 
 const receiveTask = task => ({
   type: RECEIVE_TASK,
-  task
+  task,
 });
 
 const removeTask = taskId => ({
   type: REMOVE_TASK,
-  taskId
+  taskId,
 });
 
-export const fetchTasks = sectionId => dispatch => {
+export const requestTasks = sectionId => dispatch => {
   return TaskApiUtil.fetchTasks(sectionId)
-    .then(tasks => dispatch(receiveTasks(tasks)))
+    .then(tasks => dispatch(receiveTasks(tasks))
+  );
 };
 
-export const fetchTask = taskId => dispatch => {
+export const requestTask = taskId => dispatch => {
   return TaskApiUtil.fetchTask(taskId)
-    .then(task => dispatch(receiveTask(task)))
+    .then(task => dispatch(receiveTask(task))
+  );
 };
 
 export const createTask = task => dispatch => {
   return TaskApiUtil.createTask(task)
-    .then(task => dispatch(receiveTask(task)))
+    .then( task => dispatch(receiveTask(task))
+  );
 };
 
 export const updateTask = task => dispatch => {
   return TaskApiUtil.updateTask(task)
-    .then(task => dispatch(receiveTask(task)))
+    .then(task => dispatch(receiveTask(task))
+  );
 };
 
-export const deleteTask = taskId => dispatch => {
+export const deleteTask = taskId => (dispatch) => {
   return TaskApiUtil.deleteTask(taskId)
-    .then(() => dispatch(removeTask(taskId)))
+    .then(() => dispatch(removeTask(taskId))
+  );
 };

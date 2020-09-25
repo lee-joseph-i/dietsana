@@ -13,7 +13,7 @@ const Body = () => (
     <Route exact path="/app" component={ProjectIndexContainer} />
     {/* <Route path="/app/projects/new" component={ProjectCreateFormContainer} />  */}
     {/* creating projects does not need a route, may need to just delete the commented route on line 13 */}
-    <Route exact path="/app/projects/:projectId" component={SectionIndexContainer} />
+    <Route exact path="/app/projects/:projectId" component={ProjectShowContainer} />
     <Route path="/app/projects/:projectId/edit" component={ProjectEditFormContainer} />
   </div>
 );
