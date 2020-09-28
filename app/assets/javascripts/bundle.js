@@ -2450,9 +2450,9 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
 
       ;
 
-      if (prevProps.project.sectionOrder !== this.props.project.sectionOrder) {
+      if (prevProps.project.section_order !== this.props.project.section_order) {
         this.setState({
-          sectionOrder: this.props.sectionOrder
+          sectionOrder: this.props.project.section_order
         });
       }
 
@@ -2462,12 +2462,16 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
         });
       }
 
+      console.log("539105130957139085710387510835710387513");
+      console.log(prevProps);
+      console.log(this.props); // the tasks object in state is correctly not showing the created task in prevProps. however, the task_order under the section is showing the updated task indices in task_order. 
+      // I need to fix this task_order so that it doesn't update yet in prevProps. 
+
       Object.keys(this.props.sections).forEach(function (sectionId) {
-        var _this3$props$sections;
-
         if (!prevProps.sections[sectionId]) return;
+        console.log("test length of task orders");
 
-        if (((_this3$props$sections = _this3.props.sections[sectionId].task_order) === null || _this3$props$sections === void 0 ? void 0 : _this3$props$sections.length) !== prevProps.sections[sectionId].task_order.length) {
+        if (_this3.props.sections[sectionId].task_order.length !== prevProps.sections[sectionId].task_order.length) {
           _this3.setState(_objectSpread(_objectSpread({}, _this3.state), {}, {
             sections: _objectSpread(_objectSpread({}, _this3.state.sections), {}, _defineProperty({}, sectionId, _this3.props.sections[sectionId]))
           }));

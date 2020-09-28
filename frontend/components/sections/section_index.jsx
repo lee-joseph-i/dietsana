@@ -35,22 +35,26 @@ class SectionIndex extends React.Component{
         sectionOrder: this.props.sectionOrder
       });
     };
-    
-    if (prevProps.project.sectionOrder !== this.props.project.sectionOrder) {
+    if (prevProps.project.section_order !== this.props.project.section_order) {
       this.setState({
-        sectionOrder: this.props.sectionOrder
+        sectionOrder: this.props.project.section_order
       })
     }
-
+    
     if (Object.keys(prevProps.sections)?.length !== Object.keys(this.props.sections).length) {
       this.setState({
         sections: this.props.sections
       })
     }
-
+    console.log("539105130957139085710387510835710387513")
+    console.log(prevProps)
+    console.log(this.props)
+    // the tasks object in state is correctly not showing the created task in prevProps. however, the task_order under the section is showing the updated task indices in task_order. 
+    // I need to fix this task_order so that it doesn't update yet in prevProps. 
     Object.keys(this.props.sections).forEach(sectionId => {
       if (!prevProps.sections[sectionId]) return;
-      if (this.props.sections[sectionId].task_order?.length !== 
+      console.log("test length of task orders")
+      if (this.props.sections[sectionId].task_order.length !== 
         prevProps.sections[sectionId].task_order.length) {
           this.setState({
             ...this.state,

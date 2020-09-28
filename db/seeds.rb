@@ -133,7 +133,7 @@ ApplicationRecord.transaction do
     section_order: [Section.first.id, Section.second.id, Section.third.id]
   )
 
-  Section.first.update_attributes(
+  Section.second.update_attributes(
     task_order: [Task.first.id]
   )
 
