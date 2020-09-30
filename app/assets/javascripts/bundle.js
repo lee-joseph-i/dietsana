@@ -2460,16 +2460,12 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
         this.setState({
           sections: this.props.sections
         });
-      }
-
-      console.log("539105130957139085710387510835710387513");
-      console.log(prevProps);
-      console.log(this.props); // the tasks object in state is correctly not showing the created task in prevProps. however, the task_order under the section is showing the updated task indices in task_order. 
+      } // the tasks object in state is correctly not showing the created task in prevProps. however, the task_order under the section is showing the updated task indices in task_order. 
       // I need to fix this task_order so that it doesn't update yet in prevProps. 
 
+
       Object.keys(this.props.sections).forEach(function (sectionId) {
-        if (!prevProps.sections[sectionId]) return;
-        console.log("test length of task orders");
+        if (!prevProps.sections[sectionId]) return; // console.log("test length of task orders")
 
         if (_this3.props.sections[sectionId].task_order.length !== prevProps.sections[sectionId].task_order.length) {
           _this3.setState(_objectSpread(_objectSpread({}, _this3.state), {}, {
@@ -2800,7 +2796,8 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
         title: this.state.title,
         section_id: this.props.section.id
       }).then(function (data) {
-        updatedTaskOrder.unshift(data.task.id); // console.log("submit task updated taskOrder: ", updatedTaskOrder);
+        updatedTaskOrder.unshift(data.task.id);
+        console.log("submit task updated taskOrder: ", updatedTaskOrder);
 
         _this3.setState({
           taskOrder: updatedTaskOrder
@@ -2915,10 +2912,6 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this7 = this;
 
-      // console.log("===")
-      // console.log("section index item: this.props")
-      // console.log(this.state)
-      // console.log("===")
       if (!this.props.section) return null;
       var _this$props = this.props,
           section = _this$props.section,

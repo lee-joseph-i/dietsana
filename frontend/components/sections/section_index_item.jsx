@@ -87,7 +87,7 @@ class SectionIndexItem extends React.Component {
       })
       .then((data) => {
         updatedTaskOrder.unshift(data.task.id);
-        // console.log("submit task updated taskOrder: ", updatedTaskOrder);
+        console.log("submit task updated taskOrder: ", updatedTaskOrder);
         this.setState({ taskOrder: updatedTaskOrder }, () => {
           this.props
             .updateSection({
@@ -191,10 +191,6 @@ class SectionIndexItem extends React.Component {
   }
 
   render() {
-    // console.log("===")
-    // console.log("section index item: this.props")
-    // console.log(this.state)
-    // console.log("===")
     if (!this.props.section) return null;
     const { section, deleteTask, taskOrder } = this.props;
     return (
