@@ -18,7 +18,7 @@
 @import "navbar.scss";
 @import "footer.scss";
 
-@import "./app/app_reset.scss";
+// @import "./app/app_reset.scss";
 @import "./app/app.scss";
 @import "./app/homepage.scss";
 @import './app/sidebar.scss';
@@ -28,6 +28,7 @@
 @import './app/project_modal.scss';
 @import './app/sections.scss';
 @import './app/tasks.scss';
+@import './app/project_show.scss';
 
 input:focus,
 select:focus,

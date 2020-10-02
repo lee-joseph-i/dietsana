@@ -157,7 +157,7 @@ class SectionIndexItem extends React.Component {
     if (!this.state.renderForm) {
       return (
         <div
-          className="section-index-item-name"
+          className="section-index-item-title"
           onClick={() => this.setState({ renderForm: true })}
         >
           {this.props.section.name}
@@ -165,9 +165,9 @@ class SectionIndexItem extends React.Component {
       );
     } else {
       return (
-        <form className="section-index-item-name-form">
+        <form className="section-index-item-title-form">
           <input
-            className="section-index-item-name-input"
+            className="section-index-item-title-input"
             autoFocus
             type="text"
             value={this.state.sectionName}
@@ -252,6 +252,7 @@ class SectionIndexItem extends React.Component {
               {(provided) => (
                 <div
                   className="task-index-parent"
+                  // id="task-index-container"
                   ref={provided.innerRef}
                   {...provided.droppableProps}
                 >

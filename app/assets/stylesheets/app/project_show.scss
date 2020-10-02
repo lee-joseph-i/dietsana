@@ -1,0 +1,52 @@
+.project-show-parent {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  /* width: calc(100vw - 240px); */
+};
+
+.project-show-all {
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  /* min-height: 100vh; */
+}
+
+
+.project-show-all {
+  display: flex;
+  /* background: rgb(199, 199, 245) */
+}
+
+.project-show-main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  width: calc(100vw - 240px);
+  // background-color: rgba(224, 238, 255, 0.5);
+  // background-image: image-url('serene_background.jpg');
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  /* margin-top: 70px; */
+  /* overflow-x: auto; */
+}
+
+.project-show-navbar {
+  box-sizing: border-box;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 1px 3px 0 rgba(21,27,38,.15);
+  background: #fff;
+  /* display: inline-block; */
+}
+
+.project-show-contents {
+  height: 100%;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: #f6f8f9;
+}

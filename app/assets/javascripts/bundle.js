@@ -2871,7 +2871,7 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
 
       if (!this.state.renderForm) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "section-index-item-name",
+          className: "section-index-item-title",
           onClick: function onClick() {
             return _this5.setState({
               renderForm: true
@@ -2880,9 +2880,9 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
         }, this.props.section.name);
       } else {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-          className: "section-index-item-name-form"
+          className: "section-index-item-title-form"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-          className: "section-index-item-name-input",
+          className: "section-index-item-title-input",
           autoFocus: true,
           type: "text",
           value: this.state.sectionName,
@@ -2959,7 +2959,8 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
           type: "task"
         }, function (provided) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", _extends({
-            className: "task-index-parent",
+            className: "task-index-parent" // id="task-index-container"
+            ,
             ref: provided.innerRef
           }, provided.droppableProps), // this.state.taskOrder.map((taskId, index) => (
           _this7.props.section.task_order.map(function (taskId, index) {
