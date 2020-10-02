@@ -263,13 +263,13 @@ class SectionIndex extends React.Component{
             </Droppable>
           </DragDropContext>
           <div className='new-section-form-container'>
-            {/* <div 
+            <div 
               className='new-section-form-toggle show' 
               id={`new-section-toggle-${this.props.projectId}`}
               onClick={this.revealForm}
             >
-              + Add Column
-            </div> */}
+              + New Section
+            </div>
             <form 
               onSubmit={this.handleSubmit} 
               className='new-section-form'

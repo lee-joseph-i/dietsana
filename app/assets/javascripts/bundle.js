@@ -2569,7 +2569,11 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
         }), provided.placeholder);
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "new-section-form-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "new-section-form-toggle show",
+        id: "new-section-toggle-".concat(this.props.projectId),
+        onClick: this.revealForm
+      }, "+ New Section"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "new-section-form",
         id: "new-section-form-".concat(this.props.projectId)
