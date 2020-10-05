@@ -2,21 +2,51 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ProfileContainer from './profile-container';
 import { Redirect, Route, withRouter } from 'react-router-dom';
+// import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 
-export default ({ currentUser, openModal }) => {
-  return (
-    <div className="header">
-      <div className="home">
-        <Route exact path="/app" render={(props) => (
-          "Home"
-        )} />
-        <Route path="/app/projects" render={(props) => (
-          "[Project] Task List"
-        )} />
+class Header extends React.Component{
+  constructor(props){
+    super(props)
+  }
+
+  render(){
+    if(!this.props.project) return null;
+    console.log(this.props.project.name)
+    return (
+      <div className="header">
+        <div className="home">
+          <Route exact path="/app" render={(props) => "Home - Projects"} />
+          <Route
+            path="/app/projects/:projectId"
+            render={() => 
+              this.props.project.name
+            }
+          />
+        </div>
+        <div>
+          <ProfileContainer />
+        </div>
       </div>
-      <div>
-        <ProfileContainer />
-      </div>
-    </div>
-  )
+    );
+  }
 }
+
+export default Header;
+
+// export default ({ currentUser, openModal }) => {
+//   return (
+//     <div className="header">
+//       <div className="home">
+//         <Route exact path="/app" render={(props) => (
+//           "Home - Projects"
+//         )} />
+//         <Route path="/app/projects/:projectId" render={(props) => (
+//           console.log(props)
+//         )} />
+//       </div>
+//       <div>
+//         <ProfileContainer />
+//       </div>
+//     </div>
+//   )
+// }
