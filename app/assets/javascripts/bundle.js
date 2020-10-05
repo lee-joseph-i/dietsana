@@ -3920,11 +3920,8 @@ var TaskIndexItem = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       e.stopPropagation();
-      var updatedTaskOrder = this.props.section.taskOrder; // console.log("tii handleDelete pre-delete taskOrder: ", updatedTaskOrder);
-      // console.log("tii handleDelete index: ", this.props.index);
-
-      updatedTaskOrder.splice(this.props.index, 1); // console.log("tii handleDelete post-delete taskOrder: ", updatedTaskOrder);
-
+      var updatedTaskOrder = this.props.section.task_order;
+      updatedTaskOrder.splice(this.props.index, 1);
       this.setState({
         taskOrder: updatedTaskOrder
       }, function () {
@@ -3934,31 +3931,7 @@ var TaskIndexItem = /*#__PURE__*/function (_React$Component) {
             task_order: _this2.state.taskOrder
           });
         });
-      }); // this.props.deleteTask(this.props.task.id)
-      //   .then(data => {
-      //     updatedTaskOrder.splice(this.props.index, 1)
-      //     this.setState({
-      //       taskOrder: updatedTaskOrder
-      //     })
-      //     console.log('inside handle delete updatedTaskOrder: ', updatedTaskOrder)
-      //     this.props.updateSection({
-      //       id: this.props.section.id,
-      //       task_order: updatedTaskOrder
-      //     });
-      //   })
-      // this.props.deleteTask(this.props.task.id)
-      //   .then(data => {
-      //     updatedTaskOrder.splice(this.props.index, 1)
-      //     this.setState({
-      //       taskOrder: updatedTaskOrder
-      //     })
-      //     console.log('inside handle delete updatedTaskOrder: ', updatedTaskOrder)
-      //     this.props.updateSection({
-      //       id: this.props.section.id,
-      //       task_order: updatedTaskOrder
-      //     });
-      //   })
-
+      });
       var dropdowns = document.getElementsByClassName("task-dropdown-contents");
 
       for (var i = 0; i < dropdowns.length; i++) {
