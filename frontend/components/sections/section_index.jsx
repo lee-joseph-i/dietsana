@@ -47,11 +47,19 @@ class SectionIndex extends React.Component{
       })
     }
 
-    // the tasks object in state is correctly not showing the created task in prevProps. however, the task_order under the section is showing the updated task indices in task_order. 
-    // I need to fix this task_order so that it doesn't update yet in prevProps. 
+    // so here...
+    // this.props.sections[sectionId].task_order 
+    // and
+    // prevProps.sections[sectionId].task_order
+    // are the same. prevProps is getting the new task in task_order when it shouldn't yet.
+    // so the question is, where is prevProps getting this from? 
+    // because of this, the if conditional won't trigger
     Object.keys(this.props.sections).forEach(sectionId => {
       if (!prevProps.sections[sectionId]) return;
-      // console.log("test length of task orders")
+      // console.log("-----")
+      // console.log(this.props.sections[sectionId])
+      // console.log(prevProps.sections[sectionId])
+      // console.log("-----")
       if (this.props.sections[sectionId].task_order.length !== 
         prevProps.sections[sectionId].task_order.length) {
           this.setState({
@@ -153,9 +161,9 @@ class SectionIndex extends React.Component{
 
     const start = this.state.sections[source.droppableId];
     const finish = this.state.sections[destination.droppableId];
-
+    console.log(this.state.sections)
     if (start === finish) {
-      const newTaskOrder = Array.from(start.taskOrder);
+      const newTaskOrder = Array.from(start.task_order);
       newTaskOrder.splice(source.index, 1);
       newTaskOrder.splice(destination.index, 0, draggableId);
 
@@ -181,14 +189,14 @@ class SectionIndex extends React.Component{
       return;
     }
 
-    const startTaskOrder = Array.from(start.taskOrder);
+    const startTaskOrder = Array.from(start.task_order);
     startTaskOrder.splice(source.index, 1);
     const newStart = {
       ...start,
       taskOrder: startTaskOrder,
     };
 
-    const finishTaskOrder = Array.from(finish.taskOrder);
+    const finishTaskOrder = Array.from(finish.task_order);
     finishTaskOrder.splice(destination.index, 0, parseInt(draggableId));
     const newFinish = {
       ...finish,
@@ -224,11 +232,6 @@ class SectionIndex extends React.Component{
   render() {
     if (!this.props) return null;
     if (!this.props.sections) return null;
-    // console.log("===");
-    // console.log("section index: this.state.sectionOrder:")
-    // console.log(this.state.sectionOrder)
-    //     console.log("===");
-
     return (
       <div className='section-index-parent'>
         <div className='section-index-content'>

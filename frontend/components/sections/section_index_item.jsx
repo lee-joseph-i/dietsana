@@ -12,7 +12,7 @@ class SectionIndexItem extends React.Component {
     let task = this.props.task ? this.props.task : {};
     let section = this.props.section ? this.props.section : {};
     let sectionOrder = this.props.project
-      ? this.props.project.sectionOrder
+      ? this.props.project.section_order
       : [];
 
     this.state = {
@@ -39,6 +39,7 @@ class SectionIndexItem extends React.Component {
     // sectionHeader.onmouseout = function() {
     //   this.parentElement.style = '';
     // }
+ 
     this.props.requestTasks(this.props.sectionId).then(result => {
       this.setState({
         tasks: result.tasks
@@ -55,9 +56,9 @@ class SectionIndexItem extends React.Component {
       });
     }
 
-    if (prevProps.project.sectionOrder !== this.props.project.sectionOrder) {
+    if (prevProps.project.section_order !== this.props.project.section_order) {
       this.setState({
-        sectionOrder: this.props.project.sectionOrder,
+        sectionOrder: this.props.project.section_order,
       });
     }
 
@@ -66,7 +67,7 @@ class SectionIndexItem extends React.Component {
         sectionTitle: this.props.section.title,
         // taskOrder: this.props.section.taskOrder,
         section: this.props.section,
-        sectionOrder: this.props.project.sectionOrder
+        sectionOrder: this.props.project.section_order
       })
     }
 
@@ -93,6 +94,7 @@ class SectionIndexItem extends React.Component {
             .updateSection({
               id: this.props.section.id,
               task_order: updatedTaskOrder,
+              //potential line of contention where task_order is affecting prevProps in section_index.jsx
             })
             .then((data) => {
               this.setState({
@@ -112,6 +114,7 @@ class SectionIndexItem extends React.Component {
 
   handleDeleteSection(e) {
     e.preventDefault();
+    // console.log(this.state)
     let updatedSectionOrder = this.state.sectionOrder;
     updatedSectionOrder.splice(this.props.index, 1);
     this.props.updateProject({
@@ -120,23 +123,6 @@ class SectionIndexItem extends React.Component {
     });
     this.props.deleteSection(this.props.section.id);
   }
-
-  // handleDeleteSection(e) {
-  //   e.preventDefault();
-  //   let updatedSectionOrder = this.state.sectionOrder
-  //   this.props.deleteSection(this.props.section.id)
-  //     .then(data => {
-  //       updatedSectionOrder.splice(this.props.index, 1)
-  //       // console.log('section deletion data: ', data)
-  //       this.setState({
-  //         sectionOrder: updatedSectionOrder
-  //       })
-  //       this.props.updateProject({
-  //         id: this.props.project.id,
-  //         section_order: updatedSectionOrder
-  //       });
-  //     })
-  // }
 
   update(field) {
     return (e) => this.setState({ [field]: e.currentTarget.value });
@@ -192,6 +178,7 @@ class SectionIndexItem extends React.Component {
 
   render() {
     if (!this.props.section) return null;
+    console.log(this.props)
     const { section, deleteTask, taskOrder } = this.props;
     return (
       <Draggable

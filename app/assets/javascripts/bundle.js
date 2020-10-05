@@ -2408,9 +2408,10 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
 
       var start = _this.state.sections[source.droppableId];
       var finish = _this.state.sections[destination.droppableId];
+      console.log(_this.state.sections);
 
       if (start === finish) {
-        var newTaskOrder = Array.from(start.taskOrder);
+        var newTaskOrder = Array.from(start.task_order);
         newTaskOrder.splice(source.index, 1);
         newTaskOrder.splice(destination.index, 0, draggableId);
 
@@ -2432,14 +2433,14 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
         return;
       }
 
-      var startTaskOrder = Array.from(start.taskOrder);
+      var startTaskOrder = Array.from(start.task_order);
       startTaskOrder.splice(source.index, 1);
 
       var newStart = _objectSpread(_objectSpread({}, start), {}, {
         taskOrder: startTaskOrder
       });
 
-      var finishTaskOrder = Array.from(finish.taskOrder);
+      var finishTaskOrder = Array.from(finish.task_order);
       finishTaskOrder.splice(destination.index, 0, parseInt(draggableId));
 
       var newFinish = _objectSpread(_objectSpread({}, finish), {}, {
@@ -2520,12 +2521,20 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
         this.setState({
           sections: this.props.sections
         });
-      } // the tasks object in state is correctly not showing the created task in prevProps. however, the task_order under the section is showing the updated task indices in task_order. 
-      // I need to fix this task_order so that it doesn't update yet in prevProps. 
+      } // so here...
+      // this.props.sections[sectionId].task_order 
+      // and
+      // prevProps.sections[sectionId].task_order
+      // are the same. prevProps is getting the new task in task_order when it shouldn't yet.
+      // so the question is, where is prevProps getting this from? 
+      // because of this, the if conditional won't trigger
 
 
       Object.keys(this.props.sections).forEach(function (sectionId) {
-        if (!prevProps.sections[sectionId]) return; // console.log("test length of task orders")
+        if (!prevProps.sections[sectionId]) return; // console.log("-----")
+        // console.log(this.props.sections[sectionId])
+        // console.log(prevProps.sections[sectionId])
+        // console.log("-----")
 
         if (_this3.props.sections[sectionId].task_order.length !== prevProps.sections[sectionId].task_order.length) {
           _this3.setState(_objectSpread(_objectSpread({}, _this3.state), {}, {
@@ -2596,11 +2605,7 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
       var _this6 = this;
 
       if (!this.props) return null;
-      if (!this.props.sections) return null; // console.log("===");
-      // console.log("section index: this.state.sectionOrder:")
-      // console.log(this.state.sectionOrder)
-      //     console.log("===");
-
+      if (!this.props.sections) return null;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "section-index-parent"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2781,7 +2786,7 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
     var taskOrder = _this.props.task_order ? _this.props.task_order : [];
     var task = _this.props.task ? _this.props.task : {};
     var section = _this.props.section ? _this.props.section : {};
-    var sectionOrder = _this.props.project ? _this.props.project.sectionOrder : [];
+    var sectionOrder = _this.props.project ? _this.props.project.section_order : [];
     _this.state = {
       title: "",
       renderForm: false,
@@ -2828,9 +2833,9 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
         });
       }
 
-      if (prevProps.project.sectionOrder !== this.props.project.sectionOrder) {
+      if (prevProps.project.section_order !== this.props.project.section_order) {
         this.setState({
-          sectionOrder: this.props.project.sectionOrder
+          sectionOrder: this.props.project.section_order
         });
       }
 
@@ -2839,7 +2844,7 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
           sectionTitle: this.props.section.title,
           // taskOrder: this.props.section.taskOrder,
           section: this.props.section,
-          sectionOrder: this.props.project.sectionOrder
+          sectionOrder: this.props.project.section_order
         });
       }
 
@@ -2868,7 +2873,8 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
         }, function () {
           _this3.props.updateSection({
             id: _this3.props.section.id,
-            task_order: updatedTaskOrder
+            task_order: updatedTaskOrder //potential line of contention where task_order is affecting prevProps in section_index.jsx
+
           }).then(function (data) {
             _this3.setState({
               section: data.section
@@ -2886,7 +2892,8 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleDeleteSection",
     value: function handleDeleteSection(e) {
-      e.preventDefault();
+      e.preventDefault(); // console.log(this.state)
+
       var updatedSectionOrder = this.state.sectionOrder;
       updatedSectionOrder.splice(this.props.index, 1);
       this.props.updateProject({
@@ -2894,23 +2901,7 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
         section_order: updatedSectionOrder
       });
       this.props.deleteSection(this.props.section.id);
-    } // handleDeleteSection(e) {
-    //   e.preventDefault();
-    //   let updatedSectionOrder = this.state.sectionOrder
-    //   this.props.deleteSection(this.props.section.id)
-    //     .then(data => {
-    //       updatedSectionOrder.splice(this.props.index, 1)
-    //       // console.log('section deletion data: ', data)
-    //       this.setState({
-    //         sectionOrder: updatedSectionOrder
-    //       })
-    //       this.props.updateProject({
-    //         id: this.props.project.id,
-    //         section_order: updatedSectionOrder
-    //       });
-    //     })
-    // }
-
+    }
   }, {
     key: "update",
     value: function update(field) {
@@ -2977,6 +2968,7 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
       var _this7 = this;
 
       if (!this.props.section) return null;
+      console.log(this.props);
       var _this$props = this.props,
           section = _this$props.section,
           deleteTask = _this$props.deleteTask,
