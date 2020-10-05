@@ -4,7 +4,6 @@ import Header from './header';
 import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  // console.log(state.entities.projects[ownProps.location.pathname.toString().split('/app/projects/')[1]])
   return {
     currentUser: state.session.id,
     project: state.entities.projects[

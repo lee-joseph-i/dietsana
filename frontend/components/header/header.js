@@ -11,7 +11,6 @@ class Header extends React.Component{
 
   render(){
     if(!this.props.project) return null;
-    console.log(this.props.project.name)
     return (
       <div className="header">
         <div className="home">

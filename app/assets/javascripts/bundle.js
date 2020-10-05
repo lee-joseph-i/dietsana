@@ -629,7 +629,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  // console.log(state.entities.projects[ownProps.location.pathname.toString().split('/app/projects/')[1]])
   return {
     currentUser: state.session.id,
     project: state.entities.projects[ownProps.location.pathname.toString().split("/app/projects/")[1]]
@@ -706,7 +705,6 @@ var Header = /*#__PURE__*/function (_React$Component) {
       var _this = this;
 
       if (!this.props.project) return null;
-      console.log(this.props.project.name);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
