@@ -159,16 +159,16 @@ class SectionIndex extends React.Component{
       return;
     }
 
-    // dragging and reordering a task is handled by the below logic
+    // dragging and reordering a task within the SAME section is handled by the below logic
     const start = this.state.sections[source.droppableId];
     const finish = this.state.sections[destination.droppableId];
     if (start === finish) {
+      console.log("here!")
       const newTaskOrder = Array.from(start.task_order);
       //newTaskOrder at this point is the unchanged task_order. 
       newTaskOrder.splice(source.index, 1);
       newTaskOrder.splice(destination.index, 0, parseInt(draggableId));
       //newTaskOrder at this point is the CHANGED task_order, however, draggableId is a string so I added parseInt to it to turn that into a desired integer.
-      
       const newSection = {
         ...start,
         task_order: newTaskOrder,
@@ -182,29 +182,25 @@ class SectionIndex extends React.Component{
         },
       };
       //newState is now the state, that has sections which itself has taskOrder and task_order as mentioned in line 176
-      console.log("newState with should-be new order", newState)
-
-      // something is wrong in between here. newState has the desired task_order but setting state below does not apply that and keeps the original order.
 
       this.setState(newState, () => {
         this.props.updateSection({
           id: start.id,
           task_order: newTaskOrder
         });
-        console.log("after drag state", this.state)
       });
       
-      //note: once you setState, component will render. that is why console.log on render will show up before it does in line 194. 
+      //note: once you setState, component will render. that is why console.log on render will show up immediately.
       //so observing this:
       // line 185 console log triggers first
       // render console log triggers
-      // console logs "c" "a" "c" "a" trigger from task_index_item componentDidUpdate <--- logic i dont understand at this point
+      // console logs "c" "a" "c" "a" trigger from task_index_item componentDidUpdate <--- i blocked out this logic.
       // line 194 console log triggers
       // render console log triggers <-- task_order is CORRECT
       // render console log triggers again <-- task_order DISAPPEARS!
 
       // i think this is because the backend is losing task_order.
-  
+      // fixed this because task_order was taskOrder when dispatching updateSection.
       return;
     }
 
