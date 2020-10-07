@@ -163,7 +163,6 @@ class SectionIndex extends React.Component{
     const start = this.state.sections[source.droppableId];
     const finish = this.state.sections[destination.droppableId];
     if (start === finish) {
-      console.log("here!")
       const newTaskOrder = Array.from(start.task_order);
       //newTaskOrder at this point is the unchanged task_order. 
       newTaskOrder.splice(source.index, 1);
@@ -205,11 +204,16 @@ class SectionIndex extends React.Component{
     }
 
     const startTaskOrder = Array.from(start.task_order);
+    // startTaskOrder is the task_order array of the drag origin
+    console.log("startTaskOrder", startTaskOrder)
     startTaskOrder.splice(source.index, 1);
+    console.log("startTaskOrder, postsplice", startTaskOrder)
+    // startTaskOrder is the task_order array without the dragged taskId. 
     const newStart = {
       ...start,
       taskOrder: startTaskOrder,
     };
+    console.log("newStart", newStart)
 
     const finishTaskOrder = Array.from(finish.task_order);
     finishTaskOrder.splice(destination.index, 0, parseInt(draggableId));

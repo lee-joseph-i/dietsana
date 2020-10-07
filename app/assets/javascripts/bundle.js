@@ -2411,7 +2411,6 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
       var finish = _this.state.sections[destination.droppableId];
 
       if (start === finish) {
-        console.log("here!");
         var newTaskOrder = Array.from(start.task_order); //newTaskOrder at this point is the unchanged task_order. 
 
         newTaskOrder.splice(source.index, 1);
@@ -2447,13 +2446,17 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
         return;
       }
 
-      var startTaskOrder = Array.from(start.task_order);
+      var startTaskOrder = Array.from(start.task_order); // startTaskOrder is the task_order array of the drag origin
+
+      console.log("startTaskOrder", startTaskOrder);
       startTaskOrder.splice(source.index, 1);
+      console.log("startTaskOrder, postsplice", startTaskOrder); // startTaskOrder is the task_order array without the dragged taskId. 
 
       var newStart = _objectSpread(_objectSpread({}, start), {}, {
         taskOrder: startTaskOrder
       });
 
+      console.log("newStart", newStart);
       var finishTaskOrder = Array.from(finish.task_order);
       finishTaskOrder.splice(destination.index, 0, parseInt(draggableId));
 
