@@ -8,8 +8,8 @@ class SectionIndexItem extends React.Component {
   constructor(props) {
     super(props);
     let sectionName = this.props.section ? this.props.section.name : "";
-    let taskOrder = this.props.task_order ? this.props.task_order : [];
-    let task = this.props.task ? this.props.task : {};
+    let taskOrder = this.props.section ? this.props.section.task_order : [];
+    let task = this.props.tasks ? this.props.tasks : {};
     let section = this.props.section ? this.props.section : {};
     let sectionOrder = this.props.project
       ? this.props.project.section_order
@@ -189,7 +189,10 @@ class SectionIndexItem extends React.Component {
 
   render() {
     if (!this.props.section) return null;
-    // console.log(this.props.section)
+    // console.log("section index item this.props and this.state")
+    // console.log(this.props)
+    // console.log(this.state)
+    // console.log("----")
     const { section, deleteTask, taskOrder } = this.props;
     return (
       <Draggable
@@ -248,7 +251,7 @@ class SectionIndexItem extends React.Component {
               droppableId={this.props.section.id.toString()}
               type="task"
             >
-              {(provided) => (
+              {provided => (
                 <div
                   className="task-index-parent"
                   // id="task-index-container"

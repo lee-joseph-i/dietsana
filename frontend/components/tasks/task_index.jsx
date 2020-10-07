@@ -54,7 +54,7 @@ class TaskIndex extends React.Component {
     // console.log('task-index task order: ', this.state.taskOrder)
     return (
       <Droppable droppableId={this.props.section.id.toString()}>
-        {(provided) => (
+        {provided => (
           <div
             className="task-index-parent"
             ref={provided.innerRef}
