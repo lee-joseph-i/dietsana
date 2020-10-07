@@ -2404,11 +2404,11 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
         });
 
         return;
-      } // dragging and reordering a task within the SAME section is handled by the below logic
+      } // these constants are used for both re-ordering tasks logic and re-ordering tasks to sections logic
 
 
       var start = _this.state.sections[source.droppableId];
-      var finish = _this.state.sections[destination.droppableId];
+      var finish = _this.state.sections[destination.droppableId]; // dragging and reordering a task within the SAME section is handled by the below logic
 
       if (start === finish) {
         var newTaskOrder = Array.from(start.task_order); //newTaskOrder at this point is the unchanged task_order. 
@@ -2444,48 +2444,46 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
 
 
         return;
-      }
+      } //the below logic is used to handle tasks moving to other sections.
+
 
       var startTaskOrder = Array.from(start.task_order); // startTaskOrder is the task_order array of the drag origin
 
-      console.log("startTaskOrder", startTaskOrder);
-      startTaskOrder.splice(source.index, 1);
-      console.log("startTaskOrder, postsplice", startTaskOrder); // startTaskOrder is the task_order array without the dragged taskId. 
+      startTaskOrder.splice(source.index, 1); // startTaskOrder is the task_order array without the dragged taskId. 
 
       var newStart = _objectSpread(_objectSpread({}, start), {}, {
-        taskOrder: startTaskOrder
-      });
+        task_order: startTaskOrder
+      }); //newStart is the state shape of the origin section where the task was moved from.
 
-      console.log("newStart", newStart);
+
       var finishTaskOrder = Array.from(finish.task_order);
       finishTaskOrder.splice(destination.index, 0, parseInt(draggableId));
 
       var newFinish = _objectSpread(_objectSpread({}, finish), {}, {
-        taskOrder: finishTaskOrder
+        task_order: finishTaskOrder
       });
 
       var newState = _objectSpread(_objectSpread({}, _this.state), {}, {
         sections: _objectSpread(_objectSpread({}, _this.state.sections), {}, (_objectSpread3 = {}, _defineProperty(_objectSpread3, newStart.id, newStart), _defineProperty(_objectSpread3, newFinish.id, newFinish), _objectSpread3))
       });
 
-      _this.setState(newState, function () {
-        return console.log('new state', _this.state);
-      });
+      _this.setState(newState);
 
       _this.props.updateSection({
         id: start.id,
-        task: startTaskOrder
+        task_order: startTaskOrder
       });
 
       _this.props.updateSection({
         id: finish.id,
-        task: finishTaskOrder
+        task_order: finishTaskOrder
       });
 
       _this.props.updateTask({
         id: draggableId,
         section_id: finish.id
-      });
+      }); //dragging now works, except re-rendering dosen't occur unless page refresh or create a new task.
+
     });
 
     var sections = _this.props.sections ? _this.props.sections : {};
