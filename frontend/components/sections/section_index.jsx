@@ -161,7 +161,6 @@ class SectionIndex extends React.Component{
 
     const start = this.state.sections[source.droppableId];
     const finish = this.state.sections[destination.droppableId];
-    console.log(this.state.sections)
     if (start === finish) {
       const newTaskOrder = Array.from(start.task_order);
       newTaskOrder.splice(source.index, 1);

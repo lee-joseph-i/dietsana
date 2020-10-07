@@ -49,7 +49,6 @@ class SectionIndexItem extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (!this.props.section) return;
-
     if (prevProps.section !== this.props.section) {
       this.setState({
         taskOrder: this.props.section.task_order,
@@ -71,11 +70,23 @@ class SectionIndexItem extends React.Component {
       })
     }
 
-    if (prevProps.taskOrder !== this.props.taskOrder) {
-      this.setState({
-        taskOrder: this.props.taskOrder
-      })
-    }
+
+    //this needs to work but isn't because prevProps is somehow getting the new task order BEFORE this.props is. 
+    //once the task is created, this.props will catch up and also have that task_order
+    //fixed this in handleSubmitTask to requestTasks 
+    // console.log(prevProps.section)
+    // console.log(this.props.section.task_order)
+    // if (prevProps.section?.task_order !== this.props.section.task_order) {
+    //   this.setState({
+    //     taskOrder: this.props.section.task_order
+    //   })
+    // }
+
+    // this.props.requestTasks(this.props.sectionId).then((result) => {
+    //   this.setState({
+    //     tasks: result.tasks,
+    //   });
+    // });
   }
 
   handleSubmitTask(e) {
@@ -88,21 +99,22 @@ class SectionIndexItem extends React.Component {
       })
       .then((data) => {
         updatedTaskOrder.unshift(data.task.id);
-        console.log("submit task updated taskOrder: ", updatedTaskOrder);
-        this.setState({ taskOrder: updatedTaskOrder }, () => {
-          this.props
-            .updateSection({
+        this.props.requestTasks(this.props.sectionId).then(result => {
+          this.setState({
+            taskOrder: updatedTaskOrder,
+            tasks: result.tasks
+          }, () => {
+            this.props.updateSection({
               id: this.props.section.id,
-              task_order: updatedTaskOrder,
-              //potential line of contention where task_order is affecting prevProps in section_index.jsx
+              task_order: updatedTaskOrder
             })
             .then((data) => {
               this.setState({
-                section: data.section,
-              });
-            });
-        });
-        // this.props.updateSection({ id: section_id, task_order: updatedTaskOrder});
+                section: data.section
+              })
+            })
+          })
+        })
       });
 
     const form = document.getElementById(
@@ -114,7 +126,6 @@ class SectionIndexItem extends React.Component {
 
   handleDeleteSection(e) {
     e.preventDefault();
-    // console.log(this.state)
     let updatedSectionOrder = this.state.sectionOrder;
     updatedSectionOrder.splice(this.props.index, 1);
     this.props.updateProject({
@@ -178,7 +189,7 @@ class SectionIndexItem extends React.Component {
 
   render() {
     if (!this.props.section) return null;
-    console.log(this.props)
+    // console.log(this.props.section)
     const { section, deleteTask, taskOrder } = this.props;
     return (
       <Draggable

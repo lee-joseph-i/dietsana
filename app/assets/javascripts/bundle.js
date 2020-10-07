@@ -2408,7 +2408,6 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
 
       var start = _this.state.sections[source.droppableId];
       var finish = _this.state.sections[destination.droppableId];
-      console.log(_this.state.sections);
 
       if (start === finish) {
         var newTaskOrder = Array.from(start.task_order);
@@ -2846,13 +2845,22 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
           section: this.props.section,
           sectionOrder: this.props.project.section_order
         });
-      }
+      } //this needs to work but isn't because prevProps is somehow getting the new task order BEFORE this.props is. 
+      //once the task is created, this.props will catch up and also have that task_order
+      //fixed this in handleSubmitTask to requestTasks 
+      // console.log(prevProps.section)
+      // console.log(this.props.section.task_order)
+      // if (prevProps.section?.task_order !== this.props.section.task_order) {
+      //   this.setState({
+      //     taskOrder: this.props.section.task_order
+      //   })
+      // }
+      // this.props.requestTasks(this.props.sectionId).then((result) => {
+      //   this.setState({
+      //     tasks: result.tasks,
+      //   });
+      // });
 
-      if (prevProps.taskOrder !== this.props.taskOrder) {
-        this.setState({
-          taskOrder: this.props.taskOrder
-        });
-      }
     }
   }, {
     key: "handleSubmitTask",
@@ -2866,22 +2874,22 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
         section_id: this.props.section.id
       }).then(function (data) {
         updatedTaskOrder.unshift(data.task.id);
-        console.log("submit task updated taskOrder: ", updatedTaskOrder);
 
-        _this3.setState({
-          taskOrder: updatedTaskOrder
-        }, function () {
-          _this3.props.updateSection({
-            id: _this3.props.section.id,
-            task_order: updatedTaskOrder //potential line of contention where task_order is affecting prevProps in section_index.jsx
-
-          }).then(function (data) {
-            _this3.setState({
-              section: data.section
+        _this3.props.requestTasks(_this3.props.sectionId).then(function (result) {
+          _this3.setState({
+            taskOrder: updatedTaskOrder,
+            tasks: result.tasks
+          }, function () {
+            _this3.props.updateSection({
+              id: _this3.props.section.id,
+              task_order: updatedTaskOrder
+            }).then(function (data) {
+              _this3.setState({
+                section: data.section
+              });
             });
           });
-        }); // this.props.updateSection({ id: section_id, task_order: updatedTaskOrder});
-
+        });
       });
       var form = document.getElementById("create-task-".concat(this.props.section.id));
       this.setState({
@@ -2892,8 +2900,7 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleDeleteSection",
     value: function handleDeleteSection(e) {
-      e.preventDefault(); // console.log(this.state)
-
+      e.preventDefault();
       var updatedSectionOrder = this.state.sectionOrder;
       updatedSectionOrder.splice(this.props.index, 1);
       this.props.updateProject({
@@ -2967,8 +2974,8 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this7 = this;
 
-      if (!this.props.section) return null;
-      console.log(this.props);
+      if (!this.props.section) return null; // console.log(this.props.section)
+
       var _this$props = this.props,
           section = _this$props.section,
           deleteTask = _this$props.deleteTask,
@@ -3888,23 +3895,35 @@ var TaskIndexItem = /*#__PURE__*/function (_React$Component) {
   _createClass(TaskIndexItem, [{
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
+      //so it looks like this.props is not getting the new task, returned as undefined. note that the taskId is there though! 
+      //i suspect because section_index_item is passing a task prop `task={this.state.tasks[taskId]}` <--- this state is likely not being updated with the new task
+      // but taskId does exist...
+      // console.log("START")
+      // console.log(prevProps)
+      // console.log(this.props)
+      // console.log("END")
       if (prevProps.section.taskOrder !== this.props.section.taskOrder) {
+        console.log("c");
         this.setState({
           taskOrder: this.props.section.taskOrder
         });
       } // if (prevProps.task !== this.props.task) {
-      // // if (prevProps.section !== this.props.section) {
-      //   this.setState({
-      //     sections: this.props.sections
-      //     // taskOrder: this.props.section.taskOrder
-      //   })
-      // }
-      // if (prevProps.taskId !== this.props.taskId) {
-      //   this.setState({
-      //     taskId: this.props.taskId
-      //   })
-      // }
 
+
+      if (prevProps.section !== this.props.section) {
+        console.log("a");
+        this.setState({
+          sections: this.props.sections,
+          taskOrder: this.props.section.taskOrder
+        });
+      }
+
+      if (prevProps.taskId !== this.props.taskId) {
+        console.log('b');
+        this.setState({
+          taskId: this.props.taskId
+        });
+      }
     }
   }, {
     key: "handleDelete",
