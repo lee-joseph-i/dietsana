@@ -20,7 +20,8 @@ class Sidebar extends React.Component{
           </svg>
           <Link className="link" to={`/app`}>Home</Link>
         </div>
-        <div>
+        <div className="sidebar-project-header">Projects</div>
+        <div className="link sidebar-project-index-contents">
           <SidebarProjectIndexContainer />
         </div>
       </div>

@@ -13,7 +13,9 @@
     transition: margin-left 250ms ease-out,transform 250ms ease-out,-webkit-transform 250ms ease-out;
     width: 244px;
     background-color: #151b26;
-    color: white;    
+    color: white;
+    text-decoration: none;
+    cursor: default;
 
     .link{
       color: #cbd4db;
@@ -25,10 +27,6 @@
       background-color: #434344;
 
     }
-  }
-
-  .test{
-    text-decoration: none;
   }
 
   .sidebar-logo{
@@ -80,7 +78,22 @@
     width: 20px;
   }
 
+  .sidebar-project-header{
+    margin: 15px 4px 4px 15px;
+  }
+  
+  .sidebar-project-index-contents{
+    font-size: 14px;
+    // margin: 0 4px 0 15px;
+  }
+
   .sidebar-project-index-item-contents{
-    padding: 5px;
+    padding: 6px 0 6px 20px;
+    margin: 2px 0 2px 0;
+    cursor: pointer;
+  }
+
+  .sidebar-project-index-item-contents:hover{
+    background-color: #222833;
   }
 }
