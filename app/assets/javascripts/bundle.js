@@ -3688,7 +3688,13 @@ var SidebarProjectIndex = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       if (!this.props) return null;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sidebar_project_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      var projects = this.props.projects;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object.values(projects).map(function (project) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sidebar_project_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: project.id,
+          project: project
+        });
+      }));
     }
   }]);
 
@@ -3785,7 +3791,10 @@ var SidebarProjectIndexItem = /*#__PURE__*/function (_React$Component) {
   _createClass(SidebarProjectIndexItem, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "SidebarProjectIndexItem");
+      if (!this.props) return null;
+      var project = this.props.project;
+      console.log(this.props);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, project.name);
     }
   }]);
 

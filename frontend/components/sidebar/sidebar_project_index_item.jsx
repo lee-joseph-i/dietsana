@@ -7,8 +7,13 @@ class SidebarProjectIndexItem extends React.Component {
   }
 
   render() {
+    if(!this.props) return null;
+    const { project } = this.props;
+    console.log(this.props)
     return (
-      <div>SidebarProjectIndexItem</div>
+      <div>
+        { project.name }
+      </div>
     );
   }
 }

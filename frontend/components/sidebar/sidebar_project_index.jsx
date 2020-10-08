@@ -12,9 +12,18 @@ class SidebarProjectIndex extends React.Component {
 
   render() {
     if (!this.props) return null;
+    const { projects } = this.props;
+
     return(
       <div>
-        <SidebarProjectIndexItem />
+        {
+          Object.values(projects).map(project => (
+            <SidebarProjectIndexItem 
+              key={project.id}
+              project={project}
+            />
+          ))
+        }
       </div>
     )
   };
