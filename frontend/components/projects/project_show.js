@@ -1,6 +1,4 @@
 import React from "react";
-// import SideBarContainer from "../../side_bar/side_bar_container";
-// import ProjectShowNavBarContainer from "../project_show/project_show_nav_bar_container";
 import SectionIndexContainer from "../sections/section_index_container";
 
 class ProjectShow extends React.Component {
