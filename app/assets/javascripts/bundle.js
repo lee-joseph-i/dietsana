@@ -706,6 +706,7 @@ __webpack_require__.r(__webpack_exports__);
 //   }
 // }
 // export default Header;
+// some practice with functional components when state isn't required.
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var project = _ref.project;
