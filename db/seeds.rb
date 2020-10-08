@@ -187,11 +187,17 @@ ApplicationRecord.transaction do
     section_order: [Section.first.id, Section.second.id, Section.third.id]
   )
 
-  Section.second.update_attributes(
+  Section.first.update_attributes(
     task_order: []
-    Task.each do |task| 
-      task_order.push(task.id)
-    end
+  )
+
+  maru_task_order = []
+  Task.all.each do |task|
+    maru_task_order.push(task.id)
+  end
+
+  Section.first.update_attributes(
+    task_order: maru_task_order
   )
 
 end
