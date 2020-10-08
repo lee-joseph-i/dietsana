@@ -50,21 +50,21 @@ ApplicationRecord.transaction do
     owner_id: 1,
     creator_id: 1,
     # section_order: [Section.third.id, Section.second.id, Section.first.id],
-    description: "Hey! Welcome to my Asana inspired project management web application. Here, you'll have some of the MVPs of what Asana typically presents: projects, tasks, users and owners, and pipeline views.\nHovering over a project will present you a dropdown option to edit or delete the project - clicking on the tile will take you to the project details page.",
+    description: "Hey! Welcome to my Asana inspired project management web application. Here, you'll have some of the MVPs of what Asana typically presents: projects, tasks, users and owners, and pipeline views.\n\nHovering over a project will present you a dropdown option to edit or delete the project - clicking on the tile will take you to the project details page.",
   )
 
   Project.create!(
     name: 'MERN Stack Project: Space Balls',
     owner_id: 2,
     creator_id: 1,
-    description: "I've created a project using the MERN stack, a collaborative effort with three others engineers. Check it out!\n http://space-ball.herokuapp.com/#/",
+    description: "I've created a project using the MERN stack, a collaborative effort with three others engineers. Check it out!\n\nhttp://space-ball.herokuapp.com/#/",
   )
 
   Project.create!(
     name: 'Javascript Project',
     owner_id: 1,
     creator_id: 3,
-    description: "I've created a purely frontend JS project. It's a fun typing game! Knock yourself out :)\n https://lee-joseph-i.github.io/gotta-type-em-all/",
+    description: "I've created a purely frontend JS project. It's a fun typing game! Knock yourself out :)\n\nhttps://lee-joseph-i.github.io/gotta-type-em-all/",
   )
 
   Project.create!(
