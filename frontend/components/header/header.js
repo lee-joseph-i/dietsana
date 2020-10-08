@@ -10,11 +10,13 @@ class Header extends React.Component{
   }
 
   render(){
-    if(!this.props.project) return null;
+    // if i add this line, the header won't render on home page. 
+    // likely needs a component did mount, but it's not necessary with nested components handling this.
+    // if(!this.props.project) return null;
     return (
       <div className="header">
         <div className="home">
-          <Route exact path="/app" render={(props) => "Home - Projects"} />
+          <Route exact path="/app" render={() => "Home: Projects"} />
           <Route
             path="/app/projects/:projectId"
             render={() => 

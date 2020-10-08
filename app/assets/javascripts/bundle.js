@@ -704,7 +704,9 @@ var Header = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      if (!this.props.project) return null;
+      // if i add this line, the header won't render on home page. 
+      // likely needs a component did mount, but it's not necessary with nested components handling this.
+      // if(!this.props.project) return null;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -712,8 +714,8 @@ var Header = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
         path: "/app",
-        render: function render(props) {
-          return "Home - Projects";
+        render: function render() {
+          return "Home: Projects";
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/app/projects/:projectId",
