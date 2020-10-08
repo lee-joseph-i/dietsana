@@ -18,6 +18,7 @@ class SidebarProjectIndexItem extends React.Component {
 
     return (
       <div
+        className="sidebar-project-index-item-contents"
         onClick={this.navigateToShow}
       >
         { project.name }
