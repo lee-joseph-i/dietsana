@@ -48,7 +48,7 @@ import { Redirect, Route, withRouter } from 'react-router-dom';
 
 // export default Header;
 
-// some practice with functional components when state isn't required.
+// some practice with functional components when state isn't required - the above code works perfectly fine as well.
 export default ({ project }) => {
   if(!project){
     return (
