@@ -3783,18 +3783,28 @@ var SidebarProjectIndexItem = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(SidebarProjectIndexItem);
 
   function SidebarProjectIndexItem(props) {
+    var _this;
+
     _classCallCheck(this, SidebarProjectIndexItem);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.navigateToShow = _this.navigateToShow.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(SidebarProjectIndexItem, [{
+    key: "navigateToShow",
+    value: function navigateToShow() {
+      this.props.history.push("/app/projects/".concat(this.props.project.id));
+    }
+  }, {
     key: "render",
     value: function render() {
       if (!this.props) return null;
       var project = this.props.project;
-      console.log(this.props);
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, project.name);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        onClick: this.navigateToShow
+      }, project.name);
     }
   }]);
 

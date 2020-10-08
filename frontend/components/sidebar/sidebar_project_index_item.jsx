@@ -4,14 +4,22 @@ import { Link, withRouter } from "react-router-dom";
 class SidebarProjectIndexItem extends React.Component {
   constructor(props) {
     super(props);
+  
+    this.navigateToShow = this.navigateToShow.bind(this);
+  }
+
+  navigateToShow(){
+    this.props.history.push(`/app/projects/${this.props.project.id}`);
   }
 
   render() {
     if(!this.props) return null;
     const { project } = this.props;
-    console.log(this.props)
+
     return (
-      <div>
+      <div
+        onClick={this.navigateToShow}
+      >
         { project.name }
       </div>
     );
