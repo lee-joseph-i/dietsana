@@ -50,7 +50,7 @@ ApplicationRecord.transaction do
     owner_id: 1,
     creator_id: 1,
     # section_order: [Section.third.id, Section.second.id, Section.first.id],
-    description: "Hey! Welcome to my Asana inspired project management web application.\nHere, you'll have some of the MVPs of what Asana typically presents: projects, tasks, users and owners, and pipeline views.\nHovering over a project will present you a dropdown option to edit or delete the project - clicking on the tile will take you to the project details page.",
+    description: "Hey! Welcome to my Asana inspired project management web application. Here, you'll have some of the MVPs of what Asana typically presents: projects, tasks, users and owners, and pipeline views.\nHovering over a project will present you a dropdown option to edit or delete the project - clicking on the tile will take you to the project details page.",
   )
 
   Project.create!(
@@ -85,8 +85,7 @@ ApplicationRecord.transaction do
     name: 'MVP: Kanban Board',
     owner_id: 3,
     creator_id: 1,
-    description: "
-    The Kanban Board is a pipeline view where tasks can be read along in a progressive manner. This allows users and teams to follow a sequential list of tasks and track the progress of a project completion.
+    description: "The Kanban Board is a pipeline view where tasks can be read along in a progressive manner. This allows users and teams to follow a sequential list of tasks and track the progress of a project completion.
     \n- Tasks associated with projects.\n- Sections for tasks.\n- Drag and Drop functionality.",
   )
 
