@@ -56,10 +56,6 @@ class SectionIndex extends React.Component{
     // because of this, the if conditional won't trigger
     Object.keys(this.props.sections).forEach(sectionId => {
       if (!prevProps.sections[sectionId]) return;
-      // console.log("-----")
-      // console.log(this.props.sections[sectionId])
-      // console.log(prevProps.sections[sectionId])
-      // console.log("-----")
       if (this.props.sections[sectionId].task_order.length !== 
         prevProps.sections[sectionId].task_order.length) {
           this.setState({
@@ -173,7 +169,7 @@ class SectionIndex extends React.Component{
         ...start,
         task_order: newTaskOrder,
       };
-      // newSection is now the section, with a not-yet-ordered task_order but has an ordered taskOrder. 
+      // newSection is now the section with the properly ordered task_order
       const newState = {
         ...this.state,
         sections: {
@@ -181,7 +177,7 @@ class SectionIndex extends React.Component{
           [newSection.id]: newSection,
         },
       };
-      //newState is now the state, that has sections which itself has taskOrder and task_order as mentioned in line 176
+      //newState is now the state, that has sections which itself has the updated task_order as mentioned in line 176
 
       this.setState(newState, () => {
         this.props.updateSection({
@@ -245,13 +241,15 @@ class SectionIndex extends React.Component{
       section_id: finish.id
     })
 
-    //dragging now works, except re-rendering dosen't occur unless page refresh or create a new task.
+    //dragging now works, except re-rendering doesn't occur unless page refresh or create a new task.
+    //confirmed that in section_index_item, state is accurately updated to have the correct task_order.
+    //also confirmed that the backend task_order is also correct. 
+    //so why isn't it rendering? note that it does show up after creating a task. see what happens there that's not happening here.
   };
 
   render() {
     if (!this.props) return null;
     if (!this.props.sections) return null;
-    console.log("render state", this.state)
     return (
       <div className='section-index-parent'>
         <div className='section-index-content'>

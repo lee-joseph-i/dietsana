@@ -19,36 +19,13 @@ class TaskIndexItem extends React.Component {
     this.revealTaskDropdown = this.revealTaskDropdown.bind(this);
   }
 
-  // componentDidUpdate(prevProps) {
-  //   //so it looks like this.props is not getting the new task, returned as undefined. note that the taskId is there though! 
-  //   //i suspect because section_index_item is passing a task prop `task={this.state.tasks[taskId]}` <--- this state is likely not being updated with the new task
-  //   // but taskId does exist...
-  //   // console.log("START")
-  //   // console.log(prevProps)
-  //   // console.log(this.props)
-  //   // console.log("END")
-  //   if (prevProps.section.task_order !== this.props.section.task_order) {
-  //     console.log("c")
-  //     this.setState({
-  //       taskOrder: this.props.section.task_order,
-  //     });
-  //   }
-  //   // if (prevProps.task !== this.props.task) {
-  //     if (prevProps.section !== this.props.section) {
-  //         console.log("a")
-  //     this.setState({
-  //       sections: this.props.sections,
-  //       taskOrder: this.props.section.task_order
-  //     })
-  //   }
-
-  //   if (prevProps.taskId !== this.props.taskId) {
-  //     console.log('b')
-  //     this.setState({
-  //       taskId: this.props.taskId
-  //     })
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (prevProps.section.task_order !== this.props.section.task_order) {
+      this.setState({
+        taskOrder: this.props.section.task_order,
+      });
+    }
+  }
 
   handleDelete(e) {
     e.stopPropagation();
@@ -107,11 +84,7 @@ class TaskIndexItem extends React.Component {
     if (!this.props.task) return null;
     if (!this.props) return null;
     if (!this.props.taskId) return null;
-    // console.log("this.props from task_index_item:")
-    // console.log(this.props)
-    // console.log("end")
     const { task } = this.props;
-
     return (
       <Draggable
         // testing

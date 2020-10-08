@@ -49,44 +49,13 @@ class SectionIndexItem extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (!this.props.section) return;
-    if (prevProps.section !== this.props.section) {
+    if (!prevProps.section) return;
+
+    if (this.state.taskOrder !== this.props.section.task_order) {
       this.setState({
         taskOrder: this.props.section.task_order,
-      });
-    }
-
-    if (prevProps.project.section_order !== this.props.project.section_order) {
-      this.setState({
-        sectionOrder: this.props.project.section_order,
-      });
-    }
-
-    if (prevProps.section !== this.props.section) {
-      this.setState({
-        sectionTitle: this.props.section.title,
-        // taskOrder: this.props.section.taskOrder,
-        section: this.props.section,
-        sectionOrder: this.props.project.section_order
       })
     }
-
-
-    //this needs to work but isn't because prevProps is somehow getting the new task order BEFORE this.props is. 
-    //once the task is created, this.props will catch up and also have that task_order
-    //fixed this in handleSubmitTask to requestTasks 
-    // console.log(prevProps.section)
-    // console.log(this.props.section.task_order)
-    // if (prevProps.section?.task_order !== this.props.section.task_order) {
-    //   this.setState({
-    //     taskOrder: this.props.section.task_order
-    //   })
-    // }
-
-    // this.props.requestTasks(this.props.sectionId).then((result) => {
-    //   this.setState({
-    //     tasks: result.tasks,
-    //   });
-    // });
   }
 
   handleSubmitTask(e) {
@@ -189,10 +158,6 @@ class SectionIndexItem extends React.Component {
 
   render() {
     if (!this.props.section) return null;
-    // console.log("section index item this.props and this.state")
-    // console.log(this.props)
-    // console.log(this.state)
-    // console.log("----")
     const { section, deleteTask, taskOrder } = this.props;
     return (
       <Draggable
@@ -259,8 +224,8 @@ class SectionIndexItem extends React.Component {
                   {...provided.droppableProps}
                 >
                   {
-                    // this.state.taskOrder.map((taskId, index) => (
-                    this.props.section.task_order.map((taskId, index) => (
+                    this.state.taskOrder.map((taskId, index) => (
+                    // this.props.section.task_order.map((taskId, index) => (
                       <TaskIndexItem
                         // key={taskId.toString()}
                         key={taskId}

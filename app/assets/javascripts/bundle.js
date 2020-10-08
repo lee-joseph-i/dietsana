@@ -2418,12 +2418,12 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
 
         var newSection = _objectSpread(_objectSpread({}, start), {}, {
           task_order: newTaskOrder
-        }); // newSection is now the section, with a not-yet-ordered task_order but has an ordered taskOrder. 
+        }); // newSection is now the section with the properly ordered task_order
 
 
         var _newState2 = _objectSpread(_objectSpread({}, _this.state), {}, {
           sections: _objectSpread(_objectSpread({}, _this.state.sections), {}, _defineProperty({}, newSection.id, newSection))
-        }); //newState is now the state, that has sections which itself has taskOrder and task_order as mentioned in line 176
+        }); //newState is now the state, that has sections which itself has the updated task_order as mentioned in line 176
 
 
         _this.setState(_newState2, function () {
@@ -2482,7 +2482,10 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
       _this.props.updateTask({
         id: draggableId,
         section_id: finish.id
-      }); //dragging now works, except re-rendering dosen't occur unless page refresh or create a new task.
+      }); //dragging now works, except re-rendering doesn't occur unless page refresh or create a new task.
+      //confirmed that in section_index_item, state is accurately updated to have the correct task_order.
+      //also confirmed that the backend task_order is also correct. 
+      //so why isn't it rendering? note that it does show up after creating a task. see what happens there that's not happening here.
 
     });
 
@@ -2546,10 +2549,7 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
 
 
       Object.keys(this.props.sections).forEach(function (sectionId) {
-        if (!prevProps.sections[sectionId]) return; // console.log("-----")
-        // console.log(this.props.sections[sectionId])
-        // console.log(prevProps.sections[sectionId])
-        // console.log("-----")
+        if (!prevProps.sections[sectionId]) return;
 
         if (_this3.props.sections[sectionId].task_order.length !== prevProps.sections[sectionId].task_order.length) {
           _this3.setState(_objectSpread(_objectSpread({}, _this3.state), {}, {
@@ -2621,7 +2621,6 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
 
       if (!this.props) return null;
       if (!this.props.sections) return null;
-      console.log("render state", this.state);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "section-index-parent"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2842,42 +2841,13 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (!this.props.section) return;
+      if (!prevProps.section) return;
 
-      if (prevProps.section !== this.props.section) {
+      if (this.state.taskOrder !== this.props.section.task_order) {
         this.setState({
           taskOrder: this.props.section.task_order
         });
       }
-
-      if (prevProps.project.section_order !== this.props.project.section_order) {
-        this.setState({
-          sectionOrder: this.props.project.section_order
-        });
-      }
-
-      if (prevProps.section !== this.props.section) {
-        this.setState({
-          sectionTitle: this.props.section.title,
-          // taskOrder: this.props.section.taskOrder,
-          section: this.props.section,
-          sectionOrder: this.props.project.section_order
-        });
-      } //this needs to work but isn't because prevProps is somehow getting the new task order BEFORE this.props is. 
-      //once the task is created, this.props will catch up and also have that task_order
-      //fixed this in handleSubmitTask to requestTasks 
-      // console.log(prevProps.section)
-      // console.log(this.props.section.task_order)
-      // if (prevProps.section?.task_order !== this.props.section.task_order) {
-      //   this.setState({
-      //     taskOrder: this.props.section.task_order
-      //   })
-      // }
-      // this.props.requestTasks(this.props.sectionId).then((result) => {
-      //   this.setState({
-      //     tasks: result.tasks,
-      //   });
-      // });
-
     }
   }, {
     key: "handleSubmitTask",
@@ -2991,11 +2961,7 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this7 = this;
 
-      if (!this.props.section) return null; // console.log("section index item this.props and this.state")
-      // console.log(this.props)
-      // console.log(this.state)
-      // console.log("----")
-
+      if (!this.props.section) return null;
       var _this$props = this.props,
           section = _this$props.section,
           deleteTask = _this$props.deleteTask,
@@ -3040,19 +3006,22 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
             className: "task-index-parent" // id="task-index-container"
             ,
             ref: provided.innerRef
-          }, provided.droppableProps), // this.state.taskOrder.map((taskId, index) => (
-          _this7.props.section.task_order.map(function (taskId, index) {
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tasks_task_index_item__WEBPACK_IMPORTED_MODULE_2__["default"] // key={taskId.toString()}
-            , {
-              key: taskId,
-              index: index,
-              taskId: taskId // task={this.props.tasks[taskId]}
-              ,
-              task: _this7.state.tasks[taskId],
-              deleteTask: deleteTask,
-              section: _this7.props.section,
-              updateSection: _this7.props.updateSection
-            });
+          }, provided.droppableProps), _this7.state.taskOrder.map(function (taskId, index) {
+            return (
+              /*#__PURE__*/
+              // this.props.section.task_order.map((taskId, index) => (
+              react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tasks_task_index_item__WEBPACK_IMPORTED_MODULE_2__["default"] // key={taskId.toString()}
+              , {
+                key: taskId,
+                index: index,
+                taskId: taskId // task={this.props.tasks[taskId]}
+                ,
+                task: _this7.state.tasks[taskId],
+                deleteTask: deleteTask,
+                section: _this7.props.section,
+                updateSection: _this7.props.updateSection
+              })
+            );
           }), provided.placeholder);
         }));
       });
@@ -3756,7 +3725,6 @@ var TaskIndex = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      console.log("task index has been hit");
       if (!this.props.tasks) return null;
       var deleteTask = this.props.deleteTask;
       var _this$state = this.state,
@@ -3910,38 +3878,18 @@ var TaskIndexItem = /*#__PURE__*/function (_React$Component) {
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     _this.revealTaskDropdown = _this.revealTaskDropdown.bind(_assertThisInitialized(_this));
     return _this;
-  } // componentDidUpdate(prevProps) {
-  //   //so it looks like this.props is not getting the new task, returned as undefined. note that the taskId is there though! 
-  //   //i suspect because section_index_item is passing a task prop `task={this.state.tasks[taskId]}` <--- this state is likely not being updated with the new task
-  //   // but taskId does exist...
-  //   // console.log("START")
-  //   // console.log(prevProps)
-  //   // console.log(this.props)
-  //   // console.log("END")
-  //   if (prevProps.section.task_order !== this.props.section.task_order) {
-  //     console.log("c")
-  //     this.setState({
-  //       taskOrder: this.props.section.task_order,
-  //     });
-  //   }
-  //   // if (prevProps.task !== this.props.task) {
-  //     if (prevProps.section !== this.props.section) {
-  //         console.log("a")
-  //     this.setState({
-  //       sections: this.props.sections,
-  //       taskOrder: this.props.section.task_order
-  //     })
-  //   }
-  //   if (prevProps.taskId !== this.props.taskId) {
-  //     console.log('b')
-  //     this.setState({
-  //       taskId: this.props.taskId
-  //     })
-  //   }
-  // }
-
+  }
 
   _createClass(TaskIndexItem, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.section.task_order !== this.props.section.task_order) {
+        this.setState({
+          taskOrder: this.props.section.task_order
+        });
+      }
+    }
+  }, {
     key: "handleDelete",
     value: function handleDelete(e) {
       var _this2 = this;
@@ -4009,10 +3957,7 @@ var TaskIndexItem = /*#__PURE__*/function (_React$Component) {
 
       if (!this.props.task) return null;
       if (!this.props) return null;
-      if (!this.props.taskId) return null; // console.log("this.props from task_index_item:")
-      // console.log(this.props)
-      // console.log("end")
-
+      if (!this.props.taskId) return null;
       var task = this.props.task;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_1__["Draggable"] // testing
       // draggableId={this.props.task.id.toString()}
