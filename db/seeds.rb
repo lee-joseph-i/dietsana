@@ -49,38 +49,36 @@ ApplicationRecord.transaction do
     name: 'The Maru Project',
     owner_id: 1,
     creator_id: 1,
-    # section_order: [1,2,3],
-    description: "Hey! Welcome to my Asana inspired project management web application.\nHere, you'll have the MVPs of what Asana typically touts: projects, tasks, users and owners, and pipeline views.",
+    # section_order: [Section.third.id, Section.second.id, Section.first.id],
+    description: "Hey! Welcome to my Asana inspired project management web application.\nHere, you'll have some of the MVPs of what Asana typically presents: projects, tasks, users and owners, and pipeline views.\nHovering over a project will present you a dropdown option to edit or delete the project - clicking on the tile will take you to the project details page.",
   )
 
   Project.create!(
     name: 'MERN Stack Project: Space Balls',
     owner_id: 2,
     creator_id: 1,
-    description: "
-    I've created a project using the MERN stack, a collaborative effort with three others engineers. Check it out!\n http://space-ball.herokuapp.com/#/",
+    description: "I've created a project using the MERN stack, a collaborative effort with three others engineers. Check it out!\n http://space-ball.herokuapp.com/#/",
   )
 
   Project.create!(
     name: 'Javascript Project',
     owner_id: 1,
     creator_id: 3,
-    description: "
-    I've created a purely frontend JS project. It's a fun typing game! Knock yourself out :)\n https://lee-joseph-i.github.io/gotta-type-em-all/",
+    description: "I've created a purely frontend JS project. It's a fun typing game! Knock yourself out :)\n https://lee-joseph-i.github.io/gotta-type-em-all/",
   )
 
   Project.create!(
     name: 'Self Care',
     owner_id: 4,
     creator_id: 3,
-    description: "In times like these, don't forget to take care of yourself. Progress on your own pace.",
+    description: "In times like these, don't forget to take care of yourself. Find your ideal work and life balance.",
   )
 
   Project.create!(
-    name: 'Job Search: Algos and Data Structures',
+    name: 'Study: Algos and Data Structures',
     owner_id: 3,
     creator_id: 3,
-    description: "Leetcode, AlgoExpert, ... more Leetcode.",
+    description: "Leetcode, Leetcode, Leetcode!",
   )
 
   Project.create!(
@@ -126,7 +124,63 @@ ApplicationRecord.transaction do
     title: 'Your very first Task!', 
     creator_id: 1,
     complete: false,
-    section_id: Section.second.id
+    section_id: Section.first.id
+  )
+
+  Task.create!(
+    title: '[BUG] Splice type error when attemptin gto re-order sections.', 
+    creator_id: 1,
+    complete: false,
+    section_id: Section.first.id
+  )
+
+  Task.create!(
+    title: '[EPIC] Projects show page - kanban board', 
+    creator_id: 1,
+    complete: false,
+    section_id: Section.first.id
+  )
+
+  Task.create!(
+    title: '[EPIC] Projects Tile Index Page', 
+    creator_id: 1,
+    complete: false,
+    section_id: Section.first.id
+  )
+
+  Task.create!(
+    title: '[EPIC] User Auth', 
+    creator_id: 1,
+    complete: false,
+    section_id: Section.first.id
+  )
+
+  Task.create!(
+    title: '[User Story] When I first enter the website, I should be greeted with ah friendly, informative landing page.', 
+    creator_id: 1,
+    complete: false,
+    section_id: Section.first.id
+  )
+
+  Task.create!(
+    title: '[REFACTOR] Performance check: redundant component rendering causing slowness on project show page.', 
+    creator_id: 1,
+    complete: false,
+    section_id: Section.first.id
+  )
+
+  Task.create!(
+    title: '[User Story] When I log in, I should be able to navigate through the projects index along the sidebar.', 
+    creator_id: 1,
+    complete: false,
+    section_id: Section.first.id
+  )
+
+  Task.create!(
+    title: '[BUG] Tasks are not rendering when dragged into another section.', 
+    creator_id: 1,
+    complete: false,
+    section_id: Section.first.id
   )
 
   Project.first.update_attributes(
@@ -134,7 +188,10 @@ ApplicationRecord.transaction do
   )
 
   Section.second.update_attributes(
-    task_order: [Task.first.id]
+    task_order: []
+    Task.each do |task| 
+      task_order.push(task.id)
+    end
   )
 
 end
