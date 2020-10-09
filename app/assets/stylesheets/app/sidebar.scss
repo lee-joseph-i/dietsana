@@ -51,11 +51,11 @@
     fill: #9ca6af;
     height: 28px;
     line-height: 28px;
-    padding: 0 10px 0 15px;
+    padding: 6px 10px 6px 15px;
   }
 
   .sidebar-item:hover{
-    background-color: #222833;
+    background-color: #343d4e;
   }
 
   .sidebar-item-select{
@@ -79,7 +79,8 @@
   }
 
   .sidebar-project-header{
-    margin: 15px 4px 4px 15px;
+    border-top: solid 1px rgba(255,255,255,0.3);
+    padding: 15px 4px 6px 15px;
   }
   
   .sidebar-project-index-contents{
@@ -91,12 +92,12 @@
     padding: 6px 20px 6px 20px;
     margin: 2px 0 2px 0;
     white-space: nowrap;
-    overflow: hidden; //this doesn't work
-    text-overflow: ellipsis; //this doesn't work, likely due to a flex parent issue
+    overflow: hidden;
+    text-overflow: ellipsis;
     cursor: pointer;
   }
 
   .sidebar-project-index-item-contents:hover{
-    background-color: #222833;
+    background-color: #343d4e;
   }
 }
