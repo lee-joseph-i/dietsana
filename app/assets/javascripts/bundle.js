@@ -2836,19 +2836,24 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
+      var _this3 = this;
+
       if (!this.props.section) return;
       if (!prevProps.section) return;
 
       if (this.state.taskOrder !== this.props.section.task_order) {
-        this.setState({
-          taskOrder: this.props.section.task_order
+        this.props.requestTasks(this.props.sectionId).then(function (result) {
+          _this3.setState({
+            taskOrder: _this3.props.section.task_order,
+            tasks: result.tasks
+          });
         });
       }
     }
   }, {
     key: "handleSubmitTask",
     value: function handleSubmitTask(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       e.preventDefault();
       var updatedTaskOrder = this.state.taskOrder;
@@ -2858,16 +2863,16 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
       }).then(function (data) {
         updatedTaskOrder.unshift(data.task.id);
 
-        _this3.props.requestTasks(_this3.props.sectionId).then(function (result) {
-          _this3.setState({
+        _this4.props.requestTasks(_this4.props.sectionId).then(function (result) {
+          _this4.setState({
             taskOrder: updatedTaskOrder,
             tasks: result.tasks
           }, function () {
-            _this3.props.updateSection({
-              id: _this3.props.section.id,
+            _this4.props.updateSection({
+              id: _this4.props.section.id,
               task_order: updatedTaskOrder
             }).then(function (data) {
-              _this3.setState({
+              _this4.setState({
                 section: data.section
               });
             });
@@ -2895,10 +2900,10 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "update",
     value: function update(field) {
-      var _this4 = this;
+      var _this5 = this;
 
       return function (e) {
-        return _this4.setState(_defineProperty({}, field, e.currentTarget.value));
+        return _this5.setState(_defineProperty({}, field, e.currentTarget.value));
       };
     }
   }, {
@@ -2912,13 +2917,13 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderSectionName",
     value: function renderSectionName() {
-      var _this5 = this;
+      var _this6 = this;
 
       if (!this.state.renderForm) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "section-index-item-title",
           onClick: function onClick() {
-            return _this5.setState({
+            return _this6.setState({
               renderForm: true
             });
           }
@@ -2939,7 +2944,7 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleUpdateSectionName",
     value: function handleUpdateSectionName() {
-      var _this6 = this;
+      var _this7 = this;
 
       var section = {
         name: this.state.sectionName,
@@ -2947,7 +2952,7 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
         task_order: this.props.section.task_order
       };
       this.props.updateSection(section).then(function () {
-        return _this6.setState({
+        return _this7.setState({
           renderForm: false
         });
       });
@@ -2955,13 +2960,14 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this7 = this;
+      var _this8 = this;
 
       if (!this.props.section) return null;
       var _this$props = this.props,
           section = _this$props.section,
           deleteTask = _this$props.deleteTask,
           taskOrder = _this$props.taskOrder;
+      console.log("state render should show up last", this.state);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__["Draggable"], {
         draggableId: (this.props.section.id + 999999).toString(),
         index: this.props.index
@@ -2974,35 +2980,35 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", _extends({}, provided.dragHandleProps, {
           className: "section-index-item-header",
           id: "section-index-item-header-".concat(section.id)
-        }), _this7.renderSectionName(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-          onClick: _this7.handleDeleteSection,
+        }), _this8.renderSectionName(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+          onClick: _this8.handleDeleteSection,
           className: "section-index-delete-icon",
           viewBox: "0 0 448 512"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
           d: "M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"
         })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          onClick: _this7.revealForm,
+          onClick: _this8.revealForm,
           className: "reveal-task-form-button"
         }, "+ New Task"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
           id: "create-task-".concat(section.id),
           className: "task-create-form",
-          onSubmit: _this7.handleSubmit
+          onSubmit: _this8.handleSubmit
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
           className: "task-create-input",
           id: "create-task-textarea-".concat(section.id),
-          onChange: _this7.update("title"),
-          value: _this7.state.title,
+          onChange: _this8.update("title"),
+          value: _this8.state.title,
           placeholder: "New task",
-          onBlur: _this7.handleSubmitTask
+          onBlur: _this8.handleSubmitTask
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__["Droppable"], {
-          droppableId: _this7.props.section.id.toString(),
+          droppableId: _this8.props.section.id.toString(),
           type: "task"
         }, function (provided) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", _extends({
             className: "task-index-parent" // id="task-index-container"
             ,
             ref: provided.innerRef
-          }, provided.droppableProps), _this7.state.taskOrder.map(function (taskId, index) {
+          }, provided.droppableProps), _this8.state.taskOrder.map(function (taskId, index) {
             return (
               /*#__PURE__*/
               // this.props.section.task_order.map((taskId, index) => (
@@ -3012,10 +3018,10 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
                 index: index,
                 taskId: taskId // task={this.props.tasks[taskId]}
                 ,
-                task: _this7.state.tasks[taskId],
+                task: _this8.state.tasks[taskId],
                 deleteTask: deleteTask,
-                section: _this7.props.section,
-                updateSection: _this7.props.updateSection
+                section: _this8.props.section,
+                updateSection: _this8.props.updateSection
               })
             );
           }), provided.placeholder);
@@ -4136,6 +4142,9 @@ var TaskIndexItem = /*#__PURE__*/function (_React$Component) {
     // in the backend, the tasks still have their section_id properly assigned to them.
     // that's good news? I can probably request those tasks.
     // i need to figure out how to repopulate task_order in section_index_item
+    // additional:
+    // the section where the task was moved from is perfectly ok. it gets rid of the moved task successfully and adjusts its own task_order as necessary.
+    // hang on a minute. the task does move successfully to the other section. it just needs a re-render?!
 
   }, {
     key: "render",

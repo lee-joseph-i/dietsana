@@ -52,8 +52,11 @@ class SectionIndexItem extends React.Component {
     if (!prevProps.section) return;
 
     if (this.state.taskOrder !== this.props.section.task_order) {
-      this.setState({
-        taskOrder: this.props.section.task_order,
+      this.props.requestTasks(this.props.sectionId).then(result => {
+        this.setState({
+          taskOrder: this.props.section.task_order,
+          tasks: result.tasks
+        })
       })
     }
   }
@@ -159,6 +162,7 @@ class SectionIndexItem extends React.Component {
   render() {
     if (!this.props.section) return null;
     const { section, deleteTask, taskOrder } = this.props;
+    console.log("state render should show up last",this.state)
     return (
       <Draggable
         draggableId={(this.props.section.id + 999999).toString()}

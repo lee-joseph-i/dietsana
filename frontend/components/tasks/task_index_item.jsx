@@ -80,6 +80,11 @@ class TaskIndexItem extends React.Component {
   // in the backend, the tasks still have their section_id properly assigned to them.
   // that's good news? I can probably request those tasks.
   // i need to figure out how to repopulate task_order in section_index_item
+
+  // additional:
+  // the section where the task was moved from is perfectly ok. it gets rid of the moved task successfully and adjusts its own task_order as necessary.
+
+  // hang on a minute. the task does move successfully to the other section. it just needs a re-render?!
   render() {
     if (!this.props.task) return null;
     if (!this.props) return null;
