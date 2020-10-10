@@ -1,7 +1,6 @@
 .landing_body {
   min-height: 1000px;
   color: #222b37;
-  overflow: scroll;
 }
 
 /* for the landing page items */
@@ -124,6 +123,7 @@ section ul li:nth-child(even){
 .background-vid{
     top: 60px;
     width: 67%;
+    max-width: 1040px;
     object-fit: cover;
     box-shadow: 0 30px 40px rgba(59, 83, 109, 0.14);
     position: absolute;
