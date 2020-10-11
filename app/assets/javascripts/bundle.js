@@ -2806,14 +2806,6 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      // if (!this.props.section) return;
-      // const sectionHeader = document.getElementById(`section-index-item-header-${this.props.section.id}`);
-      // sectionHeader.onmouseover = function () {
-      //   this.parentElement.style = 'border: 1px solid #fff; padding: 7px;'
-      // }
-      // sectionHeader.onmouseout = function() {
-      //   this.parentElement.style = '';
-      // }
       this.props.requestTasks(this.props.sectionId).then(function (result) {
         _this2.setState({
           tasks: result.tasks

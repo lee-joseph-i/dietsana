@@ -31,15 +31,6 @@ class SectionIndexItem extends React.Component {
   }
 
   componentDidMount() {
-    // if (!this.props.section) return;
-    // const sectionHeader = document.getElementById(`section-index-item-header-${this.props.section.id}`);
-    // sectionHeader.onmouseover = function () {
-    //   this.parentElement.style = 'border: 1px solid #fff; padding: 7px;'
-    // }
-    // sectionHeader.onmouseout = function() {
-    //   this.parentElement.style = '';
-    // }
- 
     this.props.requestTasks(this.props.sectionId).then(result => {
       this.setState({
         tasks: result.tasks
@@ -194,9 +185,6 @@ class SectionIndexItem extends React.Component {
               </div>
             </div>
             <div onClick={this.revealForm} className="reveal-task-form-button">
-              {/* <svg className="new-task-plus-icon" viewBox="0 0 32 32">
-                <path d="M26,14h-8V6c0-1.1-0.9-2-2-2l0,0c-1.1,0-2,0.9-2,2v8H6c-1.1,0-2,0.9-2,2l0,0c0,1.1,0.9,2,2,2h8v8c0,1.1,0.9,2,2,2l0,0c1.1,0,2-0.9,2-2v-8h8c1.1,0,2-0.9,2-2l0,0C28,14.9,27.1,14,26,14z"></path>
-              </svg> */}
               + New Task
             </div>
             <form
