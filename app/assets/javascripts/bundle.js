@@ -562,18 +562,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _projects_project_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../projects/project_index_container */ "./frontend/components/projects/project_index_container.js");
 /* harmony import */ var _header_header_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../header/header-container */ "./frontend/components/header/header-container.js");
-/* harmony import */ var _projects_project_create_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../projects/project_create_form_container */ "./frontend/components/projects/project_create_form_container.js");
-/* harmony import */ var _projects_project_show_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../projects/project_show_container */ "./frontend/components/projects/project_show_container.js");
-/* harmony import */ var _projects_project_edit_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../projects/project_edit_form_container */ "./frontend/components/projects/project_edit_form_container.js");
-/* harmony import */ var _sections_section_index_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../sections/section_index_container */ "./frontend/components/sections/section_index_container.jsx");
+/* harmony import */ var _projects_project_show_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../projects/project_show_container */ "./frontend/components/projects/project_show_container.js");
+/* harmony import */ var _projects_project_edit_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../projects/project_edit_form_container */ "./frontend/components/projects/project_edit_form_container.js");
 
 
 
+ // import ProjectCreateFormContainer from '../projects/project_create_form_container';
 
 
-
-
-
+ // import SectionIndexContainer from '../sections/section_index_container';
 
 var Body = function Body() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -588,22 +585,12 @@ var Body = function Body() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/app/projects/:projectId",
-    component: _projects_project_show_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _projects_project_show_container__WEBPACK_IMPORTED_MODULE_4__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/app/projects/:projectId/edit",
-    component: _projects_project_edit_form_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _projects_project_edit_form_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   }));
 };
-/*
-when user goes to /app/projects/:projectId
-- I need the header container to get state of the project name
-- I need to simultaneously load the SectionIndexContainer
-- Maybe learn React Hooks first and see if that makes this more palatable.
-*/
-//Joseph-Review
-// Line 15 Needs to be reinstated! commented out because SectionIndexContainer 
-// not imported. 
-
 
 /* harmony default export */ __webpack_exports__["default"] = (Body);
 
@@ -2967,7 +2954,6 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
           section = _this$props.section,
           deleteTask = _this$props.deleteTask,
           taskOrder = _this$props.taskOrder;
-      console.log("state render should show up last", this.state);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__["Draggable"], {
         draggableId: (this.props.section.id + 999999).toString(),
         index: this.props.index
