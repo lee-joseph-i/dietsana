@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 class SectionIndexItem extends React.Component {
+  
   constructor(props) {
     super(props);
     let sectionName = this.props.section ? this.props.section.name : "";
