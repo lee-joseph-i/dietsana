@@ -1451,6 +1451,8 @@ var ProjectCreateForm = /*#__PURE__*/function (_React$Component) {
         first_name: '',
         last_name: ''
       },
+      team_id: 1,
+      member_ids: [_this.props.ownerId],
       description: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -1580,7 +1582,8 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state) {
   return {
     users: state.entities.users,
-    errors: state.errors.projects
+    errors: state.errors.projects,
+    ownerId: state.session.id
   };
 };
 

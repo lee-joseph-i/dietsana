@@ -1,4 +1,4 @@
-json.extract! project, :id, :name, :description, :creator_id, :owner_id, :section_order
+json.extract! project, :id, :name, :description, :creator_id, :owner_id, :team_id, :section_order
 
 json.owner do
   if project.owner

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :tasks
       resources :sections
       resources :projects
+      resources :project_memberships, only: [:create]
     end
 end
 

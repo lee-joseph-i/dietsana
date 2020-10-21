@@ -16,8 +16,14 @@ class Api::ProjectsController < ApplicationController
     end
   end
 
+  # def index
+  #   @projects = Project.all
+  #   @sections = current_user.project_sections
+  #   render :index
+  # end
+
   def index
-    @projects = Project.all
+    @projects = current_user.projects
     @sections = current_user.project_sections
     render :index
   end
@@ -71,6 +77,6 @@ class Api::ProjectsController < ApplicationController
 
   def project_params
     # params.require(:project).permit! #this does not work, when attempting to edit or create a project i get a server error
-    params.require(:project).permit(:name, :owner_id, :description, :owner, section_order: [])
+    params.require(:project).permit(:name, :owner_id, :description, :owner, :team_id, section_order: [], member_ids: [])
   end
 end

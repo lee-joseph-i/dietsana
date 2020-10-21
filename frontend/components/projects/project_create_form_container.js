@@ -8,7 +8,8 @@ import { requestUsers } from '../../actions/user_action';
 const mapStateToProps = (state) => {
   return {
     users: state.entities.users,
-    errors: state.errors.projects
+    errors: state.errors.projects,
+    ownerId: state.session.id
   };
 };
 

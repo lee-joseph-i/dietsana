@@ -8,17 +8,17 @@ class User < ApplicationRecord
 
   has_many :owned_projects,
     foreign_key: :owner_id
-
-  has_many :projects,
-    through: :project_memberships,
-    source: :project
-
+    
   has_many :project_memberships,
     primary_key: :id,
     foreign_key: :member_id,
     class_name: :ProjectMembership,
     inverse_of: :member,
     dependent: :destroy
+
+  has_many :projects,
+    through: :project_memberships,
+    source: :project
 
   has_many :task_assignments,
     primary_key: :id,

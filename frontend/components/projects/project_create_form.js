@@ -12,6 +12,8 @@ class ProjectCreateForm extends React.Component {
         first_name: '',
         last_name: ''
       },
+      team_id: 1,
+      member_ids: [this.props.ownerId],
       description: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);

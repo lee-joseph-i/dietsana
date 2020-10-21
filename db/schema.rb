@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_18_003420) do
+ActiveRecord::Schema.define(version: 2020_10_21_224024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,8 +32,11 @@ ActiveRecord::Schema.define(version: 2020_09_18_003420) do
     t.integer "owner_id"
     t.text "description"
     t.integer "section_order", default: [], array: true
+    t.integer "team_id", null: false
     t.index ["creator_id"], name: "index_projects_on_creator_id"
+    t.index ["name"], name: "index_projects_on_name", unique: true
     t.index ["owner_id"], name: "index_projects_on_owner_id"
+    t.index ["team_id"], name: "index_projects_on_team_id"
   end
 
   create_table "sections", force: :cascade do |t|
@@ -68,6 +71,14 @@ ActiveRecord::Schema.define(version: 2020_09_18_003420) do
     t.index ["creator_id"], name: "index_tasks_on_creator_id"
     t.index ["due_date"], name: "index_tasks_on_due_date"
     t.index ["section_id"], name: "index_tasks_on_section_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_teams_on_title", unique: true
   end
 
   create_table "users", force: :cascade do |t|

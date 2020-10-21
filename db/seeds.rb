@@ -10,6 +10,7 @@ ActiveRecord::Base.connection.execute("TRUNCATE TABLE users, projects RESTART ID
 
 ApplicationRecord.transaction do 
   User.destroy_all
+  Team.destroy_all
   Project.destroy_all
   ProjectMembership.destroy_all
   Section.destroy_all
@@ -45,11 +46,14 @@ ApplicationRecord.transaction do
     email: 'samwalker@maru.com', 
     password: "password123")
 
+  Team.create!(title: 'Engineering', description: 'An apt description.')
+
   Project.create!(
     name: 'The Maru Project',
     owner_id: 1,
     creator_id: 1,
     # section_order: [Section.third.id, Section.second.id, Section.first.id],
+    team_id: 1,
     description: "Hey! Welcome to my Asana inspired project management web application. Here, you'll have some of the MVPs of what Asana typically presents: projects, tasks, users and owners, and pipeline views.\n\nHovering over a project will present you a dropdown option to edit or delete the project - clicking on the tile will take you to the project details page.",
   )
 
@@ -57,6 +61,7 @@ ApplicationRecord.transaction do
     name: 'MERN Stack Project: Space Balls',
     owner_id: 2,
     creator_id: 1,
+    team_id: 1,
     description: "I've created a project using the MERN stack, a collaborative effort with three others engineers. Check it out!\n\nhttp://space-ball.herokuapp.com/#/",
   )
 
@@ -64,6 +69,7 @@ ApplicationRecord.transaction do
     name: 'Javascript Project',
     owner_id: 1,
     creator_id: 3,
+    team_id: 1,
     description: "I've created a purely frontend JS project. It's a fun typing game! Knock yourself out :)\n\nhttps://lee-joseph-i.github.io/gotta-type-em-all/",
   )
 
@@ -71,6 +77,7 @@ ApplicationRecord.transaction do
     name: 'Self Care',
     owner_id: 4,
     creator_id: 3,
+    team_id: 1,
     description: "In times like these, don't forget to take care of yourself. Find your ideal work and life balance.",
   )
 
@@ -78,6 +85,7 @@ ApplicationRecord.transaction do
     name: 'Study: Algos and Data Structures',
     owner_id: 3,
     creator_id: 3,
+    team_id: 1,
     description: "Leetcode, Leetcode, Leetcode!",
   )
 
@@ -85,6 +93,7 @@ ApplicationRecord.transaction do
     name: 'MVP: Kanban Board',
     owner_id: 3,
     creator_id: 1,
+    team_id: 1,
     description: "The Kanban Board is a pipeline view where tasks can be read along in a progressive manner. This allows users and teams to follow a sequential list of tasks and track the progress of a project completion.
     \n- Tasks associated with projects.\n- Sections for tasks.\n- Drag and Drop functionality.",
   )
@@ -105,13 +114,18 @@ ApplicationRecord.transaction do
   )
 
   ProjectMembership.create!(
-    member_id: 2,
+    member_id: 1,
     project_id: 4
   )
 
   ProjectMembership.create!(
     member_id: 1,
     project_id: 5
+  )
+
+  ProjectMembership.create!(
+    member_id: 1,
+    project_id: 6
   )
 
   Section.create!(

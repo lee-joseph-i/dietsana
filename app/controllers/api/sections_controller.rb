@@ -5,7 +5,6 @@ class Api::SectionsController < ApplicationController
   # end
 
   def index
-    p "SECTION CONTROLER INDEX"
     @sections = current_user.project_sections
     render :index
   end
