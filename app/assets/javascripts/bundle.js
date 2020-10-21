@@ -219,8 +219,8 @@ var updateProject = function updateProject(project) {
 
 var deleteProject = function deleteProject(projectId) {
   return function (dispatch) {
-    return _util_project_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteProject"](projectId).then(function (deletedProject) {
-      dispatch(removeProject(deletedProject.id));
+    return _util_project_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteProject"](projectId).then(function () {
+      return dispatch(removeProject(projectId));
     });
   };
 };
