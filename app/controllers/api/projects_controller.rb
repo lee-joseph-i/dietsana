@@ -60,7 +60,7 @@ class Api::ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     if @project
       @project.destroy
-      render :show
+      # render :show
     else
       render json: ['Project not found!']
     end
