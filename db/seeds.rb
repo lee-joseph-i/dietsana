@@ -104,6 +104,16 @@ ApplicationRecord.transaction do
     project_id: 3
   )
 
+  ProjectMembership.create!(
+    member_id: 2,
+    project_id: 4
+  )
+
+  ProjectMembership.create!(
+    member_id: 1,
+    project_id: 5
+  )
+
   Section.create!(
     project_id: 1, 
     name: 'Backlog'
@@ -127,7 +137,7 @@ ApplicationRecord.transaction do
   )
 
   Task.create!(
-    title: '[BUG] Splice type error when attemptin gto re-order sections.', 
+    title: '[BUG] Splice type error when attempting to re-order sections.', 
     creator_id: 1,
     complete: false,
     section_id: Section.first.id
