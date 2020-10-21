@@ -3,13 +3,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
-#july 29, 2020
-gem "actionview", ">= 5.2.4.3"
+# the below gems were added: july 29, 2020
+# the below gems were last updated: October 20, 2020
+gem "actionview", ">= 5.2.4.4"
 gem "rack", ">= 2.2.3"
 gem "websocket-extensions", ">= 0.1.5"
-gem "activesupport", ">= 5.2.4.3"
-gem "actionpack", ">= 5.2.4.3"
-gem "activestorage", ">= 5.2.4.3"
+gem "activesupport", ">= 5.2.4.4"
+gem "actionpack", ">= 5.2.4.4"
+gem "activestorage", ">= 5.2.4.4"
 
 
 gem 'bcrypt'
