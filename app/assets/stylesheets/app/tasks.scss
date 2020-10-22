@@ -5,6 +5,7 @@
   height: 100%;
   min-width: 280px;
   /* padding: 10px; */
+  cursor: default;
 }
 
 // #task-index-container{
@@ -18,7 +19,7 @@
 
 .task-index-item-parent {
   box-sizing: border-box;
-  padding-bottom: 10px;
+  margin-bottom: 10px;
   /* overflow: auto; */
 }
 
