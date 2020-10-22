@@ -11,6 +11,7 @@ class ProjectShow extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    //this is not the problem, in fact i could comment out this entire method and sections can still be re-ordered
     if (
       prevProps.match.params.projectId !== this.props.match.params.projectId
     ) {
@@ -20,6 +21,7 @@ class ProjectShow extends React.Component {
 
   render() {
     if (!this.props.project) return null;
+    // console.log("show props", this.props)
     const { project, createProject, closeModal } = this.props;
     return (
       <div className="project-show-parent">

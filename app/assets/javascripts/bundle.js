@@ -2186,6 +2186,7 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
+      //this is not the problem, in fact i could comment out this entire method and sections can still be re-ordered
       if (prevProps.match.params.projectId !== this.props.match.params.projectId) {
         this.props.requestProject(this.props.match.params.projectId);
       }
@@ -2193,7 +2194,8 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      if (!this.props.project) return null;
+      if (!this.props.project) return null; // console.log("show props", this.props)
+
       var _this$props = this.props,
           project = _this$props.project,
           createProject = _this$props.createProject,
@@ -2379,8 +2381,13 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
         newSectionOrder.splice(destination.index, 0, parseInt(draggableId) - 999999);
 
         var _newState = _objectSpread(_objectSpread({}, _this.state), {}, {
-          section: newSectionOrder
-        });
+          sectionOrder: newSectionOrder
+        }); //THIS IS THE PROBLEM AREA
+        // section_index STATE will first show the OLD order <===== CULPRIT!
+        // project_show props will then show the CORRECT new order.
+        // section_index STATE will then show the OLD order <======= CULPRIT!!!!!!!!!!!!
+        // section_index STATE will then show the NEW order
+
 
         _this.setState(_newState, function () {
           _this.props.updateProject({
@@ -2606,7 +2613,9 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
       var _this6 = this;
 
       if (!this.props) return null;
-      if (!this.props.sections) return null;
+      if (!this.props.sections) return null; // console.log("section index state", this.state)
+      // console.log("section index props", this.props)
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "section-index-parent"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

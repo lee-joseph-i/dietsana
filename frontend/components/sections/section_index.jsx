@@ -144,14 +144,21 @@ class SectionIndex extends React.Component{
 
       const newState = {
         ...this.state,
-        section: newSectionOrder
+        sectionOrder: newSectionOrder
       };
+      
+      //THIS IS THE PROBLEM AREA
+      // section_index STATE will first show the OLD order <===== CULPRIT!
+      // project_show props will then show the CORRECT new order.
+      // section_index STATE will then show the OLD order <======= CULPRIT!!!!!!!!!!!!
+      // section_index STATE will then show the NEW order
       this.setState(newState, () => {
         this.props.updateProject({
           id: this.props.project.id,
           section_order: newSectionOrder
         })
       });
+
       return;
     }
 
@@ -250,6 +257,8 @@ class SectionIndex extends React.Component{
   render() {
     if (!this.props) return null;
     if (!this.props.sections) return null;
+    // console.log("section index state", this.state)
+    // console.log("section index props", this.props)
     return (
       <div className='section-index-parent'>
         <div className='section-index-content'>
