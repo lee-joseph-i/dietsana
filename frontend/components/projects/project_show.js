@@ -21,7 +21,6 @@ class ProjectShow extends React.Component {
 
   render() {
     if (!this.props.project) return null;
-    // console.log("show props", this.props)
     const { project, createProject, closeModal } = this.props;
     return (
       <div className="project-show-parent">

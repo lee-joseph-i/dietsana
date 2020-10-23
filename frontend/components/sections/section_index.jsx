@@ -147,11 +147,12 @@ class SectionIndex extends React.Component{
         sectionOrder: newSectionOrder
       };
       
-      //THIS IS THE PROBLEM AREA
+      // This is the problem area for flickering drag issue with sections.
       // section_index STATE will first show the OLD order <===== CULPRIT!
       // project_show props will then show the CORRECT new order.
-      // section_index STATE will then show the OLD order <======= CULPRIT!!!!!!!!!!!!
+      // section_index STATE will then show the OLD order
       // section_index STATE will then show the NEW order
+
       this.setState(newState, () => {
         this.props.updateProject({
           id: this.props.project.id,
@@ -234,6 +235,16 @@ class SectionIndex extends React.Component{
       },
     };
 
+    //bug notes: flickering when re-ordering tasks
+    //confirmed that component state is accurately reflecting new state everytime.
+    //so possibly child component is exhibiting the cause
+    //this.state in section index item is not updating task_order until a little later <== culprit area
+    //so i need make sure render doesn't hit before this
+
+    // this console log hits first.
+    // then the section index render hits with the right task order!
+    // then the section index item render hits with the wrong order
+
     this.setState(newState);
     this.props.updateSection({
       id: start.id,
@@ -257,8 +268,6 @@ class SectionIndex extends React.Component{
   render() {
     if (!this.props) return null;
     if (!this.props.sections) return null;
-    // console.log("section index state", this.state)
-    // console.log("section index props", this.props)
     return (
       <div className='section-index-parent'>
         <div className='section-index-content'>

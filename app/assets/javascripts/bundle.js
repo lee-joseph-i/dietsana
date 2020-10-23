@@ -2194,8 +2194,7 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      if (!this.props.project) return null; // console.log("show props", this.props)
-
+      if (!this.props.project) return null;
       var _this$props = this.props,
           project = _this$props.project,
           createProject = _this$props.createProject,
@@ -2382,10 +2381,10 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
 
         var _newState = _objectSpread(_objectSpread({}, _this.state), {}, {
           sectionOrder: newSectionOrder
-        }); //THIS IS THE PROBLEM AREA
+        }); // This is the problem area for flickering drag issue with sections.
         // section_index STATE will first show the OLD order <===== CULPRIT!
         // project_show props will then show the CORRECT new order.
-        // section_index STATE will then show the OLD order <======= CULPRIT!!!!!!!!!!!!
+        // section_index STATE will then show the OLD order
         // section_index STATE will then show the NEW order
 
 
@@ -2458,7 +2457,15 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
 
       var newState = _objectSpread(_objectSpread({}, _this.state), {}, {
         sections: _objectSpread(_objectSpread({}, _this.state.sections), {}, (_objectSpread3 = {}, _defineProperty(_objectSpread3, newStart.id, newStart), _defineProperty(_objectSpread3, newFinish.id, newFinish), _objectSpread3))
-      });
+      }); //bug notes: flickering when re-ordering tasks
+      //confirmed that component state is accurately reflecting new state everytime.
+      //so possibly child component is exhibiting the cause
+      //this.state in section index item is not updating task_order until a little later <== culprit area
+      //so i need make sure render doesn't hit before this
+      // this console log hits first.
+      // then the section index render hits with the right task order!
+      // then the section index item render hits with the wrong order
+
 
       _this.setState(newState);
 
@@ -2613,9 +2620,7 @@ var SectionIndex = /*#__PURE__*/function (_React$Component) {
       var _this6 = this;
 
       if (!this.props) return null;
-      if (!this.props.sections) return null; // console.log("section index state", this.state)
-      // console.log("section index props", this.props)
-
+      if (!this.props.sections) return null;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "section-index-parent"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2998,22 +3003,23 @@ var SectionIndexItem = /*#__PURE__*/function (_React$Component) {
             className: "task-index-parent" // id="task-index-container"
             ,
             ref: provided.innerRef
-          }, provided.droppableProps), _this8.state.taskOrder.map(function (taskId, index) {
-            return (
-              /*#__PURE__*/
-              // this.props.section.task_order.map((taskId, index) => (
-              react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tasks_task_index_item__WEBPACK_IMPORTED_MODULE_2__["default"] // key={taskId.toString()}
-              , {
-                key: taskId,
-                index: index,
-                taskId: taskId // task={this.props.tasks[taskId]}
-                ,
-                task: _this8.state.tasks[taskId],
-                deleteTask: deleteTask,
-                section: _this8.props.section,
-                updateSection: _this8.props.updateSection
-              })
-            );
+          }, provided.droppableProps), // this.state.taskOrder is not receiving the updated task_order
+          // when dragging tasks. 
+          // even when the props from section_index have the correct task_order
+          // therefore i am using this.props instead. (need to clean up component state)
+          // this.state.taskOrder.map((taskId, index) => (
+          _this8.props.section.task_order.map(function (taskId, index) {
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tasks_task_index_item__WEBPACK_IMPORTED_MODULE_2__["default"] // key={taskId.toString()}
+            , {
+              key: taskId,
+              index: index,
+              taskId: taskId // task={this.props.tasks[taskId]}
+              ,
+              task: _this8.state.tasks[taskId],
+              deleteTask: deleteTask,
+              section: _this8.props.section,
+              updateSection: _this8.props.updateSection
+            });
           }), provided.placeholder);
         }));
       });
@@ -3912,9 +3918,7 @@ var TaskIndex = /*#__PURE__*/function (_React$Component) {
       var deleteTask = this.props.deleteTask;
       var _this$state = this.state,
           taskOrder = _this$state.taskOrder,
-          tasks = _this$state.tasks; // console.log('task-index props: ', this.props)
-      // console.log('task-index task order: ', this.state.taskOrder)
-
+          tasks = _this$state.tasks;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_2__["Droppable"], {
         droppableId: this.props.section.id.toString()
       }, function (provided) {

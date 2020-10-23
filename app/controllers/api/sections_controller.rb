@@ -28,7 +28,6 @@ class Api::SectionsController < ApplicationController
 
   def update
     @section = Section.find(params[:id])
-    # p section_params
     if @section.update(section_params)
       @section.task_order = [] unless section_params[:task_order]
       if @section.save!

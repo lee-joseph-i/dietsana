@@ -1,10 +1,7 @@
 class Api::TasksController < ApplicationController
   
   def index
-    p "TASK CONTROLLER"
-    p params[:sectionId]
     @tasks = Section.find_by(id: params[:sectionId]).tasks
-    p @tasks
     render :index
   end
   

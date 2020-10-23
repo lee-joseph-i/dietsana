@@ -215,8 +215,12 @@ class SectionIndexItem extends React.Component {
                   {...provided.droppableProps}
                 >
                   {
-                    this.state.taskOrder.map((taskId, index) => (
-                    // this.props.section.task_order.map((taskId, index) => (
+                    // this.state.taskOrder is not receiving the updated task_order
+                    // when dragging tasks. 
+                    // even when the props from section_index have the correct task_order
+                    // therefore i am using this.props instead. (need to clean up component state)
+                    // this.state.taskOrder.map((taskId, index) => (
+                    this.props.section.task_order.map((taskId, index) => (
                       <TaskIndexItem
                         // key={taskId.toString()}
                         key={taskId}
